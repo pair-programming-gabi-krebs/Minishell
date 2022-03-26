@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/03/25 22:44:19 by lkrebs-l         ###   ########.fr       */
+/*   Created: 2022/03/25 22:25:46 by lkrebs-l          #+#    #+#             */
+/*   Updated: 2022/03/25 22:48:40 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "../includes/minishell.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+#define clear() printf("\033[H\033[J")
 
-#endif
+int	main(void)
+{
+	char	*user = getenv("LOGNAME");
+	char	*machine = getenv("NAME");
+	char	*cwd = getcwd(cwd, 256);
+	
+	clear();
+	while (1)
+	{
+		printf("%s@%s:%s", user, machine, cwd);
+	}
+	return 0;
+}
+
+
