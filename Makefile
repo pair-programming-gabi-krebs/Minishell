@@ -4,10 +4,6 @@ FLAGS = -Wall -Wextra -Werror -g3
 
 CC = gcc
 
-# RULES_PATH = ./rules/
-# RULES_FILES = pa.c pb.c ra.c rb.c rr.c rra.c rrb.c rrr.c sa.c sb.c ss.c
-# RULES = $(addprefix $(RULES_PATH),$(RULES_FILES))
-
 SRC_PATH = ./prompt/
 SRC_FILES = main.c
 
@@ -15,15 +11,10 @@ SRC = $(addprefix $(SRC_PATH),$(SRC_FILES))
 
 OBJ_PATH = ./objs/
 SRC_OBJ = $(SRC:$(SRC_PATH)%.c=$(OBJ_PATH)%.o)
-# RULES_OBJ = $(RULES:$(RULES_PATH)%.c=$(OBJ_PATH)%.o)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@$(CC) $(FLAGS) -c $< -o $@
 	@echo -n █
-
-# $(OBJ_PATH)%.o: $(RULES_PATH)%.c
-# 	@$(CC) $(FLAGS) -c $< -o $@
-# 	@echo -n █
 
 all: $(NAME)
 
@@ -34,7 +25,7 @@ $(NAME): $(OBJ_PATH) $(SRC_OBJ)
 	@$(CC) $(FLAGS) $(SRC_OBJ) ./libft/libft.a -o $(NAME)
 
 $(OBJ_PATH):
-	@echo -n "minishell : "
+	@echo -n "push_swap : "
 	@mkdir -p objs
 	@echo -n █
 
