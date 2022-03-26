@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:25:46 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/03/25 23:19:23 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/03/26 18:31:10 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,25 @@ void init()
 
 int	print_dir(void)
 {
-	char	*cwd = getcwd(cwd, 256);
+	// char	*cwd = getcwd(cwd, 256);
 
-	printf("MINISHELL:%s$ ", cwd);
+	// printf("MINISHELL:%s$ ", cwd);
 	return (1);
 }
 
 int takeInput(char* str)
 {
-    char* buf;
+    // char* buf;
 
-    buf = readline("");
-    if (strlen(buf) != 0) {
-        strcpy(str, buf);
-        return 0;
-    } else {
-        return 1;
-    }
+    // buf = readline("");
+    // if (strlen(buf) != 0) {
+    //     strcpy(str, buf);
+    //     return 0;
+    // } else {
+    //     return 1;
+    // }
+    printf("%s\n", str);
+    return 0;
 }
 
 int	main(void)
