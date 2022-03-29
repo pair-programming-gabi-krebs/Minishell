@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/23 15:27:40 by lkrebs-l          #+#    #+#              #
-#    Updated: 2022/03/26 19:47:11 by gcosta-d         ###   ########.fr        #
+#    Updated: 2022/03/29 20:26:48 by lkrebs-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ NAME = libft.a
 
 CFLAGS = -Wextra -Werror -Wall
 
-CC = clang
+CC = gcc
 
 RM = rm -f
 
