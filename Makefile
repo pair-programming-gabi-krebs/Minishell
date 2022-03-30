@@ -1,12 +1,18 @@
 NAME = minishell
 
-FLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3
+
+LIB_FLAG = -lreadline
 
 CC = gcc
 
 SRC_PATH = ./prompt/
 
-SRC_FILES = main.c
+SRC_FILES = main.c \
+			ft_init.c \
+			prompt.c \
+			print_dir.c \
+			history.c
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_FILES))
 
@@ -15,7 +21,7 @@ OBJ_PATH = ./objs/
 SRC_OBJ = $(SRC:$(SRC_PATH)%.c=$(OBJ_PATH)%.o)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo -n █
 
 all: $(NAME)
@@ -24,10 +30,10 @@ $(NAME): $(OBJ_PATH) $(SRC_OBJ)
 	@echo " 100% complete"
 	@echo -n "libft     : "
 	@$(MAKE) --no-print-directory -C ./libft
-	@$(CC) $(FLAGS) $(SRC_OBJ) ./libft/libft.a -o $(NAME)
+	@$(CC) $(CFLAGS) $(SRC_OBJ) $(LIB_FLAG) ./libft/libft.a -o $(NAME)
 
 $(OBJ_PATH):
-	@echo -n "push_swap : "
+	@echo -n "minishell : "
 	@mkdir -p objs
 	@echo -n █
 
