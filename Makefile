@@ -5,11 +5,13 @@ FLAGS = -Wall -Wextra -Werror -g3
 CC = gcc
 
 SRC_PATH = ./prompt/
+
 SRC_FILES = main.c
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_FILES))
 
 OBJ_PATH = ./objs/
+
 SRC_OBJ = $(SRC:$(SRC_PATH)%.c=$(OBJ_PATH)%.o)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
