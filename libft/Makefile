@@ -6,7 +6,7 @@
 #    By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/23 15:27:40 by lkrebs-l          #+#    #+#              #
-#    Updated: 2022/03/29 21:18:39 by lkrebs-l         ###   ########.fr        #
+#    Updated: 2022/03/29 21:32:22 by lkrebs-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,6 @@ $(NAME): $(OBJ_DIR) $(OBJ)
 	@echo " 100% complete"
 
 $(OBJ_DIR):
-	@echo -n "libft : "
 	@mkdir -p objs
 	@echo -n █
 
