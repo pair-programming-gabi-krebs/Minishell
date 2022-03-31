@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:39:38 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/03/29 23:21:27 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/03/30 21:20:50 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 #define clear() printf("\033[H\033[J")
 
-void	prompt(void)
+void	prompt(t_minishell *minishell)
 {
-	char *buf;
+	char *line;
+
 	clear();
 	while(1)
 	{
-		print_dir();
-		buf = readline("$ ");
-		if (ft_strlen(buf) != 0)
-			history();
+		line = readline(print_dir(minishell));
+		if (ft_strlen(line) != 0)
+			history(line);
 	}
+	free(minishell->prompt.prompt);
 }
