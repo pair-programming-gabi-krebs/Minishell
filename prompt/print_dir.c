@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   print_dir.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:45:16 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/03/29 23:18:51 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/03/30 21:21:59 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	print_dir(void)
+char	*print_dir(t_minishell *minishell)
 {
 	char	*cwd;
+	char	*aux;
 
-	cwd = malloc(256 * sizeof(char));
+	cwd = ft_calloc(256, sizeof(char));
 	cwd = getcwd(cwd, 256);
-
-	printf("MINISHELL:%s", cwd);
+	aux = ft_strjoin("Minishell:", cwd);
+	minishell->prompt.prompt = ft_strjoin(aux, "$ ");
+	free(aux);
 	free(cwd);
-	return (1);
+	return (minishell->prompt.prompt);
 }
