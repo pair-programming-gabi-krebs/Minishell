@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:25:46 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/03/29 23:15:19 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/03/30 21:24:03 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	t_init init;
+	t_minishell	minishell;
 
-	ft_init(&init, argc, argv, envp);
-	prompt();
+	ft_init(&minishell, argc, argv, envp);
+	prompt(&minishell);
 	return (0);
 }
-
-
