@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/01 23:22:47 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/02 18:54:13 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ typedef struct s_prompt
 typedef struct s_lexer
 {
 	char	**tokens;
-	char	**mtx_quote;
 	char	*line;
 	char	*infile;
 	char	*outfile;
 	int		start_quote;
 	int		end_quote;
+	int		i_token;
 }	t_lexer;
 
 
@@ -67,7 +67,7 @@ void	lexer(t_ms *ms);
 void	handle_redirect(t_ms *ms);
 void	tokenizer(t_ms *ms);
 void	common_case(t_ms *ms);
-void	special_case(t_ms *ms);
+int		special_case(t_ms *ms, char quote, int index);
 
 
 #endif
