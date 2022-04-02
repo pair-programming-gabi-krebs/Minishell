@@ -6,12 +6,24 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:30:59 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/03/31 23:24:39 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/01 22:57:16 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+void	tokenizer(t_ms *ms)
+{
+	if (strichar(ms->lexer.line, 0, SINGLE_QUOTE) == -1
+		&& strichar(ms->lexer.line, 0, DOUBLE_QUOTE) == -1)
+		common_case(ms);
+	else
+		special_case(ms);
+}
+
+
+
+/* V1.0 tokenizer
 void	tokenizer(t_minishell *minishell)
 {
 	int	i;
@@ -37,6 +49,7 @@ void	tokenizer(t_minishell *minishell)
 		i++;
 	}
 }
+*/
 
 /* [ COMANDO ] echo "e<e"     <   README.md
  * 	| depois de um comando, sempre vem uma option se começar com
