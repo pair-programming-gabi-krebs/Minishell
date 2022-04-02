@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:30:59 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/01 22:57:16 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/02 19:12:59 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,44 @@
 
 void	tokenizer(t_ms *ms)
 {
-	if (strichar(ms->lexer.line, 0, SINGLE_QUOTE) == -1
+	int	i;
+	int	c;
+
+	i = 0;
+
+	while (ms->lexer.line[i])
+	{
+		if (ms->lexer.line[i] == SINGLE_QUOTE)
+		{
+			i = special_case(ms, SINGLE_QUOTE, i);
+		}
+		else if (ms->lexer.line[i] == DOUBLE_QUOTE)
+		{
+			i = special_case(ms, DOUBLE_QUOTE, i); 
+		}
+		else if (ms->lexer.line[i] == SPACE)
+			continue ;
+		else
+		{
+			c = i;
+			while(ms->lexer.line[i] != SPACE)
+				i++;
+			ms->lexer.tokens[ms->lexer.i_token] = ft_substr(ms->lexer.line, c, i - c);
+			ms->lexer.i_token++;
+		}
+		i++;
+	}
+}
+
+
+/* V2.0 tokenizer
+ 	if (strichar(ms->lexer.line, 0, SINGLE_QUOTE) == -1
 		&& strichar(ms->lexer.line, 0, DOUBLE_QUOTE) == -1)
 		common_case(ms);
 	else
 		special_case(ms);
-}
 
-
+*/
 
 /* V1.0 tokenizer
 void	tokenizer(t_minishell *minishell)
