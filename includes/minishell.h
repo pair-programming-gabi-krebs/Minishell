@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/03/31 22:23:24 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/01 23:22:47 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
+# define SINGLE_QUOTE 39
+# define DOUBLE_QUOTE 34
+# define SPACE 32
 
 typedef struct s_init
 {
@@ -34,9 +38,13 @@ typedef struct s_prompt
 
 typedef struct s_lexer
 {
+	char	**tokens;
+	char	**mtx_quote;
 	char	*line;
 	char	*infile;
 	char	*outfile;
+	int		start_quote;
+	int		end_quote;
 }	t_lexer;
 
 
@@ -45,19 +53,21 @@ typedef struct s_minishell
 	t_init		init;
 	t_prompt	prompt;
 	t_lexer		lexer;
-}	t_minishell;
+}	t_ms;
 
 
 /* Prompt */
-char	*print_dir(t_minishell *minishell);
-void	prompt(t_minishell *minishell);
-void	ft_init(t_minishell *minishell, int argc, char *argv[], char *envp[]);
+char	*print_dir(t_ms *ms);
+void	prompt(t_ms *ms);
+void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[]);
 void	history(char *line);
 
 /* Lexer */
-void	lexer(t_minishell *minishell);
-void	handle_redirect(t_minishell *minishell);
-void	tokenizer(t_minishell *minishell);
+void	lexer(t_ms *ms);
+void	handle_redirect(t_ms *ms);
+void	tokenizer(t_ms *ms);
+void	common_case(t_ms *ms);
+void	special_case(t_ms *ms);
 
 
 #endif
