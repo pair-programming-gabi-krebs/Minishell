@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krebscoder <krebscoder@student.42.fr>      +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 22:04:01 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2021/11/25 13:53:10 by krebscoder       ###   ########.fr       */
+/*   Updated: 2022/04/01 21:47:09 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct s_list
 {
 	void *content;
-	struct  s_list *next;	
+	struct  s_list *next;
 } t_list;
 
 //** Part 1 **
@@ -285,5 +285,6 @@ void ft_lstdelone(t_list *lst, void (*del)(void*));
 void ft_lstclear(t_list **lst, void (*del)(void*));
 void ft_lstiter(t_list *lst, void (*f)(void *));
 t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+int	strichar(char *string, int pos, char c);
 
 #endif
