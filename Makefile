@@ -6,31 +6,33 @@ LIB_FLAG = -lreadline
 
 CC = gcc
 
-SRC_PATH = ./prompt/
+VPATH = prompt lexer
 
-SRC_FILES = main.c \
-			ft_init.c \
-			prompt.c \
-			print_dir.c \
-			history.c
-
-SRC = $(addprefix $(SRC_PATH),$(SRC_FILES))
+FILES = main.c \
+		ft_init.c \
+		prompt.c \
+		print_dir.c \
+		history.c \
+		common_case.c \
+		handle_redirect.c \
+		lexer.c \
+		tokenizer.c
 
 OBJ_PATH = ./objs/
 
-SRC_OBJ = $(SRC:$(SRC_PATH)%.c=$(OBJ_PATH)%.o)
+OBJS = $(FILES:%.c=$(OBJ_PATH)%.o)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+$(OBJ_PATH)%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo -n █
 
 all: $(NAME)
 
-$(NAME): $(OBJ_PATH) $(SRC_OBJ)
+$(NAME): $(OBJ_PATH) $(OBJS)
 	@echo " 100% complete"
 	@echo -n "libft     : "
 	@$(MAKE) --no-print-directory -C ./libft
-	@$(CC) $(CFLAGS) $(SRC_OBJ) $(LIB_FLAG) ./libft/libft.a -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIB_FLAG) ./libft/libft.a -o $(NAME)
 
 $(OBJ_PATH):
 	@echo -n "minishell : "
@@ -40,7 +42,7 @@ $(OBJ_PATH):
 clean:
 	@echo -n "clean     : "
 	@$(MAKE) --no-print-directory -C ./libft clean
-	@rm -f $(SRC_OBJ)
+	@rm -f $(OBJS)
 	@echo -n █
 	@echo " 100% complete"
 
