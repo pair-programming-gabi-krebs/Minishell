@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/02 18:54:13 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/04 20:44:24 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define SINGLE_QUOTE 39
 # define DOUBLE_QUOTE 34
-# define SPACE 32
+# define FT_SPACE 32
 
 typedef struct s_init
 {
