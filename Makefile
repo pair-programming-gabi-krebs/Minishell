@@ -16,7 +16,8 @@ FILES = main.c \
 		common_case.c \
 		handle_redirect.c \
 		lexer.c \
-		tokenizer.c
+		tokenizer.c \
+		special_case.c 
 
 OBJ_PATH = ./objs/
 
