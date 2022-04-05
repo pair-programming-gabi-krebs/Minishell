@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 22:18:00 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/02 19:16:49 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/04 23:46:09 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int	special_case(t_ms *ms, char quote, int index)
 	while (ms->lexer.line[index + 1] != quote)
 		index++;
 	index++;
-	if (ms->lexer.line[index + 1] == SPACE)
+	if (ms->lexer.line[index + 1] == FT_SPACE)
 	{
 		ms->lexer.tokens[ms->lexer.i_token] = ft_substr(ms->lexer.line, 
-			start_quote, index - start_quote);
+			start_quote, (index - start_quote) + 1);
 	}
 	else
 	{
-		while (ms->lexer.line[index] != SPACE)
+		while (ms->lexer.line[index] != FT_SPACE && ms->lexer.line[index])
 			index++;
 		ms->lexer.tokens[ms->lexer.i_token] = ft_substr(ms->lexer.line, 
 			start_quote, index - start_quote);
