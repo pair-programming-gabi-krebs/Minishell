@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/04 23:11:03 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/06 05:19:33 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,5 @@ void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 	ms->init.envp = envp;
 	ms->lexer.i_token = 0;
 	ms->lexer.tokens = malloc(2048 * sizeof(char **));
+	ft_signal(ms);
 }
