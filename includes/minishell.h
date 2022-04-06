@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/06 03:38:27 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/06 19:43:23 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define DOUBLE_QUOTE 34
 # define FT_SPACE 32
 
+typedef struct sigaction t_sig_action;
+typedef sigset_t t_sigset;
+
 typedef struct s_init
 {
 	char	**argv;
@@ -40,9 +43,11 @@ typedef struct s_prompt
 	char	*prompt;
 }	t_prompt;
 
+
 typedef struct s_signal
 {
-	struct	sigaction	sig;
+	t_sig_action		sig;
+	t_sigset			set;
 }	t_signal;
 
 typedef struct s_lexer
