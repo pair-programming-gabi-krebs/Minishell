@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:39:38 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/06 19:59:52 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:27:56 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,32 @@ void	clear(void)
 
 void	prompt(t_ms *ms)
 {
-	char	*line;
-
 	clear();
 	while (1)
 	{
 		sigaction(SIGINT, &ms->signal.sig, NULL);
-		line = readline(print_dir(ms));
+		ms->prompt.line = readline(print_dir(ms));
 		free(ms->prompt.prompt); // choose a better place to be
-		if (!line)
+		if (!ms->prompt.line)
 		{
 			printf("\n");
 			// it also needs to disalocate all the memory
 			exit(1);
 		}
-		else if (!ft_strncmp(line, "exit", 5))
+		else if (!ft_strncmp(ms->prompt.line, "exit", 5))
 		{
 			exit(1); // we should implement our own exit function
 		}
-		else if (ft_strlen(line) != 0)
+		else if (ft_strlen(ms->prompt.line) != 0)
 		{
-			history(line);
-			ms->lexer.line = ft_strdup(line);
+			history(ms->prompt.line);
+			ms->lexer.line = ft_strdup(ms->prompt.line);
 			lexer(ms);
 			free(ms->lexer.line);
-			free(line);
+			free(ms->prompt.line);
 		}
-		else if (ft_strlen(line) == 0)
-			free(line);
+		else if (ft_strlen(ms->prompt.line) == 0)
+			free(ms->prompt.line);
 	}
 	free(ms->prompt.prompt);
 }
