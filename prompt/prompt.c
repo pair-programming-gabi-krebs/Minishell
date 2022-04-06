@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:39:38 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/06 02:20:50 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/06 03:46:25 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	clear(void)
 
 void	prompt(t_ms *ms)
 {
-	char				*line;
+	char	*line;
 
 	clear();
-	while(1)
+	while (1)
 	{
 		ft_signal(ms);
 		line = readline(print_dir(ms));
