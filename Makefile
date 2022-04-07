@@ -6,7 +6,7 @@ LIB_FLAG = -lreadline
 
 CC = gcc
 
-VPATH = prompt lexer
+VPATH = prompt lexer parser
 
 FILES = main.c \
 		ft_init.c \
@@ -18,7 +18,8 @@ FILES = main.c \
 		lexer.c \
 		tokenizer.c \
 		special_case.c \
-		signal.c
+		signal.c \
+		parser.c
 
 OBJ_PATH = ./objs/
 
