@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:30:59 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/04 23:45:18 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/06 21:01:22 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	tokenizer(t_ms *ms)
 		if (ms->lexer.line[i] == SINGLE_QUOTE)
 			i = special_case(ms, SINGLE_QUOTE, i);
 		else if (ms->lexer.line[i] == DOUBLE_QUOTE)
-			i = special_case(ms, DOUBLE_QUOTE, i); 
+			i = special_case(ms, DOUBLE_QUOTE, i);
 		else if (ms->lexer.line[i] == FT_SPACE)
 		{
 			i++;
@@ -37,9 +37,9 @@ void	tokenizer(t_ms *ms)
 			ms->lexer.tokens[ms->lexer.i_token] = ft_substr(ms->lexer.line, c, i - c);
 			ms->lexer.i_token++;
 		}
-		printf("%s\n", ms->lexer.tokens[ms->lexer.i_token - 1]);
 		i++;
 	}
+	ms->lexer.tokens[ms->lexer.i_token] = NULL;
 }
 
 
