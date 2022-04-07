@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:39:38 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/06 20:27:56 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:47:21 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	prompt(t_ms *ms)
 			history(ms->prompt.line);
 			ms->lexer.line = ft_strdup(ms->prompt.line);
 			lexer(ms);
+			parser(ms);
 			free(ms->lexer.line);
 			free(ms->prompt.line);
 		}
