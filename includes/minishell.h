@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/06 20:24:21 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:35:11 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char	*print_dir(t_ms *ms);
 void	prompt(t_ms *ms);
 void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[]);
 void	history(char *line);
+void	ft_signal(t_ms *ms);
 
 /* Lexer */
 void	lexer(t_ms *ms);
@@ -83,8 +84,8 @@ void	handle_redirect(t_ms *ms);
 void	tokenizer(t_ms *ms);
 void	common_case(t_ms *ms);
 int		special_case(t_ms *ms, char quote, int index);
-void	ft_signal(t_ms *ms);
-void	ft_free(t_ms *ms);
 
+/* Parser */
+void	parser(t_ms *ms);
 
 #endif
