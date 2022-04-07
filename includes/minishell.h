@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/06 20:35:11 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/06 22:58:43 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_prompt
 {
 	char	*prompt;
 	char	*line;
+	char	*prev_line;
 }	t_prompt;
 
 
@@ -75,8 +76,11 @@ typedef struct s_minishell
 char	*print_dir(t_ms *ms);
 void	prompt(t_ms *ms);
 void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[]);
-void	history(char *line);
+void	history(t_ms *ms, char *line);
 void	ft_signal(t_ms *ms);
+void	ft_free(t_ms *ms);
+void	free_matrix(char **matrix);
+void	ft_reset(t_ms *ms);
 
 /* Lexer */
 void	lexer(t_ms *ms);
