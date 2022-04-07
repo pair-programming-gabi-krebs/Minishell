@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:39:38 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/06 20:47:21 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/06 23:17:39 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,25 @@ void	prompt(t_ms *ms)
 		if (!ms->prompt.line)
 		{
 			printf("\n");
-			// it also needs to disalocate all the memory
+			ft_free(ms);
+			free(ms->prompt.prev_line);
 			exit(1);
 		}
 		else if (!ft_strncmp(ms->prompt.line, "exit", 5))
 		{
-			exit(1); // we should implement our own exit function
+			ft_free(ms);
+			exit(1);
 		}
 		else if (ft_strlen(ms->prompt.line) != 0)
 		{
-			history(ms->prompt.line);
+			history(ms, ms->prompt.line);
 			ms->lexer.line = ft_strdup(ms->prompt.line);
 			lexer(ms);
 			parser(ms);
-			free(ms->lexer.line);
-			free(ms->prompt.line);
+			ft_reset(ms);
 		}
 		else if (ft_strlen(ms->prompt.line) == 0)
 			free(ms->prompt.line);
 	}
-	free(ms->prompt.prompt);
+	// free(ms->prompt.prompt);
 }
