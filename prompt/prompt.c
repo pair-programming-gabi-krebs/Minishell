@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:39:38 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/06 23:17:39 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/07 22:59:41 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,20 @@ void	prompt(t_ms *ms)
 	clear();
 	while (1)
 	{
-		sigaction(SIGINT, &ms->signal.sig, NULL);
 		ms->prompt.line = readline(print_dir(ms));
 		free(ms->prompt.prompt); // choose a better place to be
 		if (!ms->prompt.line)
 		{
 			printf("\n");
-			ft_free(ms);
+			free_matrix(ms->lexer.tokens);
 			free(ms->prompt.prev_line);
+			ft_free(ms);
 			exit(1);
 		}
 		else if (!ft_strncmp(ms->prompt.line, "exit", 5))
 		{
+			free_matrix(ms->lexer.tokens);
+			free(ms->prompt.prev_line);
 			ft_free(ms);
 			exit(1);
 		}
@@ -48,5 +50,7 @@ void	prompt(t_ms *ms)
 		else if (ft_strlen(ms->prompt.line) == 0)
 			free(ms->prompt.line);
 	}
-	// free(ms->prompt.prompt);
 }
+
+// lc -la -> analise sintatica (por token)
+// lc -la wc -l  -> analise semantica (por linha digitada)
