@@ -6,7 +6,7 @@ LIB_FLAG = -lreadline
 
 CC = gcc
 
-VPATH = prompt lexer parser
+VPATH = prompt lexer parser utils
 
 FILES = main.c \
 		ft_free.c \
