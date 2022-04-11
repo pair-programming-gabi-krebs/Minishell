@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:39:38 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/07 22:59:41 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:29:53 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	prompt(t_ms *ms)
 	clear();
 	while (1)
 	{
+		//pre_parser(ms, readline(print_dir(ms)));
 		ms->prompt.line = readline(print_dir(ms));
 		free(ms->prompt.prompt); // choose a better place to be
 		if (!ms->prompt.line)
