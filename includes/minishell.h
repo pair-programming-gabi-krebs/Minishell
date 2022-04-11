@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/06 22:58:43 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:25:13 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	common_case(t_ms *ms);
 int		special_case(t_ms *ms, char quote, int index);
 
 /* Parser */
+void	pre_parser(t_ms *ms, char *readline);
 void	parser(t_ms *ms);
 
 #endif
