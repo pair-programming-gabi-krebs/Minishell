@@ -21,7 +21,8 @@ FILES = main.c \
 		tokenizer.c \
 		special_case.c \
 		signal.c \
-		parser.c
+		parser.c \
+		pre_parser.c
 
 OBJ_PATH = ./objs/
 
