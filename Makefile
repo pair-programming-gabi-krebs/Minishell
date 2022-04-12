@@ -22,7 +22,8 @@ FILES = main.c \
 		special_case.c \
 		signal.c \
 		parser.c \
-		pre_parser.c
+		pre_parser.c \
+		pre_parser2.c
 
 OBJ_PATH = ./objs/
 
