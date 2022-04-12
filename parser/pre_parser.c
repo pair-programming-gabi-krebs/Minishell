@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pre_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 17:48:41 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/11 20:41:11 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:50:41 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	pre_parser(t_ms *ms, char *readline)
 	{
 		if (readline[i] == SINGLE_QUOTE || readline[i] == DOUBLE_QUOTE)
 		{
-			while (readline[i + 1] != )
+			while (readline[i + 1])
 			i++;
 		}
 		i++;
-	}	
+	}
 	ms->prompt.line = readline;
 }
 
