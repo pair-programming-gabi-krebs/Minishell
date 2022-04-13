@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/12 21:33:55 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/12 22:48:44 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,20 @@ typedef struct s_lexer
 	int		i_token;
 }	t_lexer;
 
+typedef struct s_parser
+{
+	int		pipes_qtn;
+	char	*infile;
+	char	*outfile;
+}	t_parser;
+
 typedef struct s_minishell
 {
-	t_init				init;
-	t_prompt			prompt;
-	t_lexer				lexer;
-	t_signal			signal;
+	t_init		init;
+	t_prompt	prompt;
+	t_lexer		lexer;
+	t_signal	signal;
+	t_parser	parser;
 }	t_ms;
 
 
@@ -92,7 +100,6 @@ void	pre_token(t_ms *ms);
 
 /* Parser */
 void	pre_parser(t_ms *ms, char *readline);
-void	pre_parser2(t_ms *ms);
 void	parser(t_ms *ms);
 
 #endif
