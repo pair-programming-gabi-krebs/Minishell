@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:30:59 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/06 21:01:22 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/12 21:59:40 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	tokenizer(t_ms *ms)
 		}
 		i++;
 	}
+	for(int i = 0; i < ms->lexer.i_token; i++)
+		printf("%s\n", ms->lexer.tokens[i]);
 	ms->lexer.tokens[ms->lexer.i_token] = NULL;
 }
 
