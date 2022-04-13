@@ -23,7 +23,6 @@ FILES = main.c \
 		signal.c \
 		parser.c \
 		pre_parser.c \
-		pre_parser2.c \
 		pre_token.c
 
 OBJ_PATH = ./objs/
