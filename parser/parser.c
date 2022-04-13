@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 20:33:50 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/11 21:01:02 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/12 21:36:07 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	parser(t_ms *ms)
+/* void	parser(t_ms *ms)
 {
 	pre_parser2(ms);
-}
+} */
 
 // void	parser(t_ms *ms)
 // {

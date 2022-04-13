@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pre_parser2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:58:35 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/11 22:55:08 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/12 21:35:04 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+/* #include "../includes/minishell.h"
 
 static int	find_last_char(char *string, char c);
 
@@ -58,3 +58,4 @@ static int	find_last_char(char *string, char c)
 	}
 	return (last);
 }
+ */
