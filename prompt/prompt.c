@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:39:38 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/11 23:09:13 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/12 21:51:40 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ void	prompt(t_ms *ms)
 	{
 		//pre_parser(ms, readline(print_dir(ms)));
 		ms->prompt.line = readline(print_dir(ms));
-		pre_token(ms);
+		if(ms->prompt.line)
+		{
+			history(ms, ms->prompt.line);
+			pre_token(ms);
+		}
 		free(ms->prompt.prompt); // choose a better place to be
 		if (!ms->prompt.line)
 		{
@@ -43,10 +47,9 @@ void	prompt(t_ms *ms)
 		}
 		else if (ft_strlen(ms->prompt.line) != 0)
 		{
-			history(ms, ms->prompt.line);
 			ms->lexer.line = ft_strdup(ms->prompt.line);
 			lexer(ms);
-			parser(ms);
+			//parser(ms);
 			ft_reset(ms);
 		}
 		else if (ft_strlen(ms->prompt.line) == 0)
