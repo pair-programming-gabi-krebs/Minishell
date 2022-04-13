@@ -3,15 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 20:33:50 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/12 21:36:07 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/12 22:54:30 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+// #include "../includes/minishell.h"
 
+// void	parser(t_ms *ms)
+// {
+// 	identify_tokens(ms);
+// }
+
+// void	identify_tokens(t_ms *ms)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	while (i < ms->lexer.i_token)
+// 	{
+// 		if (ms->lexer.tokens[i] == '|')
+// 			ms->parser.pipes_qtn++;
+// 		if (ft_strncmp(ms->lexer.tokens[i], ms->lexer.tokens[i + 1], 1))
+// 			ms->parser.infile = ms->lexer.tokens[i + 1];
+// 		if (ms->lexer.tokens[i] == '>')
+// 			ms->parser.outfile = ms->lexer.tokens[i + 1];
+// 		i++;
+// 	}
+// }
 /* void	parser(t_ms *ms)
 {
 	pre_parser2(ms);
