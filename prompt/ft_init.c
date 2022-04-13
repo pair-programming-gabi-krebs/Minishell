@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/06 22:59:06 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/12 22:43:14 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 	ms->prompt.line = NULL;
 	ms->lexer.line = NULL;
 	ms->prompt.prev_line = NULL;
+	ms->parser.pipes_qtn = 0;
 	ft_signal(ms);
 }
