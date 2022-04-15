@@ -11,6 +11,7 @@ VPATH = prompt lexer parser utils
 FILES = main.c \
 		ft_free.c \
 		ft_init.c \
+		ft_exit.c \
 		ft_reset.c \
 		prompt.c \
 		print_dir.c \
@@ -23,7 +24,8 @@ FILES = main.c \
 		signal.c \
 		parser.c \
 		pre_parser.c \
-		pre_token.c
+		pre_token.c \
+		valid_input.c
 
 OBJ_PATH = ./objs/
 

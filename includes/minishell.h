@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/12 22:48:44 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/15 18:48:52 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,13 @@ typedef struct s_minishell
 char	*print_dir(t_ms *ms);
 void	prompt(t_ms *ms);
 void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[]);
+void	ft_exit(t_ms *ms);
 void	history(t_ms *ms, char *line);
 void	ft_signal(t_ms *ms);
 void	ft_free(t_ms *ms);
 void	free_matrix(char **matrix);
 void	ft_reset(t_ms *ms);
+void	valid_input(t_ms *ms);
 
 /* Lexer */
 void	lexer(t_ms *ms);
