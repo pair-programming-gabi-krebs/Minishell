@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/12 22:43:14 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/15 20:44:56 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 {
+	ms->prompt.special = ft_strdup("<>\"\'|");
 	ms->init.argc = argc - 1;
 	ms->init.argv = argv;
 	ms->init.envp = envp;
