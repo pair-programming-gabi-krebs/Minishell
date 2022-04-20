@@ -6,56 +6,54 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/18 20:27:58 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/19 23:31:09 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int	quote_length(char *string, int i);
+/* static int	end_of_quote(char *string, int i);
 static int	chars_length(char *string, int i);
+static int	verify_next_bytes(char *string, int i); */
 static int	is_special(t_ms *ms, char c);
-static int	verify_next_bytes(char *string, int i);
 
 void	pre_token(t_ms *ms)
 {
 	int		j;
 	int		i;
+	int		k;
 	int		len;
 	char	**matrix;
 
 	i = 0;
 	j = 0;
 	len = 0;
+	k = 0;
 	matrix = malloc(10 * sizeof(char **));
 	while(ms->prompt.line[i])
 	{
 		if (is_special(ms, ms->prompt.line[i]))
 		{
-			matrix[j] = ft_substr(ms->prompt.line, i - len, len);
-			printf("matrix[%d] %s\n", j, matrix[j]);
+			printf("k: %d\n", k);
+			//len = verify_next_bytes(ms->prompt.line, i);
+			printf("len: %d\n", len);
+			matrix[j] = ft_substr(ms->prompt.line, k, len);
+			len = 1;
+			printf("matrix[j] = %s\n", matrix[j]);
 			j++;
-			len = verify_next_bytes(ms->prompt.line, i);
-			i += len;
-			if (len != 0)
-			{
-				matrix[j] = ft_substr(ms->prompt.line, i - len, len);
-				printf("matrix[%d] %s\n", j, matrix[j]);
-				j++;
-			}
+			k = i;
 		}
 		len++;
 		i++;
 	}
 }
-// banana <<<da"terra <"<ruim
-// j = 1;
-// i = 8;
-// len = 1;
-// matrix[0] = "banana ";
-// matrix[1] = "<<<"
-// matrix[2] = "<"
-// matrix[3] = "<"
+
+			/*if (len != 0)
+			{
+				matrix[j] = ft_substr(ms->prompt.line, i - len, len);
+				printf("matrix[%d] %s\n", j, matrix[j]);
+				j++;
+			} */
 
 int	is_special(t_ms *ms, char c)
 {
@@ -71,45 +69,56 @@ int	is_special(t_ms *ms, char c)
 	return (0);
 }
 
-static int	verify_next_bytes(char *string, int i)
+/* static int	verify_next_bytes(char *string, int i)
 {
-	int	j;
+	int	len;
 
-	j = 0;
+	len = 0;
 	if (string[i] == SINGLE_QUOTE || string[i] == DOUBLE_QUOTE)
-		j = quote_length(string, i);
+		len = end_of_quote(string, i);
 	else if (string[i] == '<' || string[i] == '>' || string[i] == '|')
-		j = chars_length(string, i);
-	return (j);
+		len = chars_length(string, i);
+	return (len);
 }
 
-static int	quote_length(char *string, int i)
+static int	end_of_quote(char *string, int i)
 {
-	int		len;
 	char	character;
+	int	j;
 
+	j = 1;
 	character = string[i];
-	len = i;
-	while (string[i + 1] != character)
+	if (string[i + 1] == character)
+	{
+		j++;
 		i++;
-	return (i - len + 1);
+	}
+	else
+	{
+		while (string[i + 1] != character)
+		{
+			j++;
+			i++;
+		}
+	}
+	return (j + 1);
 }
 
 static int	chars_length(char *string, int i)
 {
-	int		len;
 	char	character;
+	int		len;
 
+	len = 1;
 	character = string[i];
-	len = i;
-	while (string[i + 1] == character)
+	while (string[i + 1] == character && string[i + 1])
+	{
 		i++;
-/* 	printf("i: %d\n", i);
-	printf("len: %d\n", len);
-	printf("i - len + 1: %d\n", (i - len + 1)); */
-	return (i - len + 1);
+		len++;
+	}
+	return (len);
 }
-
+ */
 
 /*
 banana<<dsadsa<oi|"hoje<<<leia"
