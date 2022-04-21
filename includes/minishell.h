@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/15 20:44:39 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/20 22:30:21 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_init
 
 typedef struct s_prompt
 {
+	char	**mtx;
 	char	*special;
 	char	*prompt;
 	char	*line;
