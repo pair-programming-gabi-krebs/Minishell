@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   pre_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/19 23:31:09 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/20 23:55:23 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-/* static int	end_of_quote(char *string, int i);
-static int	chars_length(char *string, int i);
-static int	verify_next_bytes(char *string, int i); */
 static int	is_special(t_ms *ms, char c);
 
 void	pre_token(t_ms *ms)
@@ -23,37 +20,42 @@ void	pre_token(t_ms *ms)
 	int		i;
 	int		k;
 	int		len;
-	char	**matrix;
+	char	character;
 
 	i = 0;
 	j = 0;
 	len = 0;
 	k = 0;
-	matrix = malloc(10 * sizeof(char **));
+	ms->prompt.mtx = malloc(10 * sizeof(char **));
 	while(ms->prompt.line[i])
 	{
 		if (is_special(ms, ms->prompt.line[i]))
 		{
-			printf("k: %d\n", k);
-			//len = verify_next_bytes(ms->prompt.line, i);
-			printf("len: %d\n", len);
-			matrix[j] = ft_substr(ms->prompt.line, k, len);
-			len = 1;
-			printf("matrix[j] = %s\n", matrix[j]);
+			ms->prompt.mtx[j] = ft_substr(ms->prompt.line, k, i-k);
+			printf("ms->prompt.mtx[%d] = %s\n\n", j, ms->prompt.mtx[j]);
+			j++;
+			k = i;
+			len = 0;
+			character = ms->prompt.line[i];
+			while (is_special(ms, ms->prompt.line[i]) && ms->prompt.line[i] == character)
+			{
+				len++;
+				i++;
+			}
+			ms->prompt.mtx[j] = ft_substr(ms->prompt.line, k, len);
+			printf("ms->prompt.mtx[%d] = %s\n\n", j, ms->prompt.mtx[j]);
 			j++;
 			k = i;
 		}
-		len++;
-		i++;
+		if (ms->prompt.line[i] && !is_special(ms, ms->prompt.line[i]) && ms->prompt.line[i + 1] == '\0')
+		{
+			ms->prompt.mtx[j] = ft_substr(ms->prompt.line, k, i - k + 1);
+			printf("ms->prompt.mtx[%d] = %s\n\n", j, ms->prompt.mtx[j]);
+		}
+		if (ms->prompt.line[i])
+			i++;
 	}
 }
-
-			/*if (len != 0)
-			{
-				matrix[j] = ft_substr(ms->prompt.line, i - len, len);
-				printf("matrix[%d] %s\n", j, matrix[j]);
-				j++;
-			} */
 
 int	is_special(t_ms *ms, char c)
 {
@@ -69,56 +71,6 @@ int	is_special(t_ms *ms, char c)
 	return (0);
 }
 
-/* static int	verify_next_bytes(char *string, int i)
-{
-	int	len;
-
-	len = 0;
-	if (string[i] == SINGLE_QUOTE || string[i] == DOUBLE_QUOTE)
-		len = end_of_quote(string, i);
-	else if (string[i] == '<' || string[i] == '>' || string[i] == '|')
-		len = chars_length(string, i);
-	return (len);
-}
-
-static int	end_of_quote(char *string, int i)
-{
-	char	character;
-	int	j;
-
-	j = 1;
-	character = string[i];
-	if (string[i + 1] == character)
-	{
-		j++;
-		i++;
-	}
-	else
-	{
-		while (string[i + 1] != character)
-		{
-			j++;
-			i++;
-		}
-	}
-	return (j + 1);
-}
-
-static int	chars_length(char *string, int i)
-{
-	char	character;
-	int		len;
-
-	len = 1;
-	character = string[i];
-	while (string[i + 1] == character && string[i + 1])
-	{
-		i++;
-		len++;
-	}
-	return (len);
-}
- */
 
 /*
 banana<<dsadsa<oi|"hoje<<<leia"
