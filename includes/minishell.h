@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/21 23:02:01 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/21 23:27:18 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_prompt
 	char	*prompt;
 	int		j;
 	int		k;
+	int		len;
 	char	*line;
 	char	*prev_line;
 }	t_prompt;
