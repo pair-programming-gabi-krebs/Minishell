@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/22 19:42:41 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/22 20:18:48 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,9 @@ void	tokenizer(t_ms *ms);
 void	common_case(t_ms *ms);
 int		special_case(t_ms *ms, char quote, int index);
 void	pre_token(t_ms *ms);
+int		is_special(t_ms *ms, char c);
+void	make_substr_and_increment(t_ms *ms, int i, int len);
+int		handle_next_special_bytes(t_ms *ms, int i);
 
 /* Parser */
 void	pre_parser(t_ms *ms, char *readline);
