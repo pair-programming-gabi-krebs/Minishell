@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pre_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/22 19:57:37 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/22 20:11:11 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	is_special(t_ms *ms, char c);
 static int	pre_tokenization(t_ms *ms, int i);
 static int	handle_next_special_bytes(t_ms *ms, int i);
 static int	handle_quote(t_ms *ms, int i, char character);
+static int make_substr_and_increment(t_ms *ms, int i, int len);
 
 void	pre_token(t_ms *ms)
 {
@@ -57,20 +58,22 @@ int	is_special(t_ms *ms, char c)
 
 static int	pre_tokenization(t_ms *ms, int i)
 {
-	ms->tk.mtx[ms->tk.j] = ft_substr(ms->prompt.line, ms->tk.k, i - ms->tk.k);
-	printf("ms->tk.mtx[%d] = %s\n\n", ms->tk.j, ms->tk.mtx[ms->tk.j]);
-	ms->tk.j++;
-	ms->tk.k = i;
+	make_substr_and_increment(ms, i, i - ms->tk.k);
 	if (ms->prompt.line[i] == ms->prompt.line[i + 1])
 		i = handle_next_special_bytes(ms, i);
 	else if (ms->prompt.line[i] == DOUBLE_QUOTE || \
 		ms->prompt.line[i] == SINGLE_QUOTE)
 		i  = handle_quote(ms, i, ms->prompt.line[i]);
-	ms->tk.mtx[ms->tk.j] = ft_substr(ms->prompt.line, ms->tk.k, ms->tk.len);
+	make_substr_and_increment(ms, i, ms->tk.len);
+	return (i);
+}
+
+static int make_substr_and_increment(t_ms *ms, int i, int len)
+{
+	ms->tk.mtx[ms->tk.j] = ft_substr(ms->prompt.line, ms->tk.k, len);
 	printf("ms->tk.mtx[%d] = %s\n\n", ms->tk.j, ms->tk.mtx[ms->tk.j]);
 	ms->tk.j++;
 	ms->tk.k = i;
-	return (i);
 }
 
 static int	handle_next_special_bytes(t_ms *ms, int i)
