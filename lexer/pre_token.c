@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/21 23:01:58 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/21 23:57:29 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	is_special(t_ms *ms, char c);
 static int	pre_tokenization(t_ms *ms, int i);
+static int	handle_next_special_bytes(t_ms *ms, int i);
 
 void	pre_token(t_ms *ms)
 {
@@ -39,32 +40,6 @@ void	pre_token(t_ms *ms)
 	}
 }
 
-static int	pre_tokenization(t_ms *ms, int i)
-{
-	int		len;
-	char	character;
-
-	len = 0;
-	ms->prompt.mtx[ms->prompt.j] = ft_substr(ms->prompt.line, \
-		ms->prompt.k, i - ms->prompt.k);
-	printf("ms->prompt.mtx[%d] = %s\n\n", ms->prompt.j, ms->prompt.mtx[ms->prompt.j]);
-	ms->prompt.j++;
-	ms->prompt.k = i;
-	character = ms->prompt.line[i];
-	while (is_special(ms, ms->prompt.line[i]) \
-		&& ms->prompt.line[i] == character)
-	{
-		len++;
-		i++;
-	}
-	ms->prompt.mtx[ms->prompt.j] = ft_substr(ms->prompt.line, \
-		ms->prompt.k, len);
-	printf("ms->prompt.mtx[%d] = %s\n\n", ms->prompt.j, ms->prompt.mtx[ms->prompt.j]);
-	ms->prompt.j++;
-	ms->prompt.k = i;
-	return (i);
-}
-
 int	is_special(t_ms *ms, char c)
 {
 	int	i;
@@ -79,7 +54,38 @@ int	is_special(t_ms *ms, char c)
 	return (0);
 }
 
+static int	pre_tokenization(t_ms *ms, int i)
+{
+	ms->prompt.mtx[ms->prompt.j] = ft_substr(ms->prompt.line, \
+		ms->prompt.k, i - ms->prompt.k);
+	printf("ms->prompt.mtx[%d] = %s\n\n", ms->prompt.j, ms->prompt.mtx[ms->prompt.j]);
+	ms->prompt.j++;
+	ms->prompt.k = i;
+	if (ms->prompt.line[i] == ms->prompt.line[i + 1])
+		i = handle_next_special_bytes(ms, i);
+	ms->prompt.mtx[ms->prompt.j] = ft_substr(ms->prompt.line, \
+		ms->prompt.k, ms->prompt.len);
+	printf("ms->prompt.mtx[%d] = %s\n\n", ms->prompt.j, ms->prompt.mtx[ms->prompt.j]);
+	ms->prompt.j++;
+	ms->prompt.k = i;
+	return (i);
+}
 
+static int	handle_next_special_bytes(t_ms *ms, int i)
+{
+	char	character;
+
+	ms->prompt.len = 0;
+	character = ms->prompt.line[i];
+
+	while (is_special(ms, ms->prompt.line[i]) \
+		&& ms->prompt.line[i] == character)
+	{
+		ms->prompt.len++;
+		i++;
+	}	
+	return (i);
+}
 /*
 banana<<dsadsa<oi|"hoje<<<leia"
 
