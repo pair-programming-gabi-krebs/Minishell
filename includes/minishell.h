@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/21 23:27:18 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/22 19:42:41 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,8 @@ typedef struct s_init
 
 typedef struct s_prompt
 {
-	char	**mtx;
 	char	*special;
 	char	*prompt;
-	int		j;
-	int		k;
-	int		len;
 	char	*line;
 	char	*prev_line;
 }	t_prompt;
@@ -75,6 +71,14 @@ typedef struct s_parser
 	char	*outfile;
 }	t_parser;
 
+typedef struct s_tk
+{
+	char	**mtx;
+	int		j;
+	int		k;
+	int		len;
+}	t_tk;
+
 typedef struct s_minishell
 {
 	t_init		init;
@@ -82,6 +86,7 @@ typedef struct s_minishell
 	t_lexer		lexer;
 	t_signal	signal;
 	t_parser	parser;
+	t_tk		tk;
 }	t_ms;
 
 

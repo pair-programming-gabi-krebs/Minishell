@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:30:59 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/12 21:59:40 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/22 18:22:40 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	tokenizer(t_ms *ms)
 			c = i;
 			while(ms->lexer.line[i] != FT_SPACE && ms->lexer.line[i])
 				i++;
-			ms->lexer.tokens[ms->lexer.i_token] = ft_substr(ms->lexer.line, c, i - c);
+			ms->lexer.tokens[ms->lexer.i_token] = ft_substr(ms->lexer.line, \
+				c, i - c);
 			ms->lexer.i_token++;
 		}
 		i++;
