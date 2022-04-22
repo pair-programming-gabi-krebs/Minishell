@@ -3,58 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   pre_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/20 23:55:23 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 23:01:58 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 static int	is_special(t_ms *ms, char c);
+static int	pre_tokenization(t_ms *ms, int i);
 
 void	pre_token(t_ms *ms)
 {
-	int		j;
 	int		i;
-	int		k;
-	int		len;
-	char	character;
 
 	i = 0;
-	j = 0;
-	len = 0;
-	k = 0;
+	ms->prompt.j = 0;
+	ms->prompt.k = 0;
 	ms->prompt.mtx = malloc(10 * sizeof(char **));
-	while(ms->prompt.line[i])
+	while (ms->prompt.line[i])
 	{
 		if (is_special(ms, ms->prompt.line[i]))
+			i = pre_tokenization(ms, i);
+		if (ms->prompt.line[i] && !is_special(ms, ms->prompt.line[i])
+			&& ms->prompt.line[i + 1] == '\0')
 		{
-			ms->prompt.mtx[j] = ft_substr(ms->prompt.line, k, i-k);
-			printf("ms->prompt.mtx[%d] = %s\n\n", j, ms->prompt.mtx[j]);
-			j++;
-			k = i;
-			len = 0;
-			character = ms->prompt.line[i];
-			while (is_special(ms, ms->prompt.line[i]) && ms->prompt.line[i] == character)
-			{
-				len++;
-				i++;
-			}
-			ms->prompt.mtx[j] = ft_substr(ms->prompt.line, k, len);
-			printf("ms->prompt.mtx[%d] = %s\n\n", j, ms->prompt.mtx[j]);
-			j++;
-			k = i;
-		}
-		if (ms->prompt.line[i] && !is_special(ms, ms->prompt.line[i]) && ms->prompt.line[i + 1] == '\0')
-		{
-			ms->prompt.mtx[j] = ft_substr(ms->prompt.line, k, i - k + 1);
-			printf("ms->prompt.mtx[%d] = %s\n\n", j, ms->prompt.mtx[j]);
+			ms->prompt.mtx[ms->prompt.j] = ft_substr(ms->prompt.line, \
+				ms->prompt.k, i - ms->prompt.k + 1);
+			printf("ms->prompt.mtx[%d] = %s\n\n", ms->prompt.j, ms->prompt.mtx[ms->prompt.j]);
 		}
 		if (ms->prompt.line[i])
 			i++;
 	}
+}
+
+static int	pre_tokenization(t_ms *ms, int i)
+{
+	int		len;
+	char	character;
+
+	len = 0;
+	ms->prompt.mtx[ms->prompt.j] = ft_substr(ms->prompt.line, \
+		ms->prompt.k, i - ms->prompt.k);
+	printf("ms->prompt.mtx[%d] = %s\n\n", ms->prompt.j, ms->prompt.mtx[ms->prompt.j]);
+	ms->prompt.j++;
+	ms->prompt.k = i;
+	character = ms->prompt.line[i];
+	while (is_special(ms, ms->prompt.line[i]) \
+		&& ms->prompt.line[i] == character)
+	{
+		len++;
+		i++;
+	}
+	ms->prompt.mtx[ms->prompt.j] = ft_substr(ms->prompt.line, \
+		ms->prompt.k, len);
+	printf("ms->prompt.mtx[%d] = %s\n\n", ms->prompt.j, ms->prompt.mtx[ms->prompt.j]);
+	ms->prompt.j++;
+	ms->prompt.k = i;
+	return (i);
 }
 
 int	is_special(t_ms *ms, char c)
