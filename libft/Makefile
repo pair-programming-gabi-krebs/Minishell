@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/23 15:27:40 by lkrebs-l          #+#    #+#              #
-#    Updated: 2022/04/11 21:13:54 by gcosta-d         ###   ########.fr        #
+#    Updated: 2022/04/21 21:03:37 by lkrebs-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC_DIR = ./src/
 
 SRC = $(addprefix $(SRC_DIR),$(SRC_FILES))
 
-CFLAGS = -Wextra -Werror -Wall
+CFLAGS = -g3 -Wextra -Werror -Wall
 
 CC = gcc
 
