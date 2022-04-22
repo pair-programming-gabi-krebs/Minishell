@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/22 20:11:11 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/22 20:14:08 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	is_special(t_ms *ms, char c);
 static int	pre_tokenization(t_ms *ms, int i);
 static int	handle_next_special_bytes(t_ms *ms, int i);
 static int	handle_quote(t_ms *ms, int i, char character);
-static int make_substr_and_increment(t_ms *ms, int i, int len);
+static void	make_substr_and_increment(t_ms *ms, int i, int len);
 
 void	pre_token(t_ms *ms)
 {
@@ -68,7 +68,7 @@ static int	pre_tokenization(t_ms *ms, int i)
 	return (i);
 }
 
-static int make_substr_and_increment(t_ms *ms, int i, int len)
+static void make_substr_and_increment(t_ms *ms, int i, int len)
 {
 	ms->tk.mtx[ms->tk.j] = ft_substr(ms->prompt.line, ms->tk.k, len);
 	printf("ms->tk.mtx[%d] = %s\n\n", ms->tk.j, ms->tk.mtx[ms->tk.j]);
