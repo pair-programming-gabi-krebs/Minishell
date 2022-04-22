@@ -25,7 +25,8 @@ FILES = main.c \
 		parser.c \
 		pre_parser.c \
 		pre_token.c \
-		valid_input.c
+		valid_input.c \
+		pre_token_utils.c
 
 OBJ_PATH = ./objs/
 
