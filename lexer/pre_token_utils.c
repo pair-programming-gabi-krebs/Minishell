@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pre_token_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 20:17:13 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/22 20:17:52 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/26 19:28:16 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,13 @@ int	handle_next_special_bytes(t_ms *ms, int i)
 
 int	handle_quote(t_ms *ms, int i, char chr)
 {
-	printf("i before while %d\n", i);
-	while (ms->prompt.line[i + 1] != chr)
+	ms->tk.len = 1;
+	while (ms->prompt.line[i] != chr)
+	{
 		i++;
-	printf("i after while %d\n", i);
+		ms->tk.len++;
+	}
+	i++;
+	ms->tk.len++;
 	return (i);
 }
