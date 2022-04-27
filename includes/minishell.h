@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/22 20:18:48 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/26 23:01:06 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_tk
 	int		j;
 	int		k;
 	int		len;
+	int		flag;
 }	t_tk;
 
 typedef struct s_minishell
@@ -112,6 +113,7 @@ void	pre_token(t_ms *ms);
 int		is_special(t_ms *ms, char c);
 void	make_substr_and_increment(t_ms *ms, int i, int len);
 int		handle_next_special_bytes(t_ms *ms, int i);
+int		handle_quote(t_ms *ms, int i, char chr);
 
 /* Parser */
 void	pre_parser(t_ms *ms, char *readline);

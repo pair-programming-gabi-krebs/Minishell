@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/27 00:15:41 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 23:03:25 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,35 @@ void	pre_token(t_ms *ms)
 	int		i;
 
 	i = 0;
+	ms->tk.flag = 0;
 	ms->tk.j = 0;
 	ms->tk.k = 0;
 	ms->tk.len = 0;
 	ms->tk.mtx = malloc(10 * sizeof(char **));
 	while (ms->prompt.line[i])
 	{
-		while (ms->prompt.line[i] && !is_special(ms, ms->prompt.line[i]))
+		if (is_special(ms, ms->prompt.line[i]))
+			i = pre_tokenization(ms, i);
+		if (ms->prompt.line[i] && !is_special(ms, ms->prompt.line[i])
+			&& ms->prompt.line[i + 1] == '\0')
+		{
+			ms->tk.mtx[ms->tk.j] = ft_substr(ms->prompt.line, \
+				ms->tk.k, i - ms->tk.k + 1);
+			printf("ms->tk.mtx[%d] = %s\n\n", ms->tk.j, ms->tk.mtx[ms->tk.j]);
+		}
+		if (ms->prompt.line[i])
 			i++;
-		i = pre_tokenization(ms, i);
-		while (ms->prompt.line[i] && is_special(ms, ms->prompt.line[i]))
-			i++;
-		i = pre_tokenization(ms, i);
 	}
 }
 
 static int	pre_tokenization(t_ms *ms, int i)
 {
-	char	*str;
-	char	*strdup;
-
-	strdup = ft_strdup(ms->prompt.line);
-	strdup[i] = '\0';
-
-	str = ft_substr(strdup, ms->tk.k, ft_strlen(strdup));
-	ms->tk.mtx[ms->tk.j] = ft_strdup(str);
-	printf("ms->tk.mtx[%d]: %s\n\n", ms->tk.j, ms->tk.mtx[ms->tk.j]);
-
-	ms->tk.j++;
-	ms->tk.k = i;
-
-	free(str);
-	free(strdup);
+	make_substr_and_increment(ms, i, i - ms->tk.k);
+	if (ms->prompt.line[i] == ms->prompt.line[i + 1])
+		i = handle_next_special_bytes(ms, i);
+	else if (ms->prompt.line[i] == DOUBLE_QUOTE || \
+		ms->prompt.line[i] == SINGLE_QUOTE)
+		i  = handle_quote(ms, i, ms->prompt.line[i]);
+	make_substr_and_increment(ms, i, ms->tk.len);
 	return (i);
 }
