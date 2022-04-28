@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/26 23:01:06 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/04/27 20:57:51 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ typedef struct s_parser
 typedef struct s_tk
 {
 	char	**mtx;
+	char	*line;
 	int		j;
 	int		k;
 	int		len;
-	int		flag;
 }	t_tk;
 
 typedef struct s_minishell
