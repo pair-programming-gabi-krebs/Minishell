@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/27 23:10:00 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/04/28 22:16:11 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,29 @@ static void	strjoin_add_space(t_ms *ms, int i);
 
 void	pre_token(t_ms *ms)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	ms->tk.j = 0;
 	ms->tk.k = 0;
 	ms->tk.len = 0;
-	ms->tk.mtx = malloc(10 * sizeof(char **)); // mudar esse 10
-	while (ms->prompt.line[i])
+	ms->tk.mtx = malloc(100 * sizeof(char **)); // mudar esse 10
+	while ((size_t)i < ft_strlen(ms->prompt.line))
 	{
 		while (ms->prompt.line[i] && !is_special(ms, ms->prompt.line[i]))
 			i++;
 		i = pre_tokenization(ms, i);
-		while (ms->prompt.line[i] && is_special(ms, ms->prompt.line[i]))
+		while (ms->prompt.line[i] && is_special(ms, ms->prompt.line[i])
+			&& ms->prompt.line[i] == ms->prompt.line[i + 1])
+		{
 			i++;
+		}
 		i = pre_tokenization(ms, i);
 	}
 	printf("j: %d\n", ms->tk.j);
 	ms->tk.mtx[ms->tk.j] = '\0';
 	line_formater(ms);
+	free_matrix(ms->tk.mtx);
 	printf("ms->tk.line = %s\n", ms->tk.line);
 }
 
@@ -59,6 +63,7 @@ static int	pre_tokenization(t_ms *ms, int i)
 
 	free(str);
 	free(strdup);
+	i++;
 	return (i);
 }
 
@@ -89,9 +94,14 @@ static void	strjoin_add_space(t_ms *ms, int i)
 	char	*line;
 	char	*aux1;
 	char	*aux2;
-
+	char	*str;
+	
+	str = " ";
+	if (ms->tk.mtx[i + 1] && (ms->tk.mtx[i + 1][0] == DOUBLE_QUOTE
+		|| ms->tk.mtx[i + 1][0] == SINGLE_QUOTE))
+		str = "";
 	aux1 = ft_strdup(ms->tk.mtx[i]);
-	line = ft_strjoin(aux1, " ");
+	line = ft_strjoin(aux1, str);
 	if (ms->tk.line)
 		aux2 = ft_strdup(ms->tk.line);
 	else
@@ -113,7 +123,7 @@ static int	strjoin_quotes(t_ms *ms, int i)
 	else
 		join_strings(ms, i);
 	i++;
-	while (ms->tk.mtx[i][0] != chr)
+	while (ms->tk.mtx[i] && ms->tk.mtx[i][0] != chr)
 	{
 		join_strings(ms, i);
 		i++;
