@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/28 22:16:11 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/02 20:04:01 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,24 @@ void	pre_token(t_ms *ms)
 	ms->tk.k = 0;
 	ms->tk.len = 0;
 	ms->tk.mtx = malloc(100 * sizeof(char **)); // mudar esse 10
-	while ((size_t)i < ft_strlen(ms->prompt.line))
+	while (ms->prompt.line[i])
 	{
+		printf("i: %d\n", i);
 		while (ms->prompt.line[i] && !is_special(ms, ms->prompt.line[i]))
-			i++;
-		i = pre_tokenization(ms, i);
-		while (ms->prompt.line[i] && is_special(ms, ms->prompt.line[i])
-			&& ms->prompt.line[i] == ms->prompt.line[i + 1])
 		{
 			i++;
+			if (!ms->prompt.line[i])
+				break ;
 		}
 		i = pre_tokenization(ms, i);
+		while (ms->prompt.line[i] && is_special(ms, ms->prompt.line[i]))
+		{
+			i++;
+			if (!ms->prompt.line[i])
+				break ;
+		}
+		i = pre_tokenization(ms, i);
+
 	}
 	printf("j: %d\n", ms->tk.j);
 	ms->tk.mtx[ms->tk.j] = '\0';
@@ -63,7 +70,8 @@ static int	pre_tokenization(t_ms *ms, int i)
 
 	free(str);
 	free(strdup);
-	i++;
+	if (ms->prompt.line[i])
+		i++;
 	return (i);
 }
 
@@ -138,7 +146,7 @@ static void	join_strings(t_ms *ms, int i)
 	char	*aux;
 
 	aux = ft_strdup(ms->tk.line);
-	free(ms->tk.line);
-	ms->tk.line = ft_strjoin(aux, ms->tk.mtx[i]);
+	if (ms->tk.mtx[i])
+		ms->tk.line = ft_strjoin(aux, ms->tk.mtx[i]);
 	free(aux);
 }
