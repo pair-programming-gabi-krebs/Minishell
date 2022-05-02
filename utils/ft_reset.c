@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:36:45 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/06 22:49:42 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/02 19:37:42 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ void	ft_reset(t_ms *ms)
 	ms->lexer.tokens[0] = NULL;
 	ms->prompt.line = NULL;
 	ms->lexer.line = NULL;
+	ms->tk.line = NULL;
 }
