@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pre_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/02 20:04:01 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/02 20:44:34 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int	pre_tokenization(t_ms *ms, int i);
+static void	pre_tokenization(t_ms *ms, int i);
 static void	line_formater(t_ms *ms);
 static int	strjoin_quotes(t_ms *ms, int i);
 static void	join_strings(t_ms *ms, int i);
@@ -36,14 +36,14 @@ void	pre_token(t_ms *ms)
 			if (!ms->prompt.line[i])
 				break ;
 		}
-		i = pre_tokenization(ms, i);
+		pre_tokenization(ms, i);
 		while (ms->prompt.line[i] && is_special(ms, ms->prompt.line[i]))
 		{
 			i++;
 			if (!ms->prompt.line[i])
 				break ;
 		}
-		i = pre_tokenization(ms, i);
+		pre_tokenization(ms, i);
 
 	}
 	printf("j: %d\n", ms->tk.j);
@@ -53,7 +53,7 @@ void	pre_token(t_ms *ms)
 	printf("ms->tk.line = %s\n", ms->tk.line);
 }
 
-static int	pre_tokenization(t_ms *ms, int i)
+static void	pre_tokenization(t_ms *ms, int i)
 {
 	char	*str;
 	char	*strdup;
@@ -70,9 +70,12 @@ static int	pre_tokenization(t_ms *ms, int i)
 
 	free(str);
 	free(strdup);
-	if (ms->prompt.line[i])
-		i++;
-	return (i);
+	// if (ms->prompt.line[i])
+	// {
+	// 	i++;
+	// 	printf("i: %d\n", i);
+	// }
+	// return (i);
 }
 
 static void	line_formater(t_ms *ms)
@@ -103,7 +106,7 @@ static void	strjoin_add_space(t_ms *ms, int i)
 	char	*aux1;
 	char	*aux2;
 	char	*str;
-	
+
 	str = " ";
 	if (ms->tk.mtx[i + 1] && (ms->tk.mtx[i + 1][0] == DOUBLE_QUOTE
 		|| ms->tk.mtx[i + 1][0] == SINGLE_QUOTE))
@@ -146,6 +149,7 @@ static void	join_strings(t_ms *ms, int i)
 	char	*aux;
 
 	aux = ft_strdup(ms->tk.line);
+	free(ms->tk.line);
 	if (ms->tk.mtx[i])
 		ms->tk.line = ft_strjoin(aux, ms->tk.mtx[i]);
 	free(aux);

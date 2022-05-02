@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:20:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/02 19:57:37 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/02 20:45:52 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	ft_free(t_ms *ms)
 	if (ms->lexer.line)
 		free(ms->lexer.line);
 	free(ms->prompt.prompt);
-	free(ms->tk.line);
+	if (ms->tk.line)
+		free(ms->tk.line);
 	free(ms->prompt.line);
 }
 
