@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/27 20:57:51 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/02 20:59:19 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void	tokenizer(t_ms *ms);
 void	common_case(t_ms *ms);
 int		special_case(t_ms *ms, char quote, int index);
 void	pre_token(t_ms *ms);
+void	check_special_tokens(t_ms *ms);
 int		is_special(t_ms *ms, char c);
 void	make_substr_and_increment(t_ms *ms, int i, int len);
 int		handle_next_special_bytes(t_ms *ms, int i);
