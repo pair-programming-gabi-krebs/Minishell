@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/02 20:44:34 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/02 22:10:43 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	pre_token(t_ms *ms)
 	ms->tk.k = 0;
 	ms->tk.len = 0;
 	ms->tk.mtx = malloc(100 * sizeof(char **)); // mudar esse 10
+	ms->tk.line = NULL;
 	while (ms->prompt.line[i])
 	{
-		printf("i: %d\n", i);
 		while (ms->prompt.line[i] && !is_special(ms, ms->prompt.line[i]))
 		{
 			i++;
@@ -46,11 +46,9 @@ void	pre_token(t_ms *ms)
 		pre_tokenization(ms, i);
 
 	}
-	printf("j: %d\n", ms->tk.j);
 	ms->tk.mtx[ms->tk.j] = '\0';
 	line_formater(ms);
 	free_matrix(ms->tk.mtx);
-	printf("ms->tk.line = %s\n", ms->tk.line);
 }
 
 static void	pre_tokenization(t_ms *ms, int i)
@@ -60,22 +58,12 @@ static void	pre_tokenization(t_ms *ms, int i)
 
 	strdup = ft_strdup(ms->prompt.line);
 	strdup[i] = '\0';
-
 	str = ft_substr(strdup, ms->tk.k, ft_strlen(strdup));
 	ms->tk.mtx[ms->tk.j] = ft_strdup(str);
-	printf("ms->tk.mtx[%d]:%s\n\n", ms->tk.j, ms->tk.mtx[ms->tk.j]);
-
 	ms->tk.j++;
 	ms->tk.k = i;
-
 	free(str);
 	free(strdup);
-	// if (ms->prompt.line[i])
-	// {
-	// 	i++;
-	// 	printf("i: %d\n", i);
-	// }
-	// return (i);
 }
 
 static void	line_formater(t_ms *ms)
@@ -139,8 +127,8 @@ static int	strjoin_quotes(t_ms *ms, int i)
 		join_strings(ms, i);
 		i++;
 	}
-	join_strings(ms, i);
-	i++;
+	//join_strings(ms, i);
+	//i++;
 	return (i);
 }
 
@@ -150,7 +138,8 @@ static void	join_strings(t_ms *ms, int i)
 
 	aux = ft_strdup(ms->tk.line);
 	free(ms->tk.line);
-	if (ms->tk.mtx[i])
-		ms->tk.line = ft_strjoin(aux, ms->tk.mtx[i]);
+	// if (ms->tk.mtx[i])
+	// 	ms->tk.line = ft_strjoin(aux, ms->tk.mtx[i]);
+	ms->tk.line = ft_strjoin(aux, ms->tk.mtx[i]);
 	free(aux);
 }
