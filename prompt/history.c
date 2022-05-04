@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 23:22:05 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/15 19:17:20 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/03 21:50:09 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static int	is_str_diff(t_ms *ms, char *line)
 
 	a = ft_strncmp(ms->prompt.prev_line, line, ft_strlen(line));
 	b = ft_strncmp(line, ms->prompt.prev_line, ft_strlen(ms->prompt.prev_line));
-
 	if (a || b)
 		return (1);
 	return (0);
