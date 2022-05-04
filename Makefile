@@ -20,8 +20,6 @@ FILES = main.c \
 		tokenizer.c \
 		special_case.c \
 		signal.c \
-		parser.c \
-		pre_parser.c \
 		pre_token.c \
 		check_special_tokens.c \
 		valid_input.c \
