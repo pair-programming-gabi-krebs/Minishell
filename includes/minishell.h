@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/02 20:59:19 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/03 21:40:47 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,8 @@ int		handle_quote(t_ms *ms, int i, char chr);
 /* Parser */
 void	pre_parser(t_ms *ms, char *readline);
 void	parser(t_ms *ms);
+
+/* Builtins */
+int	cd(t_ms *ms);
 
 #endif
