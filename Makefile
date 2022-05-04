@@ -16,8 +16,6 @@ FILES = main.c \
 		prompt.c \
 		print_dir.c \
 		history.c \
-		common_case.c \
-		handle_redirect.c \
 		lexer.c \
 		tokenizer.c \
 		special_case.c \

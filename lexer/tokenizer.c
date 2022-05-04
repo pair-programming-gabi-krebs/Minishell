@@ -6,11 +6,13 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:30:59 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/04/30 23:05:15 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/03 21:48:19 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+static int	tokenizer_common_case(t_ms *ms, int c, int i);
 
 void	tokenizer(t_ms *ms)
 {
@@ -32,13 +34,18 @@ void	tokenizer(t_ms *ms)
 		else
 		{
 			c = i;
-			while (ms->lexer.line[i] != FT_SPACE && ms->lexer.line[i])
-				i++;
-			ms->lexer.tokens[ms->lexer.i_token] = ft_substr(ms->lexer.line, \
-				c, i - c);
-			ms->lexer.i_token++;
+			i = tokenizer_common_case(ms, c, i);
 		}
 		i++;
 	}
 	ms->lexer.tokens[ms->lexer.i_token] = NULL;
+}
+
+static int	tokenizer_common_case(t_ms *ms, int c, int i)
+{
+	while (ms->lexer.line[i] != FT_SPACE && ms->lexer.line[i])
+		i++;
+	ms->lexer.tokens[ms->lexer.i_token] = ft_substr(ms->lexer.line, c, i - c);
+	ms->lexer.i_token++;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/03 21:40:47 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/03 22:03:48 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 # define DOUBLE_QUOTE 34
 # define FT_SPACE 32
 
-typedef struct sigaction t_sig_action;
-typedef sigset_t t_sigset;
+typedef struct sigaction	t_sig_action;
+
+typedef sigset_t			t_sigset;
 
 typedef struct s_init
 {
@@ -45,7 +46,6 @@ typedef struct s_prompt
 	char	*line;
 	char	*prev_line;
 }	t_prompt;
-
 
 typedef struct s_signal
 {
@@ -90,7 +90,6 @@ typedef struct s_minishell
 	t_tk		tk;
 }	t_ms;
 
-
 /* Prompt */
 char	*print_dir(t_ms *ms);
 void	prompt(t_ms *ms);
@@ -105,9 +104,7 @@ void	valid_input(t_ms *ms);
 
 /* Lexer */
 void	lexer(t_ms *ms);
-void	handle_redirect(t_ms *ms);
 void	tokenizer(t_ms *ms);
-void	common_case(t_ms *ms);
 int		special_case(t_ms *ms, char quote, int index);
 void	pre_token(t_ms *ms);
 void	check_special_tokens(t_ms *ms);
