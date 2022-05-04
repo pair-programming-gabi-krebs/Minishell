@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/03 21:54:40 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/03 22:01:36 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,7 @@ void	valid_input(t_ms *ms);
 
 /* Lexer */
 void	lexer(t_ms *ms);
-void	handle_redirect(t_ms *ms);
 void	tokenizer(t_ms *ms);
-void	common_case(t_ms *ms);
 int		special_case(t_ms *ms, char quote, int index);
 void	pre_token(t_ms *ms);
 void	check_special_tokens(t_ms *ms);
