@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/02 20:59:19 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/03 21:54:40 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 # define DOUBLE_QUOTE 34
 # define FT_SPACE 32
 
-typedef struct sigaction t_sig_action;
-typedef sigset_t t_sigset;
+typedef struct sigaction	t_sig_action;
+
+typedef sigset_t			t_sigset;
 
 typedef struct s_init
 {
@@ -45,7 +46,6 @@ typedef struct s_prompt
 	char	*line;
 	char	*prev_line;
 }	t_prompt;
-
 
 typedef struct s_signal
 {
@@ -89,7 +89,6 @@ typedef struct s_minishell
 	t_parser	parser;
 	t_tk		tk;
 }	t_ms;
-
 
 /* Prompt */
 char	*print_dir(t_ms *ms);
