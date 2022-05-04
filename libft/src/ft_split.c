@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krebscoder <krebscoder@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 14:24:48 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2021/11/03 16:06:55 by krebscoder       ###   ########.fr       */
+/*   Updated: 2022/05/03 21:58:41 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	**ft_split(char const *s, char c)
 	size_t	words;
 	size_t	i;
 	size_t	k;
-	char	**tables;  
+	char	**tables;
 
 	words = ft_wordcount(s, c);
 	tables = ft_calloc(words + 1, sizeof(char *));
