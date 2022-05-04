@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/03 21:37:28 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/03 21:45:40 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	pre_tokenization(t_ms *ms, int i)
 		i = handle_next_special_bytes(ms, i);
 	else if (ms->prompt.line[i] == DOUBLE_QUOTE || \
 		ms->prompt.line[i] == SINGLE_QUOTE)
-		i  = handle_quote(ms, i, ms->prompt.line[i]);
+		i = handle_quote(ms, i, ms->prompt.line[i]);
 	make_substr_and_increment(ms, i, ms->tk.len);
 	return (i);
 }
