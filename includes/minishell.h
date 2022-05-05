@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/03 23:01:40 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/04 23:35:07 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ int		handle_quote(t_ms *ms, int i, char chr);
 /* Parser */
 
 /* Builtins */
-int	cd(t_ms *ms);
+int		cd(t_ms *ms);
 void	env(t_ms *ms);
+void	unset(t_ms *ms, char *var);
 
 #endif
