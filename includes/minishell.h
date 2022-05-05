@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/03 22:01:36 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/03 23:01:40 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,8 @@ int		handle_next_special_bytes(t_ms *ms, int i);
 int		handle_quote(t_ms *ms, int i, char chr);
 
 /* Parser */
-void	pre_parser(t_ms *ms, char *readline);
-void	parser(t_ms *ms);
 
+/* Builtins */
+
+void	env(t_ms *ms);
 #endif
