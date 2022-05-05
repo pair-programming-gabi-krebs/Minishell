@@ -6,7 +6,8 @@ LIB_FLAG = -lreadline
 
 CC = gcc
 
-VPATH = prompt lexer parser utils builtin
+VPATH = prompt lexer parser utils builtins
+
 
 FILES = main.c \
 		ft_free.c \
@@ -24,7 +25,9 @@ FILES = main.c \
 		check_special_tokens.c \
 		valid_input.c \
 		pre_token_utils.c \
+		cd.c \
 		env.c
+
 
 OBJ_PATH = ./objs/
 

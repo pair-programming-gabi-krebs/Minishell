@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
 /*   Updated: 2022/05/03 23:01:40 by lkrebs-l         ###   ########.fr       */
@@ -45,6 +45,7 @@ typedef struct s_prompt
 	char	*prompt;
 	char	*line;
 	char	*prev_line;
+	char	*cwd;
 }	t_prompt;
 
 typedef struct s_signal
@@ -116,6 +117,7 @@ int		handle_quote(t_ms *ms, int i, char chr);
 /* Parser */
 
 /* Builtins */
-
+int	cd(t_ms *ms);
 void	env(t_ms *ms);
+
 #endif
