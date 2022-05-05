@@ -26,7 +26,10 @@ FILES = main.c \
 		valid_input.c \
 		pre_token_utils.c \
 		cd.c \
-		env.c
+		env.c \
+		unset.c \
+		export.c \
+		copy_envp.c
 
 
 OBJ_PATH = ./objs/
