@@ -27,7 +27,8 @@ FILES = main.c \
 		pre_token_utils.c \
 		cd.c \
 		env.c \
-		unset.c
+		unset.c \
+		export.c
 
 
 OBJ_PATH = ./objs/
