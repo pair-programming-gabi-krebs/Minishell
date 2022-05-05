@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/03 22:03:48 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/04 21:40:56 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_prompt
 	char	*prompt;
 	char	*line;
 	char	*prev_line;
+	char	*cwd;
 }	t_prompt;
 
 typedef struct s_signal
