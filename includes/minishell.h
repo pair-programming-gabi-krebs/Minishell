@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/04 23:35:07 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:39:03 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_prompt
 	char	*line;
 	char	*prev_line;
 	char	*cwd;
+	char	**cpy_envp;
 }	t_prompt;
 
 typedef struct s_signal
@@ -94,14 +95,17 @@ typedef struct s_minishell
 /* Prompt */
 char	*print_dir(t_ms *ms);
 void	prompt(t_ms *ms);
-void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[]);
-void	ft_exit(t_ms *ms);
 void	history(t_ms *ms, char *line);
+void	free_matrix(char **matrix);
+void	valid_input(t_ms *ms);
+
+/* Utils */
+void	copy_envp(t_ms *ms);
 void	ft_signal(t_ms *ms);
 void	ft_free(t_ms *ms);
-void	free_matrix(char **matrix);
+void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[]);
+void	ft_exit(t_ms *ms);
 void	ft_reset(t_ms *ms);
-void	valid_input(t_ms *ms);
 
 /* Lexer */
 void	lexer(t_ms *ms);
@@ -120,5 +124,6 @@ int		handle_quote(t_ms *ms, int i, char chr);
 int		cd(t_ms *ms);
 void	env(t_ms *ms);
 void	unset(t_ms *ms, char *var);
+void	export(t_ms *ms, char *var);
 
 #endif

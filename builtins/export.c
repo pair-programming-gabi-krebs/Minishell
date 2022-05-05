@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 22:43:45 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/05 14:39:35 by lkrebs-l         ###   ########.fr       */
+/*   Created: 2022/05/04 23:46:23 by lkrebs-l          #+#    #+#             */
+/*   Updated: 2022/05/05 16:37:43 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	env(t_ms *ms)
+void	export(t_ms *ms, char *var)
 {
 	int	i;
 
-	i = 0;
-	while (ms->prompt.cpy_envp[i])
-	{
-		printf("%s\n", ms->prompt.cpy_envp[i]);
-		i++;
-	}
+	i = ft_mtxlen(ms->prompt.cpy_envp);
+	ms->prompt.cpy_envp[i] = ft_strdup(var);
+	ms->prompt.cpy_envp[i + 1] = NULL;
 }
