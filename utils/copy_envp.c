@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:33:55 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/05 14:46:11 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/05 19:40:44 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 void	copy_envp(t_ms *ms)
 {
 	int	i;
-	
-	ms->prompt.cpy_envp = malloc(1000 * sizeof(char));
+	int	j;
+
+	j = ft_mtxlen(ms->init.envp);
+	ms->prompt.cpy_envp = malloc((j + 1000) * sizeof(char));
 	i = 0;
 	while (ms->init.envp[i])
 	{
