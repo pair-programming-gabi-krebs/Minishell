@@ -29,7 +29,6 @@ FILES = main.c \
 		env.c \
 		unset.c \
 		export.c \
-		copy_envp.c
 
 
 OBJ_PATH = ./objs/
