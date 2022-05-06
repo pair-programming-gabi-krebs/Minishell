@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/05 21:20:24 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/06 14:25:30 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@
 typedef struct sigaction	t_sig_action;
 
 typedef sigset_t			t_sigset;
-
-typedef struct s_node
-{
-	void	*content;
-	t_node	*next;
-}	t_node;
 
 typedef struct s_init
 {
@@ -106,7 +100,6 @@ void	free_matrix(char **matrix);
 void	valid_input(t_ms *ms);
 
 /* Utils */
-void	copy_envp(t_ms *ms);
 void	ft_signal(t_ms *ms);
 void	ft_free(t_ms *ms);
 void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[]);
