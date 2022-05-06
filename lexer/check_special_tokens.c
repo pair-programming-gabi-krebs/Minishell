@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_special_tokens.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 20:58:19 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/02 22:30:49 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/06 20:27:02 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	check_special_tokens(t_ms *ms)
 		}
 		i++;
 	}
-	printf("Line final: %s\n", ms->tk.line);
 }
 
 static void	put_space_between(t_ms *ms, int i)
@@ -62,9 +61,9 @@ static int	jump_quotes(t_ms *ms, int i)
 
 	chr = ms->tk.line[i];
 	index = i + 1;
-	while (ms->tk.line[index] != chr)
+	while (ms->tk.line[index] && ms->tk.line[index] != chr)
 		index++;
-	if (ms->tk.line[index + 1])
+	if (ms->tk.line[index] && ms->tk.line[index + 1])
 		return (index + 1);
 	else
 		return (-1);
