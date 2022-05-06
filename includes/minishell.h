@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/05 14:39:03 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/05 21:20:24 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@
 typedef struct sigaction	t_sig_action;
 
 typedef sigset_t			t_sigset;
+
+typedef struct s_node
+{
+	void	*content;
+	t_node	*next;
+}	t_node;
 
 typedef struct s_init
 {
