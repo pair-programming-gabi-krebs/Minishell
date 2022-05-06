@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 18:19:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/03/26 18:19:35 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/05 23:35:55 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ t_list	*ft_lstnew(void *content)
 		return (NULL);
 	new -> content = content;
 	new -> next = NULL;
+	new -> prv = NULL;
 	return (new);
 }

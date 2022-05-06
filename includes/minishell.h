@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/05 21:20:24 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/05 22:36:13 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@
 typedef struct sigaction	t_sig_action;
 
 typedef sigset_t			t_sigset;
-
-typedef struct s_node
-{
-	void	*content;
-	t_node	*next;
-}	t_node;
 
 typedef struct s_init
 {
@@ -96,6 +90,8 @@ typedef struct s_minishell
 	t_signal	signal;
 	t_parser	parser;
 	t_tk		tk;
+	t_list		*node;
+	t_list		**list;
 }	t_ms;
 
 /* Prompt */
@@ -131,5 +127,7 @@ int		cd(t_ms *ms);
 void	env(t_ms *ms);
 void	unset(t_ms *ms, char *var);
 void	export(t_ms *ms, char *var);
+
+void	del(void *content);
 
 #endif

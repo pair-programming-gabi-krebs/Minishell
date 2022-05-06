@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/27 22:51:41 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/05 23:32:15 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 	ms->tk.line = NULL;
 	ms->parser.pipes_qtn = 0;
 	ft_signal(ms);
+	copy_envp(ms);
 }
