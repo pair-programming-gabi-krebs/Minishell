@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 21:13:41 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/05 00:05:05 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/05 20:09:44 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	cd(t_ms *ms)
 	current_pwd = ft_calloc(256, sizeof(char));
 	current_pwd = getcwd(current_pwd, 256);
 	update_pwd_and_oldpwd(ms, current_pwd);
+	free_matrix(line_mtx);
 	return (return_chdir);
 }
 
@@ -50,24 +51,24 @@ static void	update_pwd_and_oldpwd(t_ms *ms, char *current_pwd)
 	int		has_oldpwd;
 	int		i;
 
-	mtx_len = ft_mtxlen(ms->init.envp);
+	mtx_len = ft_mtxlen(ms->prompt.cpy_envp);
 	has_oldpwd = 0;
 	i = 0;
 	while (i < mtx_len)
 	{
-		if (!ft_strncmp(ms->init.envp[i], "PWD=", 4))
-			ms->init.envp[i] = ft_strjoin("PWD=", current_pwd);
-		else if (!ft_strncmp(ms->init.envp[i], "OLDPWD=", 7))
+		if (!ft_strncmp(ms->prompt.cpy_envp[i], "PWD=", 4))
+			ms->prompt.cpy_envp[i] = ft_strjoin("PWD=", current_pwd);
+		else if (!ft_strncmp(ms->prompt.cpy_envp[i], "OLDPWD=", 7))
 		{
-			ms->init.envp[i] = ft_strjoin("OLDPWD=", ms->prompt.cwd);
+			ms->prompt.cpy_envp[i] = ft_strjoin("OLDPWD=", ms->prompt.cwd);
 			has_oldpwd = 1;
 		}
 		i++;
 	}
 	if (has_oldpwd == 0)
 	{
-		ms->init.envp[i] = ft_strjoin("OLDPWD=", ms->prompt.cwd);
-		ms->init.envp[i+1] = NULL;
+		ms->prompt.cpy_envp[i] = ft_strjoin("OLDPWD=", ms->prompt.cwd);
+		ms->prompt.cpy_envp[i + 1] = NULL;
 	}
 	free(current_pwd);
 }
