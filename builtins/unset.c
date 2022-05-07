@@ -3,40 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 21:46:53 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/04 23:34:59 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/07 00:21:46 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static void	remove_var_from_env(t_ms *ms, int i);
+static void	remove_var_from_env(t_list *node);
 
 void	unset(t_ms *ms, char *var)
 {
-	int	i;
+	t_list *node;
 
+	node = *(ms->list);
 	var = ft_strjoin(var, "=");
-	i = 0;
-	while (ms->init.envp[i])
-	{
-		if (!ft_strncmp(var, ms->init.envp[i], ft_strlen(var)))
-		{
-			remove_var_from_env(ms, i);
-			break ;
-		}
-		i++;
-	}
+	while (node->next != NULL
+		&& ft_strncmp(var, node->content, ft_strlen(var)) != 0)
+		node = node->next;
+	if (!ft_strncmp(var, node->content, ft_strlen(var)))
+		remove_var_from_env(node);
 	free(var);
 }
 
-static void	remove_var_from_env(t_ms *ms, int i)
+static void	remove_var_from_env(t_list *node)
 {
-	while (ms->init.envp[i])
+	t_list	*ptr;
+	t_list	*ptr2;
+
+	if (node->next == NULL)
 	{
-		ms->init.envp[i] = ms->init.envp[i + 1];
-		i++;
+		ptr = node->prv;
+		ptr->next = NULL;
+		ft_lstdelone(node, free);
 	}
+	else if (node->prv == NULL)
+	{
+		node = node->next;
+		ptr = node->prv;
+		ft_lstdelone(ptr, free);
+		node->prv = NULL;
+	}
+	else
+	{
+		ptr = node->prv;
+		ptr2 = node->next;
+		ptr->next = ptr2;
+		ptr2->prv = ptr;
+		ft_lstdelone(node, free);
+	}
+
 }

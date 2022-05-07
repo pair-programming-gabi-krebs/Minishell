@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 21:13:41 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/05 20:09:44 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/06 23:29:13 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,28 +47,29 @@ int	cd(t_ms *ms)
 
 static void	update_pwd_and_oldpwd(t_ms *ms, char *current_pwd)
 {
-	int		mtx_len;
+	t_list	*node;
 	int		has_oldpwd;
-	int		i;
 
-	mtx_len = ft_mtxlen(ms->prompt.cpy_envp);
+	node = *(ms->list);
 	has_oldpwd = 0;
-	i = 0;
-	while (i < mtx_len)
+	while (node->next != NULL)
 	{
-		if (!ft_strncmp(ms->prompt.cpy_envp[i], "PWD=", 4))
-			ms->prompt.cpy_envp[i] = ft_strjoin("PWD=", current_pwd);
-		else if (!ft_strncmp(ms->prompt.cpy_envp[i], "OLDPWD=", 7))
+		if (!ft_strncmp(node->content, "PWD=", 4))
 		{
-			ms->prompt.cpy_envp[i] = ft_strjoin("OLDPWD=", ms->prompt.cwd);
+			free(node->content);
+			node->content = ft_strjoin("PWD=", current_pwd);
+		}
+		else if (!ft_strncmp(node->content, "OLDPWD=", 7))
+		{
+			free(node->content);
+			node->content = ft_strjoin("OLDPWD=", ms->prompt.cwd);
 			has_oldpwd = 1;
 		}
-		i++;
+		node = node->next;
 	}
 	if (has_oldpwd == 0)
 	{
-		ms->prompt.cpy_envp[i] = ft_strjoin("OLDPWD=", ms->prompt.cwd);
-		ms->prompt.cpy_envp[i + 1] = NULL;
+		export(ms, ft_strjoin("OLDPWD=", ms->prompt.cwd));
 	}
 	free(current_pwd);
 }
