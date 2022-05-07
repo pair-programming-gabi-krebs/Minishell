@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/05/05 22:36:13 by gcosta-d         ###   ########.fr       */
-=======
-/*   Updated: 2022/05/06 14:25:30 by lkrebs-l         ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2022/05/06 23:11:51 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +90,7 @@ typedef struct s_minishell
 	t_signal	signal;
 	t_parser	parser;
 	t_tk		tk;
-	t_list		*node;
+	//t_list		*node;
 	t_list		**list;
 }	t_ms;
 
@@ -106,6 +102,7 @@ void	free_matrix(char **matrix);
 void	valid_input(t_ms *ms);
 
 /* Utils */
+void	copy_envp(t_ms *ms);
 void	ft_signal(t_ms *ms);
 void	ft_free(t_ms *ms);
 void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[]);

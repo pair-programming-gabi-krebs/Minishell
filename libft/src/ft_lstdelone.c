@@ -6,16 +6,16 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 18:18:27 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/03/26 18:18:31 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/06 21:23:22 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_lstdelone(t_list *node, void (*del)(void*))
 {
-	if (!lst)
+	if (!node)
 		return ;
-	del(lst->content);
-	free(lst);
+	del(node->content);
+	free(node);
 }
