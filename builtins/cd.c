@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 21:13:41 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/06 23:29:13 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:47:10 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ static void	update_pwd_and_oldpwd(t_ms *ms, char *current_pwd)
 	}
 	if (has_oldpwd == 0)
 	{
-		export(ms, ft_strjoin("OLDPWD=", ms->prompt.cwd));
+		node = ft_lstnew(ft_strjoin("OLDPWD=", ms->prompt.cwd));
+		ft_lstadd_back(ms->list, node);
 	}
 	free(current_pwd);
 }
