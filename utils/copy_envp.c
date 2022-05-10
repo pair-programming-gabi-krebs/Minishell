@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 20:58:21 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/06 23:32:14 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:12:30 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	copy_envp(t_ms *ms)
 	t_list	*node;
 
 	ms->list = malloc(1 * sizeof(t_list*));
-	node = NULL;
+	*(ms->list) = NULL;
 	mtx_len = ft_mtxlen(ms->init.envp);
 	i = 0;
 	while (i < mtx_len)
