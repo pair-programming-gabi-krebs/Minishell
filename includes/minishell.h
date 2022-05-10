@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/06 20:54:17 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/09 21:54:27 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void	make_substr_and_increment(t_ms *ms, int i, int len);
 int		handle_next_special_bytes(t_ms *ms, int i);
 int		handle_quote(t_ms *ms, int i, char chr);
 int		syntatic_analysis(t_ms *ms);
+void	remove_quotes(t_ms *ms);
 
 /* Parser */
 

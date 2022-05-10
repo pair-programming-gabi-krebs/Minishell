@@ -30,7 +30,8 @@ FILES = main.c \
 		unset.c \
 		export.c \
 		copy_envp.c \
-		syntatic_analysis.c
+		syntatic_analysis.c \
+		remove_quotes.c
 
 
 OBJ_PATH = ./objs/
