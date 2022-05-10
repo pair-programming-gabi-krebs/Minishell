@@ -29,7 +29,8 @@ FILES = main.c \
 		env.c \
 		unset.c \
 		export.c \
-		copy_envp.c
+		copy_envp.c \
+		syntatic_analysis.c
 
 
 OBJ_PATH = ./objs/
