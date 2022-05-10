@@ -6,13 +6,13 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 21:46:53 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/07 00:21:46 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:04:36 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static void	remove_var_from_env(t_list *node);
+static void	remove_var_from_env(t_list *node, t_ms *ms);
 
 void	unset(t_ms *ms, char *var)
 {
@@ -24,11 +24,11 @@ void	unset(t_ms *ms, char *var)
 		&& ft_strncmp(var, node->content, ft_strlen(var)) != 0)
 		node = node->next;
 	if (!ft_strncmp(var, node->content, ft_strlen(var)))
-		remove_var_from_env(node);
+		remove_var_from_env(node, ms);
 	free(var);
 }
 
-static void	remove_var_from_env(t_list *node)
+static void	remove_var_from_env(t_list *node, t_ms *ms)
 {
 	t_list	*ptr;
 	t_list	*ptr2;
@@ -37,14 +37,12 @@ static void	remove_var_from_env(t_list *node)
 	{
 		ptr = node->prv;
 		ptr->next = NULL;
-		ft_lstdelone(node, free);
 	}
 	else if (node->prv == NULL)
 	{
-		node = node->next;
-		ptr = node->prv;
-		ft_lstdelone(ptr, free);
-		node->prv = NULL;
+		*(ms->list) = node->next;
+		ptr = *(ms->list);
+		ptr->prv = NULL;
 	}
 	else
 	{
@@ -52,7 +50,6 @@ static void	remove_var_from_env(t_list *node)
 		ptr2 = node->next;
 		ptr->next = ptr2;
 		ptr2->prv = ptr;
-		ft_lstdelone(node, free);
 	}
-
+	ft_lstdelone(node, free);
 }
