@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/06 23:11:51 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/11 20:54:04 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ int		cd(t_ms *ms);
 void	env(t_ms *ms);
 void	unset(t_ms *ms, char *var);
 void	export(t_ms *ms, char *var);
+void	echo(t_ms *ms);
+void	pwd(void);
 
 void	del(void *content);
 
