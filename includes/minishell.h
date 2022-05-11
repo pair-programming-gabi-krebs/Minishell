@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/11 20:54:04 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/11 20:57:03 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,8 @@ int		is_special(t_ms *ms, char c);
 void	make_substr_and_increment(t_ms *ms, int i, int len);
 int		handle_next_special_bytes(t_ms *ms, int i);
 int		handle_quote(t_ms *ms, int i, char chr);
+int		syntatic_analysis(t_ms *ms);
+void	remove_quotes(t_ms *ms);
 
 /* Parser */
 

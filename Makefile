@@ -31,7 +31,10 @@ FILES = main.c \
 		export.c \
 		copy_envp.c \
 		pwd.c \
-		echo.c
+		echo.c \
+		syntatic_analysis.c \
+		remove_quotes.c
+
 
 OBJ_PATH = ./objs/
 
