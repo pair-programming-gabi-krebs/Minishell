@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_input.c                                      :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 18:47:34 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/11 20:20:53 by gcosta-d         ###   ########.fr       */
+/*   Created: 2022/05/09 22:54:33 by gcosta-d          #+#    #+#             */
+/*   Updated: 2022/05/09 23:36:46 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	valid_input(t_ms *ms)
+void	pwd(void)
 {
-	history(ms, ms->prompt.line);
-	pre_token(ms);
-	check_special_tokens(ms);
-	//ms->lexer.line = ft_strdup(ms->tk.line);
-	//export(ms, "OI=testinho");
-	//unset(ms, "HOME");
-	//cd(ms);
-	echo(ms);
-	//env(ms);
-	//pwd();
-	//lexer(ms);
-	//parser(ms);
-	ft_reset(ms);
+	char	*current_pwd;
+
+	current_pwd = ft_calloc(256, sizeof(char));
+	current_pwd = getcwd(current_pwd, 256);
+	printf("%s\n", current_pwd);
+	free(current_pwd);
 }
