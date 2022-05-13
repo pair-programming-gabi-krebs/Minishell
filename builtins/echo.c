@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 23:08:19 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/11 20:49:53 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:45:25 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,38 @@
 
 void	echo(t_ms *ms)
 {
-	/* mock da line do prompt */
-	char	**line_mtx;
-	line_mtx = split_special(ms->tk.line);
-	/*						  */
 	int	has_nl;
 	int	i;
 
 	has_nl = 1;
-	if (!ft_strncmp(line_mtx[1], "-n", ft_strlen(line_mtx[1])))
+	if (!ft_strncmp(ms->lexer.tokens[1], "-n", ft_strlen(ms->lexer.tokens[1])))
 		has_nl = 0;
-	if (has_nl)
+	i = 0;
+	while (ms->lexer.tokens[++i] && !is_special(ms, ms->lexer.tokens[i][0]))
 	{
-		i = 0;
-		while (line_mtx[++i])
-			printf("%s\n", line_mtx[i]);
-	}
-	else
-	{
-		i = 1;
-		while (line_mtx[++i])
-			printf("%s", line_mtx[i]);
+		if (has_nl)
+			printf("%s\n", ms->lexer.tokens[i]);
+		else
+			printf("%s", ms->lexer.tokens[i + 1]);
 	}
 }
 
-char	**split_special(char *line)
-{
-	char **mtx;
+// echo teste "teste"
 
-	
+// >outfile echo "teste"| tr ' ' a
 
-	return (mtx);
+// >
+// outfile
+// echo
+// teste|
+// tr
+// ' '
+// a
 
-}
+// "l"s
 
 /*
-	[ ] Verificar se há -n
+	[x] Verificar se há -n
 	[ ] Verificar se há $
 	[ ] Verificar se há single quote
 	[ ] Verificar se há double quote
