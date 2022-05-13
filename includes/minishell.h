@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/11 20:57:03 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/12 23:37:58 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <sys/wait.h>
 
 # define SINGLE_QUOTE 39
 # define DOUBLE_QUOTE 34
@@ -71,6 +72,8 @@ typedef struct s_parser
 	int		pipes_qtn;
 	char	*infile;
 	char	*outfile;
+	//char	**cmds;
+	char	**cmd_table;
 }	t_parser;
 
 typedef struct s_tk
@@ -82,6 +85,25 @@ typedef struct s_tk
 	int		len;
 }	t_tk;
 
+typedef struct s_echo
+{
+	char	*line;
+}	t_echo;
+
+typedef struct s_cmds
+{
+	char	**command;
+	char	*inf;
+	char	*out;
+	char	*file_path;
+	char	*path;
+	char	**bin;
+	int		fd[2];
+	int		pid;
+	int		exit_status;
+	int		cmd_index;
+}	t_cmds;
+
 typedef struct s_minishell
 {
 	t_init		init;
@@ -90,8 +112,10 @@ typedef struct s_minishell
 	t_signal	signal;
 	t_parser	parser;
 	t_tk		tk;
-	//t_list		*node;
+	t_echo		echo;
 	t_list		**list;
+	t_cmds		cmds;
+	//t_list		**tk_list;
 }	t_ms;
 
 /* Prompt */
@@ -123,6 +147,7 @@ int		syntatic_analysis(t_ms *ms);
 void	remove_quotes(t_ms *ms);
 
 /* Parser */
+void	parser(t_ms *ms);
 
 /* Builtins */
 int		cd(t_ms *ms);
@@ -131,6 +156,12 @@ void	unset(t_ms *ms, char *var);
 void	export(t_ms *ms, char *var);
 void	echo(t_ms *ms);
 void	pwd(void);
+
+/* Pipeline */
+void	pipeline(t_ms *ms);
+void	pipex(t_ms *ms);
+char	*command_finder(t_ms *ms);
+void	parse_env(t_ms *ms);
 
 void	del(void *content);
 
