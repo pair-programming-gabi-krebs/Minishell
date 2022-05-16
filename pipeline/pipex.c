@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/13 00:50:15 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:32:43 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ void	pipex(t_ms *ms)
 		else
 		{
 			waitpid(ms->cmds.pid, &ms->cmds.exit_status, 0);
+			free_matrix(ms->cmds.command);
 			close(ms->cmds.fd[1]);
 			i++;
 		}
 	}
+	free_matrix(ms->cmds.bin);
 	close(ms->cmds.fd[0]);
 	close(ms->cmds.fd[1]);
 }
@@ -126,3 +128,18 @@ static void	resolve_dups(t_ms *ms, int i)
 		close(ms->cmds.fd[1]);
 	}
 }
+
+
+// [0] ls
+// [1] |
+// [2] tr
+// [3] ' '
+// [4] a
+// [5] |
+// [6]
+
+/*
+ms->cmds.command[0] tr
+ms->cmds.command[1] ' '
+ms->cmds.command[2] a
+*/
