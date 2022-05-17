@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/16 22:19:35 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/16 23:20:42 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	pipex(t_ms *ms)
 		}
 		if (pipe(ms->cmds.fd) == -1)
 			ft_exit(ms);
+		
 		ms->cmds.pid = fork();
 		if (ms->cmds.pid == -1)
 			ft_exit(ms);
@@ -108,8 +109,10 @@ static void	exec_commands(t_ms *ms, int i)
 	build_cmd_table(ms);
 	if (is_builtin(ms))
 	{
-		resolve_dups(ms, i);
+		//resolve_dups(ms, i);
 		exec_builtin(ms);
+		free_matrix(ms->cmds.bin);
+		ft_exit(ms);
 	}
 	else
 	{

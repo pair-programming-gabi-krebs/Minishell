@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 21:13:41 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/16 22:21:36 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/16 23:13:48 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	cd(t_ms *ms)
 		ms->cmds.command[1] = getenv("HOME");
 	else if (!ft_strncmp(ms->cmds.command[1], "~/", 2))
 	{
-		printf("to aqui\n");
+		dprintf(2, "to aqui\n");
 		aux = ft_strtrim(ft_strdup(ms->cmds.command[1]), "~");
 		free(ms->cmds.command[1]);
 		ms->cmds.command[1] = ft_strjoin(getenv("HOME"), aux);
@@ -36,7 +36,7 @@ int	cd(t_ms *ms)
 	current_pwd = ft_calloc(256, sizeof(char));
 	current_pwd = getcwd(current_pwd, 256);
 	update_pwd_and_oldpwd(ms, current_pwd);
-	free_matrix(ms->cmds.command);
+	//free_matrix(ms->cmds.command);
 	return (return_chdir);
 }
 
