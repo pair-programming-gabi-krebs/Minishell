@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/16 20:57:16 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/16 23:20:42 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	pipex(t_ms *ms)
 		}
 		if (pipe(ms->cmds.fd) == -1)
 			ft_exit(ms);
+		
 		ms->cmds.pid = fork();
 		if (ms->cmds.pid == -1)
 			ft_exit(ms);
@@ -106,15 +107,21 @@ static void	format_table(t_ms *ms, int start, int end)
 static void	exec_commands(t_ms *ms, int i)
 {
 	build_cmd_table(ms);
-	ms->cmds.file_path = command_finder(ms);
-	if (ms->cmds.file_path == NULL)
+	if (is_builtin(ms))
 	{
+		//resolve_dups(ms, i);
+		exec_builtin(ms);
+		free_matrix(ms->cmds.bin);
 		ft_exit(ms);
 	}
-	resolve_dups(ms, i);
-	if (execve(ms->cmds.file_path, ms->cmds.command, ms->init.envp) == -1)
+	else
 	{
-		ft_exit(ms);
+		ms->cmds.file_path = command_finder(ms);
+		if (ms->cmds.file_path == NULL)
+			ft_exit(ms);
+		resolve_dups(ms, i);
+		if (execve(ms->cmds.file_path, ms->cmds.command, ms->init.envp) == -1)
+			ft_exit(ms);
 	}
 }
 
@@ -128,18 +135,3 @@ static void	resolve_dups(t_ms *ms, int i)
 		close(ms->cmds.fd[1]);
 	}
 }
-
-
-// [0] ls
-// [1] |
-// [2] tr
-// [3] ' '
-// [4] a
-// [5] |
-// [6]
-
-/*
-ms->cmds.command[0] tr
-ms->cmds.command[1] ' '
-ms->cmds.command[2] a
-*/

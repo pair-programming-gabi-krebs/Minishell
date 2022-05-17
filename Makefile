@@ -40,6 +40,8 @@ FILES = main.c \
 		command_finder.c \
 		parse_env.c \
 		dup42.c
+		is_builtin.c \
+		exec_builtin.c
 
 
 OBJ_PATH = ./objs/
