@@ -38,7 +38,9 @@ FILES = main.c \
 		pipeline.c \
 		pipex.c \
 		command_finder.c \
-		parse_env.c
+		parse_env.c \
+		is_builtin.c \
+		exec_builtin.c
 
 
 OBJ_PATH = ./objs/

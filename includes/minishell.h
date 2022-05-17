@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/12 23:37:58 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/16 21:55:00 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ void	pipeline(t_ms *ms);
 void	pipex(t_ms *ms);
 char	*command_finder(t_ms *ms);
 void	parse_env(t_ms *ms);
+int		is_builtin(t_ms *ms);
+void	exec_builtin(t_ms *ms);
 
 void	del(void *content);
 
