@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/16 20:43:15 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:57:16 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	pipex(t_ms *ms)
 	i = -1;
 	while (i < ms->parser.pipes_qtn)
 	{
-		build_cmd_table(ms);
 		if (i > 0)
 		{
 			dup2(ms->cmds.fd[0], STDIN_FILENO);
