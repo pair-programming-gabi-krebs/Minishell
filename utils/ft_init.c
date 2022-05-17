@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/27 22:51:41 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/13 00:27:28 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,10 @@ void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 	ms->prompt.prev_line = NULL;
 	ms->tk.line = NULL;
 	ms->parser.pipes_qtn = 0;
+	ms->cmds.cmd_index = 0;
+	ms->cmds.command = malloc(10 * sizeof(char *));
+	ms->cmds.command[0] = NULL;
+	ms->cmds.file_path = NULL;
 	ft_signal(ms);
+	copy_envp(ms);
 }

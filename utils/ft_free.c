@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:20:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/02 20:45:52 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/16 21:07:29 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_free(t_ms *ms)
 	if (ms->tk.line)
 		free(ms->tk.line);
 	free(ms->prompt.line);
+	free(ms->prompt.cwd);
 }
 
 void	free_matrix(char **matrix)

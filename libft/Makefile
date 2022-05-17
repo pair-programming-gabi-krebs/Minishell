@@ -6,7 +6,7 @@
 #    By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/23 15:27:40 by lkrebs-l          #+#    #+#              #
-#    Updated: 2022/04/27 21:06:39 by gcosta-d         ###   ########.fr        #
+#    Updated: 2022/05/10 22:01:03 by gcosta-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC_FILES = ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 					ft_putstr_fd.c  ft_strjoin.c ft_strmapi.c ft_strtrim.c ft_striteri.c \
 					ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c ft_lstsize.c \
 					ft_lstlast.c ft_lstdelone.c ft_lstclear.c strichar.c ft_mtxlen.c \
-					ft_count_char.c
+					ft_count_char.c gnl.c
 
 NAME = libft.a
 

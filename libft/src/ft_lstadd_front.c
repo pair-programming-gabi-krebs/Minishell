@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 18:14:29 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/03/26 18:31:50 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/05 23:37:00 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	new->next = *lst;
+	new->prv = NULL;
 	*lst = new;
 }

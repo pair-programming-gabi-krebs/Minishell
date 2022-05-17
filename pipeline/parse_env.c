@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   parse_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 22:43:45 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/06 23:57:59 by gcosta-d         ###   ########.fr       */
+/*   Created: 2022/05/12 23:06:45 by gcosta-d          #+#    #+#             */
+/*   Updated: 2022/05/13 00:49:09 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	env(t_ms *ms)
+void	parse_env(t_ms *ms)
 {
-	t_list	*node;
-
-	node = *(ms->list);
-	while (node->next != NULL)
-	{
-		printf("%s\n", (char *)node->content);
-		node = node->next;
-	}
-	printf("%s\n", (char *)node->content);
+	ms->cmds.path = ft_strchr(getenv("PATH"), '/');
+	ms->cmds.bin = ft_split(ms->cmds.path, ':');
 }

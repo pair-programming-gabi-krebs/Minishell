@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 18:07:25 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/03/29 21:19:03 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/05 23:38:22 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 			ptr = ptr->next;
 		ptr->next = new;
 		new->next = NULL;
+		new->prv = ptr;
 	}
 }

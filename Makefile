@@ -6,7 +6,7 @@ LIB_FLAG = -lreadline
 
 CC = gcc
 
-VPATH = prompt lexer parser utils builtins
+VPATH = prompt lexer parser utils builtins pipeline
 
 
 FILES = main.c \
@@ -29,7 +29,18 @@ FILES = main.c \
 		env.c \
 		unset.c \
 		export.c \
-		copy_envp.c
+		copy_envp.c \
+		pwd.c \
+		echo.c \
+		syntatic_analysis.c \
+		remove_quotes.c \
+		parser.c \
+		pipeline.c \
+		pipex.c \
+		command_finder.c \
+		parse_env.c \
+		is_builtin.c \
+		exec_builtin.c
 
 
 OBJ_PATH = ./objs/

@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 18:15:08 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/03/26 18:31:59 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/05 22:27:58 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		*lst = ptr;
 	}
 	free(ptr);
+	free(lst);
 }

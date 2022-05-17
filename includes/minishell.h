@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/05 14:39:03 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/16 21:55:00 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <sys/wait.h>
 
 # define SINGLE_QUOTE 39
 # define DOUBLE_QUOTE 34
@@ -71,6 +72,8 @@ typedef struct s_parser
 	int		pipes_qtn;
 	char	*infile;
 	char	*outfile;
+	//char	**cmds;
+	char	**cmd_table;
 }	t_parser;
 
 typedef struct s_tk
@@ -82,6 +85,25 @@ typedef struct s_tk
 	int		len;
 }	t_tk;
 
+typedef struct s_echo
+{
+	char	*line;
+}	t_echo;
+
+typedef struct s_cmds
+{
+	char	**command;
+	char	*inf;
+	char	*out;
+	char	*file_path;
+	char	*path;
+	char	**bin;
+	int		fd[2];
+	int		pid;
+	int		exit_status;
+	int		cmd_index;
+}	t_cmds;
+
 typedef struct s_minishell
 {
 	t_init		init;
@@ -90,6 +112,10 @@ typedef struct s_minishell
 	t_signal	signal;
 	t_parser	parser;
 	t_tk		tk;
+	t_echo		echo;
+	t_list		**list;
+	t_cmds		cmds;
+	//t_list		**tk_list;
 }	t_ms;
 
 /* Prompt */
@@ -117,13 +143,28 @@ int		is_special(t_ms *ms, char c);
 void	make_substr_and_increment(t_ms *ms, int i, int len);
 int		handle_next_special_bytes(t_ms *ms, int i);
 int		handle_quote(t_ms *ms, int i, char chr);
+int		syntatic_analysis(t_ms *ms);
+void	remove_quotes(t_ms *ms);
 
 /* Parser */
+void	parser(t_ms *ms);
 
 /* Builtins */
 int		cd(t_ms *ms);
 void	env(t_ms *ms);
 void	unset(t_ms *ms, char *var);
 void	export(t_ms *ms, char *var);
+void	echo(t_ms *ms);
+void	pwd(void);
+
+/* Pipeline */
+void	pipeline(t_ms *ms);
+void	pipex(t_ms *ms);
+char	*command_finder(t_ms *ms);
+void	parse_env(t_ms *ms);
+int		is_builtin(t_ms *ms);
+void	exec_builtin(t_ms *ms);
+
+void	del(void *content);
 
 #endif

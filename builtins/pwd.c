@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 22:43:45 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/06 23:57:59 by gcosta-d         ###   ########.fr       */
+/*   Created: 2022/05/09 22:54:33 by gcosta-d          #+#    #+#             */
+/*   Updated: 2022/05/09 23:36:46 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	env(t_ms *ms)
+void	pwd(void)
 {
-	t_list	*node;
+	char	*current_pwd;
 
-	node = *(ms->list);
-	while (node->next != NULL)
-	{
-		printf("%s\n", (char *)node->content);
-		node = node->next;
-	}
-	printf("%s\n", (char *)node->content);
+	current_pwd = ft_calloc(256, sizeof(char));
+	current_pwd = getcwd(current_pwd, 256);
+	printf("%s\n", current_pwd);
+	free(current_pwd);
 }

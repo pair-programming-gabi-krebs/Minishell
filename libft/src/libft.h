@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 22:04:01 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/03 21:57:59 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/10 22:32:21 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
+# define MAX_FD 256
 # define INT_MIN -2147483648
+# define BUFFER_SIZE 1
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -21,6 +22,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
+	struct s_list	*prv;
 }	t_list;
 
 //** Part 1 **
@@ -288,5 +290,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		strichar(char *string, int pos, char c);
 int		ft_mtxlen(char **mtx);
 int		ft_count_char(char *string, char c);
+char	*get_next_line(int fd);
 
 #endif

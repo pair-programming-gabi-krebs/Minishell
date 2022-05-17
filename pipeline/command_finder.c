@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   command_finder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 22:43:45 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/06 23:57:59 by gcosta-d         ###   ########.fr       */
+/*   Created: 2022/05/12 22:57:05 by gcosta-d          #+#    #+#             */
+/*   Updated: 2022/05/13 00:26:01 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	env(t_ms *ms)
+char	*command_finder(t_ms *ms)
 {
-	t_list	*node;
+	int		i;
+	int		check;
+	char	*path;
+	char	*cmd;
 
-	node = *(ms->list);
-	while (node->next != NULL)
+	i = 0;
+	while (ms->init.envp[i])
 	{
-		printf("%s\n", (char *)node->content);
-		node = node->next;
+		path = ft_strjoin(ms->cmds.bin[i], "/");
+		free(ms->cmds.bin[i]);
+		cmd = ft_strjoin(path, ms->cmds.command[0]);
+		check = access(cmd, F_OK);
+		if (check == 0)
+		{
+			free(path);
+			return (cmd);
+		}
+		free(path);
+		free(cmd);
+		i++;
 	}
-	printf("%s\n", (char *)node->content);
+	return (NULL);
 }
