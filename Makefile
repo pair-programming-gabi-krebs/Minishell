@@ -38,7 +38,8 @@ FILES = main.c \
 		pipeline.c \
 		pipex.c \
 		command_finder.c \
-		parse_env.c
+		parse_env.c \
+		dup42.c
 
 
 OBJ_PATH = ./objs/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/12 23:37:58 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/16 22:03:13 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void	ft_free(t_ms *ms);
 void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[]);
 void	ft_exit(t_ms *ms);
 void	ft_reset(t_ms *ms);
+void	dup42(t_ms *ms, int fd, int std);
 
 /* Lexer */
 void	lexer(t_ms *ms);
