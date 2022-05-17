@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/16 20:32:43 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:57:16 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	pipex(t_ms *ms)
 	i = -1;
 	while (i < ms->parser.pipes_qtn)
 	{
-		build_cmd_table(ms);
 		if (i > 0)
 		{
 			dup2(ms->cmds.fd[0], STDIN_FILENO);
@@ -41,12 +40,12 @@ void	pipex(t_ms *ms)
 		else
 		{
 			waitpid(ms->cmds.pid, &ms->cmds.exit_status, 0);
-			free_matrix(ms->cmds.command);
 			close(ms->cmds.fd[1]);
 			i++;
 		}
 	}
 	free_matrix(ms->cmds.bin);
+	free(ms->cmds.file_path);
 	close(ms->cmds.fd[0]);
 	close(ms->cmds.fd[1]);
 }
@@ -106,6 +105,7 @@ static void	format_table(t_ms *ms, int start, int end)
 
 static void	exec_commands(t_ms *ms, int i)
 {
+	build_cmd_table(ms);
 	ms->cmds.file_path = command_finder(ms);
 	if (ms->cmds.file_path == NULL)
 	{
