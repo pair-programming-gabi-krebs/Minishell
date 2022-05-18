@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/17 21:49:34 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/17 22:17:30 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[]);
 void	ft_exit(t_ms *ms);
 void	ft_reset(t_ms *ms);
 void	dup42(int fd, int std);
+void	del(void *content);
 
 /* Lexer */
 void	lexer(t_ms *ms);
@@ -165,7 +166,9 @@ char	*command_finder(t_ms *ms);
 void	parse_env(t_ms *ms);
 int		is_builtin(t_ms *ms);
 void	exec_builtin(t_ms *ms);
-
-void	del(void *content);
+void	exec_commands(t_ms *ms, int i);
+void	resolve_dups(t_ms *ms, int i);
+void	format_table(t_ms *ms, int start, int end);
+void	build_cmd_table(t_ms *ms);
 
 #endif

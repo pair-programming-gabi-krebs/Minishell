@@ -41,7 +41,11 @@ FILES = main.c \
 		parse_env.c \
 		dup42.c \
 		is_builtin.c \
-		exec_builtin.c
+		exec_builtin.c \
+		build_cmd_table.c \
+		exec_commands.c \
+		resolve_dups.c \
+		format_table.c
 
 
 OBJ_PATH = ./objs/
