@@ -47,7 +47,8 @@ FILES = main.c \
 		resolve_dups.c \
 		format_table.c \
 		create_process_and_exec_cmd.c \
-		end_pipeline.c
+		end_pipeline.c \
+		reset_cmd_table.c
 
 
 OBJ_PATH = ./objs/
