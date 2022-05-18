@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   create_process_and_exec_cmd.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/17 22:26:31 by lkrebs-l         ###   ########.fr       */
+/*   Created: 2022/05/17 22:24:14 by lkrebs-l          #+#    #+#             */
+/*   Updated: 2022/05/17 22:25:17 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	pipex(t_ms *ms)
+void	create_process_and_exec_cmd(t_ms *ms, int i)
 {
-	int	i;
-
-	parse_env(ms);
-	i = -1;
-	while (i < ms->parser.pipes_qtn)
+	ms->cmds.pid = fork();
+	if (ms->cmds.pid == -1)
+		ft_exit(ms);
+	if (ms->cmds.pid == 0)
+		exec_commands(ms, i);
+	else
 	{
-		if (i > 0)
-			dup42(ms->cmds.fd[0], STDIN_FILENO);
-		if (pipe(ms->cmds.fd) == -1)
-			ft_exit(ms);
-		build_cmd_table(ms);
-		if (is_builtin(ms))
-			exec_builtin(ms);
-		else
-			create_process_and_exec_cmd(ms, i);
-		i++;
+		waitpid(ms->cmds.pid, &ms->cmds.exit_status, 0);
+		close(ms->cmds.fd[1]);
 	}
-	free_matrix(ms->cmds.bin);
-	free(ms->cmds.file_path);
-	close(ms->cmds.fd[0]);
-	close(ms->cmds.fd[1]);
 }
