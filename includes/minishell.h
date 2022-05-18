@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/17 22:28:37 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/17 22:34:37 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,5 +171,6 @@ void	resolve_dups(t_ms *ms, int i);
 void	format_table(t_ms *ms, int start, int end);
 void	build_cmd_table(t_ms *ms);
 void	create_process_and_exec_cmd(t_ms *ms, int i);
+void	end_pipeline(t_ms *ms);
 
 #endif
