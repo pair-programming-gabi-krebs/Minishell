@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:12:59 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/17 22:13:11 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/17 22:58:19 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	build_cmd_table(t_ms *ms)
 		i++;
 	}
 	if (!has_format)
-		format_table(ms, ms->cmds.cmd_index, i);
+		format_table(ms, 0, i);
 	ms->cmds.cmd_index = i;
 }
