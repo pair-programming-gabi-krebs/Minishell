@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/16 23:23:48 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/17 21:49:34 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	ft_free(t_ms *ms);
 void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[]);
 void	ft_exit(t_ms *ms);
 void	ft_reset(t_ms *ms);
-void	dup42(t_ms *ms, int fd, int std);
+void	dup42(int fd, int std);
 
 /* Lexer */
 void	lexer(t_ms *ms);

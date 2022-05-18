@@ -39,7 +39,7 @@ FILES = main.c \
 		pipex.c \
 		command_finder.c \
 		parse_env.c \
-		dup42.c
+		dup42.c \
 		is_builtin.c \
 		exec_builtin.c
 
