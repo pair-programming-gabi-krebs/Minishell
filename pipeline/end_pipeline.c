@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:32:52 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/17 22:33:43 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/17 23:28:44 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ void	end_pipeline(t_ms *ms)
 	free(ms->cmds.file_path);
 	close(ms->cmds.fd[0]);
 	close(ms->cmds.fd[1]);
+	ms->cmds.cmd_index = 0;
 }
