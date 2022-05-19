@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/17 22:32:49 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/17 23:32:31 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	pipex(t_ms *ms)
 			exec_builtin(ms);
 		else
 			create_process_and_exec_cmd(ms, i);
+		reset_cmd_table(ms);
 		i++;
 	}
 	end_pipeline(ms);
