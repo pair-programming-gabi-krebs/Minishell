@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:14:31 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/17 23:47:59 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/19 22:15:39 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	exec_commands(t_ms *ms, int i)
 	if (ms->cmds.file_path == NULL)
 		ft_exit(ms);
 	resolve_dups(ms, i);
-/* 	for (int i = 0; i < 3; i++)
-		dprintf(2, "ms->cmds.command[%d]: %s\n", i, ms->cmds.command[i]); */
 	if (execve(ms->cmds.file_path, ms->cmds.command, ms->init.envp) == -1)
 		ft_exit(ms);
 }
