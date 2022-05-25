@@ -6,28 +6,25 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 21:13:41 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/24 23:16:32 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/24 23:51:58 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+static int	is_home(t_ms *ms);
+static int	change_dir(t_ms *ms, char *path);
 static void	update_pwd_and_oldpwd(t_ms *ms, char *current_pwd);
 
 int	cd(t_ms *ms)
 {
-	char	*current_pwd;
 	char	*aux1;
 	char	*aux2;
 	char	*path;
 	int		return_chdir;
 
 	path = NULL;
-	if (!ms->cmds.command[1])
-		path = ft_strdup(getenv("HOME"));
-	else if (ms->cmds.command[1]
-		&& (!ft_strncmp(ms->cmds.command[1], "~", ft_strlen(ms->cmds.command[1]))
-		|| !ft_strncmp(ms->cmds.command[1], "~/", ft_strlen(ms->cmds.command[1]))))
+	if (is_home(ms))
 		path = ft_strdup(getenv("HOME"));
 	else if (ms->cmds.command[1] && !ft_strncmp(ms->cmds.command[1], "~/", 2))
 	{
@@ -39,12 +36,38 @@ int	cd(t_ms *ms)
 	}
 	else if (ms->cmds.command[1])
 		path = ft_strdup(ms->cmds.command[1]);
+	return_chdir = change_dir(ms, path);
+	free(path);
+	return (return_chdir);
+}
+
+static int	is_home(t_ms *ms)
+{
+	int	is_home;
+
+	is_home = 0;
+	if (!ms->cmds.command[1])
+		is_home = 1;
+	else if (ms->cmds.command[1]
+		&&
+		(!ft_strncmp(ms->cmds.command[1], "~/", ft_strlen(ms->cmds.command[1]))
+		||
+		!ft_strncmp(ms->cmds.command[1], "~", ft_strlen(ms->cmds.command[1]))))
+		is_home = 1;
+	return (is_home);
+}
+
+static int	change_dir(t_ms *ms, char *path)
+{
+	int		return_chdir;
+	char	*current_pwd;
+
+	return_chdir = -1;
 	if (path)
 		return_chdir = chdir(path);
 	current_pwd = ft_calloc(256, sizeof(char));
 	current_pwd = getcwd(current_pwd, 256);
 	update_pwd_and_oldpwd(ms, current_pwd);
-	free(path);
 	return (return_chdir);
 }
 
