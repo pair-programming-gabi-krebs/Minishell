@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/20 00:01:02 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/24 20:21:10 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	pipex(t_ms *ms)
 	{
 		if (i >= 0)
 		{
-			stin = dup(STDIN_FILENO);
+			if (i == 0)
+				stin = dup(STDIN_FILENO);
 			dup42(ms->cmds.fd[0], STDIN_FILENO);
 		}
 		if (pipe(ms->cmds.fd) == -1)
@@ -36,6 +37,7 @@ void	pipex(t_ms *ms)
 		reset_cmd_table(ms);
 		i++;
 	}
-	dup2(stin, STDIN_FILENO);
+	if (ms->parser.pipes_qtn > 0)
+		dup2(stin, STDIN_FILENO);
 	end_pipeline(ms);
 }
