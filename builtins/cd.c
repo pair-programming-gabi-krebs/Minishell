@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 21:13:41 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/24 23:51:58 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:33:50 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	is_home(t_ms *ms);
 static int	change_dir(t_ms *ms, char *path);
 static void	update_pwd_and_oldpwd(t_ms *ms, char *current_pwd);
+static int	update_node_content(t_ms *ms, char *current_pwd, t_list *node);
 
 int	cd(t_ms *ms)
 {
@@ -49,10 +50,10 @@ static int	is_home(t_ms *ms)
 	if (!ms->cmds.command[1])
 		is_home = 1;
 	else if (ms->cmds.command[1]
-		&&
-		(!ft_strncmp(ms->cmds.command[1], "~/", ft_strlen(ms->cmds.command[1]))
-		||
-		!ft_strncmp(ms->cmds.command[1], "~", ft_strlen(ms->cmds.command[1]))))
+		&& (!ft_strncmp(ms->cmds.command[1], "~/", \
+		ft_strlen(ms->cmds.command[1]))
+			|| !ft_strncmp(ms->cmds.command[1], "~", \
+		ft_strlen(ms->cmds.command[1]))))
 		is_home = 1;
 	return (is_home);
 }
@@ -80,17 +81,7 @@ static void	update_pwd_and_oldpwd(t_ms *ms, char *current_pwd)
 	has_oldpwd = 0;
 	while (node->next != NULL)
 	{
-		if (!ft_strncmp(node->content, "PWD=", 4))
-		{
-			free(node->content);
-			node->content = ft_strjoin("PWD=", current_pwd);
-		}
-		else if (!ft_strncmp(node->content, "OLDPWD=", 7))
-		{
-			free(node->content);
-			node->content = ft_strjoin("OLDPWD=", ms->prompt.cwd);
-			has_oldpwd = 1;
-		}
+		has_oldpwd = update_node_content(ms, current_pwd, node);
 		node = node->next;
 		if (node->next == NULL && !ft_strncmp(node->content, "OLDPWD=", 7))
 		{
@@ -105,4 +96,23 @@ static void	update_pwd_and_oldpwd(t_ms *ms, char *current_pwd)
 		ft_lstadd_back(ms->list, node);
 	}
 	free(current_pwd);
+}
+
+static int	update_node_content(t_ms *ms, char *current_pwd, t_list *node)
+{
+	int	has_oldpwd;
+
+	has_oldpwd = 0;
+	if (!ft_strncmp(node->content, "PWD=", 4))
+	{
+		free(node->content);
+		node->content = ft_strjoin("PWD=", current_pwd);
+	}
+	else if (!ft_strncmp(node->content, "OLDPWD=", 7))
+	{
+		free(node->content);
+		node->content = ft_strjoin("OLDPWD=", ms->prompt.cwd);
+		has_oldpwd = 1;
+	}
+	return (has_oldpwd);
 }
