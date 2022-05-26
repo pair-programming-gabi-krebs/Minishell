@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 21:46:53 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/09 22:04:36 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:40:35 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,17 @@ void	unset(t_ms *ms, char *var)
 {
 	t_list *node;
 
-	node = *(ms->list);
-	var = ft_strjoin(var, "=");
-	while (node->next != NULL
-		&& ft_strncmp(var, node->content, ft_strlen(var)) != 0)
-		node = node->next;
-	if (!ft_strncmp(var, node->content, ft_strlen(var)))
-		remove_var_from_env(node, ms);
-	free(var);
+	if (var)
+	{
+		node = *(ms->list);
+		var = ft_strjoin(var, "=");
+		while (node->next != NULL
+			&& ft_strncmp(var, node->content, ft_strlen(var)) != 0)
+			node = node->next;
+		if (!ft_strncmp(var, node->content, ft_strlen(var)))
+			remove_var_from_env(node, ms);
+		free(var);
+	}
 }
 
 static void	remove_var_from_env(t_list *node, t_ms *ms)
