@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 23:08:19 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/27 21:58:17 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/27 22:31:41 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	echo(t_ms *ms)
 
 	has_nl = 1;
 	i = 1;
+	if (!ms->cmds.command[1])
+	{
+		printf("\n");
+		return ;
+	}
 	if (!ft_strncmp(ms->cmds.command[1], "-n", ft_strlen(ms->cmds.command[1])))
 	{
 		has_nl = 0;
