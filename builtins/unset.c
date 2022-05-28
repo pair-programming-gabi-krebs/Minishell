@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 21:46:53 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/25 20:40:35 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/27 21:23:34 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	remove_var_from_env(t_list *node, t_ms *ms);
 
 void	unset(t_ms *ms, char *var)
 {
-	t_list *node;
+	t_list	*node;
 
 	if (var)
 	{
