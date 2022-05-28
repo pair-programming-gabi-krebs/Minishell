@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   format_table.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:13:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/17 22:13:56 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/27 23:04:23 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+static void	get_redirect_name(t_ms *ms, char *redirect, int start);
 
 void	format_table(t_ms *ms, int start, int end)
 {
@@ -19,18 +21,16 @@ void	format_table(t_ms *ms, int start, int end)
 	j = 0;
 	while (start < end)
 	{
-		if (ms->lexer.tokens[start][0] == '>')
-		{
-			if (ms->cmds.out)
-				free(ms->cmds.out);
-			ms->cmds.out = ft_strdup(ms->lexer.tokens[start + 1]);
-		}
+		if (!ft_strncmp(ms->lexer.tokens[start], "<<", \
+			ft_strlen(ms->lexer.tokens[start])))
+			printf("<<\n");
+		else if (!ft_strncmp(ms->lexer.tokens[start], ">>", \
+			ft_strlen(ms->lexer.tokens[start])))
+			printf(">>\n");
+		else if (ms->lexer.tokens[start][0] == '>')
+			get_redirect_name(ms, ms->cmds.out, start);
 		else if (ms->lexer.tokens[start][0] == '<')
-		{
-			if (ms->cmds.inf)
-				free(ms->cmds.inf);
-			ms->cmds.inf = ft_strdup(ms->lexer.tokens[start + 1]);
-		}
+			get_redirect_name(ms, ms->cmds.inf, start);
 		else
 		{
 			ms->cmds.command[j] = ft_strdup(ms->lexer.tokens[start]);
@@ -39,4 +39,13 @@ void	format_table(t_ms *ms, int start, int end)
 		}
 		start++;
 	}
+}
+
+static void	get_redirect_name(t_ms *ms, char *redirect, int start)
+{
+	if (redirect)
+		free(redirect);
+	if (ms->lexer.tokens[start + 1])
+		redirect = ft_strdup(ms->lexer.tokens[start + 1]);
+	printf("redirect: %s\n", redirect);
 }
