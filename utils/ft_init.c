@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/25 22:41:17 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/27 22:09:28 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 	ms->cmds.command[0] = NULL;
 	ms->cmds.file_path = NULL;
 	ms->lexer.flag_quote = 0;
+	ms->cmds.out = NULL;
+	ms->cmds.inf = NULL;
 	ft_signal(ms);
 	copy_envp(ms);
 }
