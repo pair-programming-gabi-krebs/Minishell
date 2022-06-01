@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:20:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/16 21:07:29 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/05/31 22:34:28 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	free_matrix(char **matrix)
 	int	i;
 
 	i = 0;
+	if (!matrix)
+		return ;
 	while (matrix[i])
 	{
 		free(matrix[i]);
