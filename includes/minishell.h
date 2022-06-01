@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/30 22:28:07 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/05/31 23:34:28 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void	ft_exit(t_ms *ms);
 void	ft_reset(t_ms *ms);
 void	dup42(int fd, int std);
 void	del(void *content);
+void	copy_mtx(char **mtx_dest, char **mtx_src, int start, int len);
 
 /* Lexer */
 void	lexer(t_ms *ms);
