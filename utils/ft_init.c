@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/30 23:46:03 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/01 22:44:58 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 	ms->cmds.out[0] = NULL;
 	ms->cmds.inf = malloc(2048 * sizeof(char **));
 	ms->cmds.inf[0] = NULL;
+	ms->cmds.bin = NULL;
 	ft_signal(ms);
 	copy_envp(ms);
 }
