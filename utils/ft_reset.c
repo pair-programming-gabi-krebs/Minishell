@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:36:45 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/01 22:42:29 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/01 23:41:08 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ void	ft_reset(t_ms *ms)
 	ms->cmds.out[0] = NULL;
 	ms->cmds.inf = malloc(2048 * sizeof(char **));
 	ms->cmds.inf[0] = NULL;
+	ms->cmds.out_fd = -1;
+	ms->cmds.inf_fd = -1;
 }
