@@ -34,7 +34,6 @@ FILES = main.c \
 		echo.c \
 		syntatic_analysis.c \
 		remove_quotes.c \
-		parser.c \
 		pipeline.c \
 		pipex.c \
 		command_finder.c \
