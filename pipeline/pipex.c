@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/01 22:36:44 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/01 23:56:45 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,27 @@ void	pipex(t_ms *ms)
 	int	i;
 	int stin;
 
+// doesn't work with < outfile ls
 	parse_env(ms);
 	i = -1;
 	while (i < ms->parser.pipes_qtn)
 	{
+		build_cmd_table(ms);
+		if (!handle_redirects(ms))
+			return ;
+		if (i == -1 && ms->cmds.inf_fd != -1)
+			dup42(ms->cmds.inf_fd, STDIN_FILENO);
 		if (i >= 0)
 		{
 			if (i == 0)
 				stin = dup(STDIN_FILENO);
-			dup42(ms->cmds.fd[0], STDIN_FILENO);
+			if (ms->cmds.inf_fd == -1)
+				dup42(ms->cmds.fd[0], STDIN_FILENO);
+			else
+				dup42(ms->cmds.inf_fd, STDIN_FILENO);
 		}
 		if (pipe(ms->cmds.fd) == -1)
 			ft_exit(ms);
-		build_cmd_table(ms);
-		if (!handle_redirects(ms))
-			return ;
 		if (is_builtin(ms))
 			exec_builtin(ms);
 		else
