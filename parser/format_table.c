@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:13:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/02 22:22:49 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/02 22:50:09 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	check_for_redirects(t_ms *ms)
 		ms->cmds.inf = malloc(2048 * sizeof(char **));
 		ms->cmds.inf[0] = NULL;
 	}
-	if (out_counter)
+	if (out_counter == 0)
 	{
 		free_matrix(ms->cmds.out);
 		ms->cmds.out = malloc(2048 * sizeof(char **));
@@ -82,21 +82,6 @@ static void	get_redirect_name(t_ms *ms, char **redirect, int i, int counter)
 		redirect[counter] = ft_strdup(ms->cmds.command[i + 1]);
 	redirect[counter + 1] = NULL;
 }
-
-/* static void	get_redirect_name(t_ms *ms, char **redirect, int i)
-{
-	int	j;
-
-	j = 0;
-	if (redirect[0])
-	{
-		while (redirect[j])
-			j++;
-	}
-	if (ms->cmds.command[i + 1])
-		redirect[j] = ft_strdup(ms->cmds.command[i + 1]);
-	redirect[j + 1] = NULL;
-} */
 
 static void	remove_redirect_from_start_of_str(t_ms *ms)
 {
