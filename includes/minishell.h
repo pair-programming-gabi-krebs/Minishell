@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/03 19:11:29 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/03 19:24:15 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,11 +174,12 @@ void	parse_env(t_ms *ms);
 int		is_builtin(t_ms *ms);
 void	exec_builtin(t_ms *ms);
 void	exec_commands(t_ms *ms, int i);
-void	resolve_dups(t_ms *ms, int i);
+void	resolve_dups_outfile(t_ms *ms, int i);
 void	format_table(t_ms *ms, int start, int end);
 void	build_cmd_table(t_ms *ms);
 void	create_process_and_exec_cmd(t_ms *ms, int i);
 void	end_pipeline(t_ms *ms);
 void	reset_cmd_table(t_ms *ms);
+int		handle_redirects(t_ms *ms);
 
 #endif

@@ -43,7 +43,7 @@ FILES = main.c \
 		exec_builtin.c \
 		build_cmd_table.c \
 		exec_commands.c \
-		resolve_dups.c \
+		resolve_dups_outfile.c \
 		format_table.c \
 		create_process_and_exec_cmd.c \
 		end_pipeline.c \
