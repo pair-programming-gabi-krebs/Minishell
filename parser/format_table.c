@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   format_table.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:13:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/01 21:59:56 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/02 22:22:49 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ void	format_table(t_ms *ms, int start, int end)
 		remove_redirect_from_start_of_str(ms);
 		remove_redirect_from_end_of_str(ms);
 	}
-	for (int k = 0; ms->cmds.inf[k]; k++)
-		printf("inf[%d] %s\n", k, ms->cmds.inf[k]);
-	for (int k = 0; ms->cmds.out[k]; k++)
-		printf("out[%d] %s\n", k, ms->cmds.out[k]);
 }
 
 static int	check_for_redirects(t_ms *ms)
@@ -62,6 +58,18 @@ static int	check_for_redirects(t_ms *ms)
 			out_counter++;
 		}
 		i++;
+	}
+	if (inf_counter == 0)
+	{
+		free_matrix(ms->cmds.inf);
+		ms->cmds.inf = malloc(2048 * sizeof(char **));
+		ms->cmds.inf[0] = NULL;
+	}
+	if (out_counter)
+	{
+		free_matrix(ms->cmds.out);
+		ms->cmds.out = malloc(2048 * sizeof(char **));
+		ms->cmds.out[0] = NULL;
 	}
 	if (inf_counter > 0 || out_counter > 0)
 		return (1);
