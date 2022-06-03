@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/02 23:02:48 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/02 23:33:16 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,16 @@ void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 	ms->init.argc = argc - 1;
 	ms->init.argv = argv;
 	ms->init.envp = envp;
-	ms->tk.line = NULL;
 	ms->parser.pipes_qtn = 0;
+}
+
+static void	ft_init_tk(t_ms *ms)
+{
+	ms->tk.j = 0;
+	ms->tk.k = 0;
+	ms->tk.len = 0;
+	ms->tk.mtx = malloc(100 * sizeof(char **));
+	ms->tk.line = NULL;
 }
 
 static void	ft_init_prompt(t_ms *ms)
