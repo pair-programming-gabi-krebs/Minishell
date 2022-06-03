@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:13:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/02 22:50:09 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/02 23:18:44 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,11 @@ static int	check_for_redirects(t_ms *ms)
 static void	get_redirect_name(t_ms *ms, char **redirect, int i, int counter)
 {
 	if (ms->cmds.command[i + 1])
+	{
+		if (redirect[counter])
+			free(redirect[counter]);
 		redirect[counter] = ft_strdup(ms->cmds.command[i + 1]);
+	}
 	redirect[counter + 1] = NULL;
 }
 
