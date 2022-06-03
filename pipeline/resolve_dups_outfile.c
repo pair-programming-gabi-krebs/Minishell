@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   resolve_dups.c                                     :+:      :+:    :+:   */
+/*   resolve_dups_outfile.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:14:52 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/02 23:28:26 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/03 19:23:47 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	resolve_dups(t_ms *ms, int i)
+void	resolve_dups_outfile(t_ms *ms, int i)
 {
 	if (ms->cmds.out_fd != -1)
 	{
