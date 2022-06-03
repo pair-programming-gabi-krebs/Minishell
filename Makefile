@@ -44,11 +44,13 @@ FILES = main.c \
 		build_cmd_table.c \
 		exec_commands.c \
 		resolve_dups_outfile.c \
+		resolve_dups_infile.c \
 		format_table.c \
 		create_process_and_exec_cmd.c \
 		end_pipeline.c \
 		reset_cmd_table.c \
-		copy_mtx.c
+		copy_mtx.c \
+		handle_redirect.c
 
 
 OBJ_PATH = ./objs/
