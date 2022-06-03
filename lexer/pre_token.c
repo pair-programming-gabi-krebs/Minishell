@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pre_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/03 22:38:34 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/02 23:32:42 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@ void	pre_token(t_ms *ms)
 	int	i;
 
 	i = 0;
-	ms->tk.j = 0;
-	ms->tk.k = 0;
-	ms->tk.len = 0;
-	ms->tk.mtx = malloc(100 * sizeof(char **)); // mudar esse 10
-	ms->tk.line = NULL;
 	while (ms->prompt.line[i])
 	{
 		while (ms->prompt.line[i] && !is_special(ms, ms->prompt.line[i]))
@@ -44,7 +39,6 @@ void	pre_token(t_ms *ms)
 				break ;
 		}
 		pre_tokenization(ms, i);
-
 	}
 	ms->tk.mtx[ms->tk.j] = '\0';
 	line_formater(ms);
@@ -85,7 +79,6 @@ static void	line_formater(t_ms *ms)
 		}
 		i++;
 	}
-
 }
 
 static void	strjoin_add_space(t_ms *ms, int i)
@@ -127,8 +120,6 @@ static int	strjoin_quotes(t_ms *ms, int i)
 		join_strings(ms, i);
 		i++;
 	}
-	//join_strings(ms, i);
-	//i++;
 	return (i);
 }
 
@@ -138,8 +129,6 @@ static void	join_strings(t_ms *ms, int i)
 
 	aux = ft_strdup(ms->tk.line);
 	free(ms->tk.line);
-	// if (ms->tk.mtx[i])
-	// 	ms->tk.line = ft_strjoin(aux, ms->tk.mtx[i]);
 	ms->tk.line = ft_strjoin(aux, ms->tk.mtx[i]);
 	free(aux);
 }
