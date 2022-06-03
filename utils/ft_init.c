@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/02 23:33:16 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/03 19:31:22 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 static void	ft_init_prompt(t_ms *ms);
 static void	ft_init_lexer(t_ms *ms);
 static void	ft_init_cmd(t_ms *ms);
+static void	ft_init_tk(t_ms *ms);
 
 void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 {
 	ft_init_cmd(ms);
 	ft_init_prompt(ms);
 	ft_init_lexer(ms);
+	ft_init_tk(ms);
 	ft_signal(ms);
 	copy_envp(ms);
 	ms->init.argc = argc - 1;

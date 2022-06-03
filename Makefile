@@ -50,7 +50,13 @@ FILES = main.c \
 		end_pipeline.c \
 		reset_cmd_table.c \
 		copy_mtx.c \
-		handle_redirect.c
+		handle_redirect.c \
+		check_for_redirects.c \
+		get_last_redirect_position.c \
+		get_redirect_name.c \
+		remove_redirect_from_end_of_str.c \
+		remove_redirect_from_start_of_str.c
+
 
 
 OBJ_PATH = ./objs/
