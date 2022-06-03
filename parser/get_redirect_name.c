@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_table.c                                     :+:      :+:    :+:   */
+/*   get_redirect_name.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 22:13:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/03 19:23:18 by lkrebs-l         ###   ########.fr       */
+/*   Created: 2022/06/03 19:21:03 by lkrebs-l          #+#    #+#             */
+/*   Updated: 2022/06/03 19:21:15 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	format_table(t_ms *ms, int start, int end)
+void	get_redirect_name(t_ms *ms, char **redirect, int i, int counter)
 {
-	int	i;
-
-	i = 0;
-	while (start < end)
+	if (ms->cmds.command[i + 1])
 	{
-		ms->cmds.command[i] = ft_strdup(ms->lexer.tokens[start]);
-		ms->cmds.command[i + 1] = NULL;
-		i++;
-		start++;
+		if (redirect[counter])
+			free(redirect[counter]);
+		redirect[counter] = ft_strdup(ms->cmds.command[i + 1]);
 	}
-	if (check_for_redirects(ms))
-	{
-		remove_redirect_from_start_of_str(ms);
-		remove_redirect_from_end_of_str(ms);
-	}
+	redirect[counter + 1] = NULL;
 }
