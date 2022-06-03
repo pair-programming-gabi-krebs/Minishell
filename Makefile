@@ -45,12 +45,13 @@ FILES = main.c \
 		exec_commands.c \
 		resolve_dups_outfile.c \
 		resolve_dups_infile.c \
+		dup_infile.c \
 		format_table.c \
 		create_process_and_exec_cmd.c \
 		end_pipeline.c \
 		reset_cmd_table.c \
 		copy_mtx.c \
-		handle_redirect.c \
+		handle_redirects.c \
 		check_for_redirects.c \
 		get_last_redirect_position.c \
 		get_redirect_name.c \
