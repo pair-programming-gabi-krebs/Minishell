@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:13:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/02 23:18:44 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/02 23:36:22 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,14 @@ static int	check_for_redirects(t_ms *ms)
 		free_matrix(ms->cmds.inf);
 		ms->cmds.inf = malloc(2048 * sizeof(char **));
 		ms->cmds.inf[0] = NULL;
+		ms->cmds.out_fd = -1;
 	}
 	if (out_counter == 0)
 	{
 		free_matrix(ms->cmds.out);
 		ms->cmds.out = malloc(2048 * sizeof(char **));
 		ms->cmds.out[0] = NULL;
+		ms->cmds.out_fd = -1;
 	}
 	if (inf_counter > 0 || out_counter > 0)
 		return (1);
