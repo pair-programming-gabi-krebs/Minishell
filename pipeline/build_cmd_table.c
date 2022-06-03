@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:12:59 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/19 21:42:12 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/02 22:07:45 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	build_cmd_table(t_ms *ms)
 		if (ms->lexer.tokens[i][0] == '|'
 			&& ft_strlen(ms->lexer.tokens[i]) == 1)
 		{
-			//printf("i: %d\n ms->cmds.cmd_index: %d\n", i, ms->cmds.cmd_index);
 			format_table(ms, ms->cmds.cmd_index, i);
 			has_format = 1;
 			i++;
@@ -34,7 +33,6 @@ void	build_cmd_table(t_ms *ms)
 	}
 	if (!has_format)
 	{
-		//printf("i: %d\n ms->cmds.cmd_index: %d\n", i, ms->cmds.cmd_index);
 		format_table(ms, ms->cmds.cmd_index, i);
 	}
 	ms->cmds.cmd_index = i;

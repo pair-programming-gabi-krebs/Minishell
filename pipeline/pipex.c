@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/01 23:56:45 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/02 22:36:02 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	pipex(t_ms *ms)
 	int	i;
 	int stin;
 
-// doesn't work with < outfile ls
 	parse_env(ms);
+	stin = -1;
 	i = -1;
 	while (i < ms->parser.pipes_qtn)
 	{
@@ -30,10 +30,20 @@ void	pipex(t_ms *ms)
 		if (!handle_redirects(ms))
 			return ;
 		if (i == -1 && ms->cmds.inf_fd != -1)
-			dup42(ms->cmds.inf_fd, STDIN_FILENO);
-		if (i >= 0)
 		{
-			if (i == 0)
+			if (stin == -1)
+				stin = dup(STDIN_FILENO);
+			dup42(ms->cmds.inf_fd, STDIN_FILENO);
+		}
+		else if (i >= 0 && ms->cmds.inf_fd != -1)
+		{
+			if (i == 0 && stin == -1)
+				stin = dup(STDIN_FILENO);
+			dup42(ms->cmds.inf_fd, STDIN_FILENO);
+		}
+		else if (i >= 0)
+		{
+			if (i == 0 && stin == -1)
 				stin = dup(STDIN_FILENO);
 			if (ms->cmds.inf_fd == -1)
 				dup42(ms->cmds.fd[0], STDIN_FILENO);
@@ -41,7 +51,9 @@ void	pipex(t_ms *ms)
 				dup42(ms->cmds.inf_fd, STDIN_FILENO);
 		}
 		if (pipe(ms->cmds.fd) == -1)
+		{
 			ft_exit(ms);
+		}
 		if (is_builtin(ms))
 			exec_builtin(ms);
 		else
@@ -49,8 +61,9 @@ void	pipex(t_ms *ms)
 		reset_cmd_table(ms);
 		i++;
 	}
-	if (ms->parser.pipes_qtn > 0)
-		dup2(stin, STDIN_FILENO);
+	// if (ms->parser.pipes_qtn > 0)
+	// 	dup2(stin, STDIN_FILENO);
+	dup2(stin, STDIN_FILENO);
 	end_pipeline(ms);
 }
 
