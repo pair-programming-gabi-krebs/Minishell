@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/02 22:36:02 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/03 19:10:32 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	open_out_redirects(t_ms *ms);
 void	pipex(t_ms *ms)
 {
 	int	i;
-	int stin;
+	int	stin;
 
 	parse_env(ms);
 	stin = -1;
@@ -61,8 +61,6 @@ void	pipex(t_ms *ms)
 		reset_cmd_table(ms);
 		i++;
 	}
-	// if (ms->parser.pipes_qtn > 0)
-	// 	dup2(stin, STDIN_FILENO);
 	dup2(stin, STDIN_FILENO);
 	end_pipeline(ms);
 }
@@ -105,7 +103,7 @@ static int	open_out_redirects(t_ms *ms)
 	out_count = ft_mtxlen(ms->cmds.out);
 	while (i < out_count)
 	{
-		ms->cmds.out_fd = open(ms->cmds.out[i], O_WRONLY | O_CREAT | O_TRUNC , \
+		ms->cmds.out_fd = open(ms->cmds.out[i], O_WRONLY | O_CREAT | O_TRUNC, \
 			0777);
 		if (ms->cmds.out_fd == -1)
 		{

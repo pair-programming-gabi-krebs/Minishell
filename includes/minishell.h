@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/02 23:46:00 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/03 19:11:29 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_parser
 	char	*infile;
 	char	*outfile;
 	char	**cmd_table;
-}    t_parser;
+}	t_parser;
 
 typedef struct s_tk
 {
@@ -118,7 +118,6 @@ typedef struct s_minishell
 	t_echo		echo;
 	t_list		**list;
 	t_cmds		cmds;
-	//t_list		**tk_list;
 }	t_ms;
 
 /* Prompt */
@@ -153,7 +152,11 @@ int		syntatic_analysis(t_ms *ms);
 void	remove_quotes(t_ms *ms);
 
 /* Parser */
-void	parser(t_ms *ms);
+void	get_redirect_name(t_ms *ms, char **redirect, int i, int counter);
+void	remove_redirect_from_end_of_str(t_ms *ms);
+void	remove_redirect_from_start_of_str(t_ms *ms);
+int		check_for_redirects(t_ms *ms);
+int		get_last_redirect_position(t_ms *ms, int i);
 
 /* Builtins */
 int		cd(t_ms *ms);
