@@ -6,31 +6,60 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/01 23:40:51 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/02 23:33:16 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+static void	ft_init_prompt(t_ms *ms);
+static void	ft_init_lexer(t_ms *ms);
+static void	ft_init_cmd(t_ms *ms);
+
 void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 {
-	ms->prompt.special = ft_strdup("<>\"\'|");
+	ft_init_cmd(ms);
+	ft_init_prompt(ms);
+	ft_init_lexer(ms);
+	ft_signal(ms);
+	copy_envp(ms);
 	ms->init.argc = argc - 1;
 	ms->init.argv = argv;
 	ms->init.envp = envp;
+	ms->parser.pipes_qtn = 0;
+}
+
+static void	ft_init_tk(t_ms *ms)
+{
+	ms->tk.j = 0;
+	ms->tk.k = 0;
+	ms->tk.len = 0;
+	ms->tk.mtx = malloc(100 * sizeof(char **));
+	ms->tk.line = NULL;
+}
+
+static void	ft_init_prompt(t_ms *ms)
+{
+	ms->prompt.special = ft_strdup("<>\"\'|");
+	ms->prompt.line = NULL;
+	ms->prompt.prev_line = NULL;
+}
+
+static void	ft_init_lexer(t_ms *ms)
+{
+	ms->lexer.flag_quote = 0;
 	ms->lexer.i_token = 0;
 	ms->lexer.tokens = malloc(2048 * sizeof(char **));
 	ms->lexer.tokens[0] = NULL;
-	ms->prompt.line = NULL;
 	ms->lexer.line = NULL;
-	ms->prompt.prev_line = NULL;
-	ms->tk.line = NULL;
-	ms->parser.pipes_qtn = 0;
+}
+
+static void	ft_init_cmd(t_ms *ms)
+{
 	ms->cmds.cmd_index = 0;
 	ms->cmds.command = malloc(100 * sizeof(char *));
 	ms->cmds.command[0] = NULL;
 	ms->cmds.file_path = NULL;
-	ms->lexer.flag_quote = 0;
 	ms->cmds.out = malloc(2048 * sizeof(char **));
 	ms->cmds.out[0] = NULL;
 	ms->cmds.inf = malloc(2048 * sizeof(char **));
@@ -38,6 +67,4 @@ void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 	ms->cmds.bin = NULL;
 	ms->cmds.out_fd = -1;
 	ms->cmds.inf_fd = -1;
-	ft_signal(ms);
-	copy_envp(ms);
 }
