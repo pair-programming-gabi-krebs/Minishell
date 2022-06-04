@@ -6,14 +6,13 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:21:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/03 20:40:15 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/03 21:40:47 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static void	reset_matrix(char **matrix);
-static int	redirect_validations(t_ms *ms, int inf_counter, int out_counter);
+static void	redirect_validations(t_ms *ms, int inf_counter, int out_counter);
 
 int	check_for_redirects(t_ms *ms)
 {
@@ -38,31 +37,26 @@ int	check_for_redirects(t_ms *ms)
 		}
 		i++;
 	}
-	if (redirect_validations(ms, inf_counter, out_counter))
-		return (1);
-	return (0);
-}
-
-static int	redirect_validations(t_ms *ms, int inf_counter, int out_counter)
-{
-	if (inf_counter == 0)
-	{
-		reset_matrix(ms->cmds.inf);
-		ms->cmds.inf_fd = -1;
-	}
-	if (out_counter == 0)
-	{
-		reset_matrix(ms->cmds.out);
-		ms->cmds.out_fd = -1;
-	}
+	redirect_validations(ms, inf_counter, out_counter);
 	if (inf_counter > 0 || out_counter > 0)
 		return (1);
 	return (0);
 }
 
-static void	reset_matrix(char **matrix)
+static void	redirect_validations(t_ms *ms, int inf_counter, int out_counter)
 {
-	free_matrix(matrix);
-	matrix = malloc(2048 * sizeof(char **));
-	matrix[0] = NULL;
+	if (inf_counter == 0)
+	{
+		free_matrix(ms->cmds.inf);
+		ms->cmds.inf = malloc(2048 * sizeof(char **));
+		ms->cmds.inf[0] = NULL;
+		ms->cmds.inf_fd = -1;
+	}
+	if (out_counter == 0)
+	{
+		free_matrix(ms->cmds.out);
+		ms->cmds.out = malloc(2048 * sizeof(char **));
+		ms->cmds.out[0] = NULL;
+		ms->cmds.inf_fd = -1;
+	}
 }
