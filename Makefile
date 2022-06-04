@@ -32,7 +32,6 @@ FILES = main.c \
 		copy_envp.c \
 		pwd.c \
 		echo.c \
-		syntatic_analysis.c \
 		remove_quotes.c \
 		pipeline.c \
 		pipex.c \
@@ -55,7 +54,11 @@ FILES = main.c \
 		get_last_redirect_position.c \
 		get_redirect_name.c \
 		remove_redirect_from_end_of_str.c \
-		remove_redirect_from_start_of_str.c
+		remove_redirect_from_start_of_str.c \
+		pre_tokenization.c \
+		line_formater.c \
+		strjoin_quotes.c \
+		strjoin_add_space.c
 
 
 
