@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/03 19:51:55 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/03 21:55:46 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	ft_init_prompt(t_ms *ms);
 static void	ft_init_lexer(t_ms *ms);
 static void	ft_init_cmd(t_ms *ms);
-static void	ft_init_tk(t_ms *ms);
 
 void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 {
@@ -26,18 +25,8 @@ void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 	ft_init_cmd(ms);
 	ft_init_prompt(ms);
 	ft_init_lexer(ms);
-	ft_init_tk(ms);
 	ft_signal(ms);
 	copy_envp(ms);
-}
-
-static void	ft_init_tk(t_ms *ms)
-{
-	ms->tk.j = 0;
-	ms->tk.k = 0;
-	ms->tk.len = 0;
-	ms->tk.mtx = malloc(100 * sizeof(char **));
-	ms->tk.line = NULL;
 }
 
 static void	ft_init_prompt(t_ms *ms)

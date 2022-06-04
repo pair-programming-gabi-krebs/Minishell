@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:47:34 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/01 22:51:40 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/03 21:55:32 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,3 @@ void	valid_input(t_ms *ms)
 	pipeline(ms);
 	ft_reset(ms);
 }
-
-// echo | tr | grep

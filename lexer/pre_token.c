@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pre_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/02 23:32:42 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/03 21:52:50 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	pre_token(t_ms *ms)
 {
 	int	i;
 
+	ms->tk.j = 0;
+	ms->tk.k = 0;
+	ms->tk.len = 0;
+	ms->tk.mtx = malloc(100 * sizeof(char **));
+	ms->tk.line = NULL;
 	i = 0;
 	while (ms->prompt.line[i])
 	{
