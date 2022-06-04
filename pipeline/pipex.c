@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/03 19:39:10 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/03 20:29:29 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 void	pipex(t_ms *ms)
 {
 	int	i;
-	int	stin;
 
 	parse_env(ms);
-	stin = -1;
+	ms->cmds.stin = -1;
 	i = -1;
 	while (i < ms->parser.pipes_qtn)
 	{
 		build_cmd_table(ms);
 		if (!handle_redirects(ms))
 			return ;
-		stin = resolve_dups_infile(ms, stin, i);
+		resolve_dups_infile(ms, i);
 		if (pipe(ms->cmds.fd) == -1)
 			ft_exit(ms);
 		if (is_builtin(ms))
@@ -35,6 +34,6 @@ void	pipex(t_ms *ms)
 		reset_cmd_table(ms);
 		i++;
 	}
-	dup2(stin, STDIN_FILENO);
+	dup2(ms->cmds.stin, STDIN_FILENO);
 	end_pipeline(ms);
 }

@@ -6,25 +6,33 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:24:48 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/03 19:35:04 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/03 20:28:22 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	resolve_dups_infile(t_ms *ms, int stin, int i)
+void	resolve_dups_infile(t_ms *ms, int i)
 {
 	if (i == -1 && ms->cmds.inf_fd != -1)
-		stin = dup_infile(ms, stin, i);
+	{
+		if (ms->cmds.stin == -1)
+			ms->cmds.stin = dup(STDIN_FILENO);
+		dup42(ms->cmds.inf_fd, STDIN_FILENO);
+	}
 	else if (i >= 0 && ms->cmds.inf_fd != -1)
-		stin = dup_infile(ms, stin, i);
+	{
+		if (i == 0 && ms->cmds.stin == -1)
+			ms->cmds.stin = dup(STDIN_FILENO);
+		dup42(ms->cmds.inf_fd, STDIN_FILENO);
+	}
 	else if (i >= 0)
 	{
-		stin = dup_infile(ms, stin, i);
+		if (i == 0 && ms->cmds.stin == -1)
+			ms->cmds.stin = dup(STDIN_FILENO);
 		if (ms->cmds.inf_fd == -1)
 			dup42(ms->cmds.fd[0], STDIN_FILENO);
 		else
 			dup42(ms->cmds.inf_fd, STDIN_FILENO);
 	}
-	return (stin);
 }

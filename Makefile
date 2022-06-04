@@ -45,7 +45,6 @@ FILES = main.c \
 		exec_commands.c \
 		resolve_dups_outfile.c \
 		resolve_dups_infile.c \
-		dup_infile.c \
 		format_table.c \
 		create_process_and_exec_cmd.c \
 		end_pipeline.c \
