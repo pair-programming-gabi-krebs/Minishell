@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/03 21:55:46 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/06 20:16:02 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[])
 	ms->init.argc = argc - 1;
 	ms->init.argv = argv;
 	ms->parser.pipes_qtn = 0;
+	ms->tk.line = NULL;
 	ft_init_cmd(ms);
 	ft_init_prompt(ms);
 	ft_init_lexer(ms);
