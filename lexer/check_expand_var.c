@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 22:27:19 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/06 22:27:47 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/06 22:39:13 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,9 @@ void	check_expand_var(t_ms *ms)
 	while (ms->lexer.tokens[i])
 	{
 		char **token = ft_split(ms->lexer.tokens[i], ' ');
-		printf("ms->lexer.tokens[i]: %s\n", ms->lexer.tokens[i]);
 		if (ms->lexer.tokens[i][0] == '$' && (ms->lexer.flag_quote == '\"'
 			|| !ms->lexer.flag_quote))
-		{
 			expand_var(ms, ms->lexer.tokens, i);
-			printf("ms->lexer.tokens[i]: %s\n", ms->lexer.tokens[i]);
-		}
 		i++;
 		free_matrix(token);
 	}
