@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 23:08:19 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/06 23:59:51 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/07 19:48:02 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	echo(t_ms *ms)
 	}
 	if (!ft_strncmp(ms->cmds.command[1], "$?", ft_strlen(ms->cmds.command[1])))
 		handle_exit_code(ms, 1);
-	else if (!ft_strncmp(ms->cmds.command[2], "$?", \
+	else if (ms->cmds.command[2] && !ft_strncmp(ms->cmds.command[2], "$?", \
 		ft_strlen(ms->cmds.command[2])))
 		handle_exit_code(ms, 2);
 	if (!ft_strncmp(ms->cmds.command[1], "-n", ft_strlen(ms->cmds.command[1])))
