@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/03 20:29:29 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/06 22:11:04 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	pipex(t_ms *ms)
 		if (pipe(ms->cmds.fd) == -1)
 			ft_exit(ms);
 		if (is_builtin(ms))
-			exec_builtin(ms);
+			exec_builtin(ms, i);
 		else
 			create_process_and_exec_cmd(ms, i);
 		reset_cmd_table(ms);

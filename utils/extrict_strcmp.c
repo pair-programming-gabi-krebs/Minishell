@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_builtin.c                                       :+:      :+:    :+:   */
+/*   extrict_strcmp.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/16 21:26:20 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/06 22:04:53 by gcosta-d         ###   ########.fr       */
+/*   Created: 2022/06/06 21:48:32 by gcosta-d          #+#    #+#             */
+/*   Updated: 2022/06/06 22:00:10 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	is_builtin(t_ms *ms)
+int	extrict_strcmp(const char *s1, const char *s2)
 {
-	char	*cmd;
-
-	cmd = ms->cmds.command[0];
-	if ((cmd && !extrict_strcmp(cmd, "cd"))
-		|| (cmd && !extrict_strcmp(cmd, "echo"))
-		|| (cmd && !extrict_strcmp(cmd, "env"))
-		|| (cmd && !extrict_strcmp(cmd, "export"))
-		|| (cmd && !extrict_strcmp(cmd, "pwd"))
-		|| (cmd && !extrict_strcmp(cmd, "unset")))
+	if (!s1 && !s2)
+		return (0);
+	else if ((!s1 && s2) || (s1 && !s2))
 		return (1);
-	return (0);
+	else if (!ft_strncmp(s1, s2, ft_strlen(s1))
+		&& !ft_strncmp(s1, s2, ft_strlen(s2))
+		&& ft_strlen(s1) == ft_strlen(s2))
+		return (0);
+	return (1);
 }

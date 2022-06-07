@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/03 22:11:25 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/06 22:11:25 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ void	ft_reset(t_ms *ms);
 void	dup42(int fd, int std);
 void	del(void *content);
 void	copy_mtx(char **mtx_dest, char **mtx_src, int start, int len);
+int		extrict_strcmp(const char *s1, const char *s2);
 
 /* Lexer */
 void	lexer(t_ms *ms);
@@ -176,7 +177,7 @@ void	pipex(t_ms *ms);
 char	*command_finder(t_ms *ms);
 void	parse_env(t_ms *ms);
 int		is_builtin(t_ms *ms);
-void	exec_builtin(t_ms *ms);
+void	exec_builtin(t_ms *ms, int i);
 void	exec_commands(t_ms *ms, int i);
 void	resolve_dups_outfile(t_ms *ms, int i);
 void	resolve_dups_infile(t_ms *ms, int i);
