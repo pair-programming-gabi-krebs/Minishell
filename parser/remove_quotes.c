@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:53:46 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/25 22:45:32 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/07 20:03:12 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ void	remove_quotes(t_ms *ms)
 		{
 			ms->lexer.flag_quote = SINGLE_QUOTE;
 			remove_quotes_from_str(ms, i, "\'");
+			printf("ms->lexer.tokens[i] %s\n", ms->lexer.tokens[i]);
 		}
-		else if (ft_strchr(ms->lexer.tokens[i], DOUBLE_QUOTE))
+		if (ft_strchr(ms->lexer.tokens[i], DOUBLE_QUOTE))
 		{
+			printf("ms->lexer.tokens[i] %s\n", ms->lexer.tokens[i]);
 			ms->lexer.flag_quote = DOUBLE_QUOTE;
 			remove_quotes_from_str(ms, i, "\"");
+			printf("ms->lexer.tokens[i] %s\n", ms->lexer.tokens[i]);
 		}
 		i++;
 	}
