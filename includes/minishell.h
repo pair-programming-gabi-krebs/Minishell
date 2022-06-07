@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/06 22:42:51 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/06 23:19:37 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct s_cmds
 	int		exit_status;
 	int		cmd_index;
 	int		stin;
+	int		stout;
 }	t_cmds;
 
 typedef struct s_minishell

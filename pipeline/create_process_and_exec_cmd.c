@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:24:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/20 00:07:48 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/06 23:32:30 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	create_process_and_exec_cmd(t_ms *ms, int i)
 	{
 		waitpid(ms->cmds.pid, &ms->cmds.exit_status, 0);
 		close(ms->cmds.fd[1]);
+		close(ms->cmds.fd[0]);
 	}
 }
