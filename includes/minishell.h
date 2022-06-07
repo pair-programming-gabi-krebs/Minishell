@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/06 22:11:25 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/06 22:42:51 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ void	pre_tokenization(t_ms *ms, int i);
 void	line_formater(t_ms *ms);
 int		strjoin_quotes(t_ms *ms, int i);
 void	strjoin_add_space(t_ms *ms, int i);
+void	check_expand_var(t_ms *ms);
 
 /* Parser */
 void	get_redirect_name(t_ms *ms, char **redirect, int i, int counter);
