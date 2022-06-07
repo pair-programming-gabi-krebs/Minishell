@@ -58,7 +58,8 @@ FILES = main.c \
 		pre_tokenization.c \
 		line_formater.c \
 		strjoin_quotes.c \
-		strjoin_add_space.c
+		strjoin_add_space.c \
+		check_expand_var.c
 
 
 
