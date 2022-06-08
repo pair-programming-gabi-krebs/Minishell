@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:14:31 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/06 22:38:37 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/08 19:02:38 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	exec_commands(t_ms *ms, int i)
 		printf("%s: command not found", ms->cmds.command[0]);
 		ft_exit(ms);
 	}
+	resolve_dups_infile(ms, i);
 	resolve_dups_outfile(ms, i);
 	if (execve(ms->cmds.file_path, ms->cmds.command, ms->init.envp) == -1)
-	ft_exit(ms);	
+	{
+		dprintf(2, "exec fail\n");
+		ft_exit(ms);
+	}
 }
