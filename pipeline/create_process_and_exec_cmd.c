@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   create_process_and_exec_cmd.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:24:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/08 18:40:50 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/09 20:41:15 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/minishell.h"
 
@@ -22,7 +23,10 @@ void	create_process_and_exec_cmd(t_ms *ms, int i)
 	else
 	{
 		waitpid(ms->cmds.pid, &ms->cmds.exit_status, 0);
-		dprintf(2, "Depois do waitpid\n");
+		if (WIFEXITED(ms->cmds.exit_status))
+			ms->cmds.exit_status = WEXITSTATUS(ms->cmds.exit_status);
+		else if (WIFSIGNALED(ms->cmds.exit_status))
+			ms->cmds.exit_status = WTERMSIG(ms->cmds.exit_status) + 128;
 		close(ms->cmds.fd[1]);
 	}
 }
