@@ -59,7 +59,7 @@ FILES = main.c \
 		line_formater.c \
 		strjoin_quotes.c \
 		strjoin_add_space.c \
-		extrict_strcmp.c \
+		strict_strcmp.c \
 		check_expand_var.c
 
 
