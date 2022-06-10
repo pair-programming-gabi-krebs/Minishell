@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/09 21:40:46 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/09 23:17:25 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ typedef struct s_cmds
 	char	*file_path;
 	char	*path;
 	char	**bin;
+	char	*limiter;
+	int		hdoc_fd;
 	int		fd[2];
 	int		aux_fd;
 	int		pid;
@@ -190,5 +192,6 @@ void	create_process_and_exec_cmd(t_ms *ms, int i);
 void	end_pipeline(t_ms *ms);
 void	reset_cmd_table(t_ms *ms);
 int		handle_redirects(t_ms *ms);
+void	here_doc(t_ms *ms);
 
 #endif
