@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/09 23:17:25 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/10 00:35:35 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_cmds
 	int		cmd_index;
 	int		stin;
 	int		stout;
+	int		append_flag;
 }	t_cmds;
 
 typedef struct s_minishell

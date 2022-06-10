@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/10 00:28:22 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/10 00:36:03 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ static void	ft_init_cmd(t_ms *ms)
 	ms->cmds.hdoc_fd = -1;
 	ms->cmds.fd[1] = -1;
 	ms->cmds.fd[0] = -1;
+	ms->cmds.append_flag = 0;
 }
