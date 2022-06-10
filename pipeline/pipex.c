@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/09 22:34:48 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/09 22:37:56 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	pipex(t_ms *ms)
 		build_cmd_table(ms);
 		if (!handle_redirects(ms))
 			return ;
-		// resolve_dups_infile(ms, i);
 		if (pipe(ms->cmds.fd) == -1)
 			ft_exit(ms);
 		if (is_builtin(ms))
