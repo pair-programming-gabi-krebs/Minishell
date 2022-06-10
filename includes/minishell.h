@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/09 20:46:33 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/09 21:40:46 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_cmds
 	char	*path;
 	char	**bin;
 	int		fd[2];
+	int		aux_fd;
 	int		pid;
 	int		exit_status;
 	int		cmd_index;
@@ -180,7 +181,7 @@ char	*command_finder(t_ms *ms);
 void	parse_env(t_ms *ms);
 int		is_builtin(t_ms *ms);
 void	exec_builtin(t_ms *ms, int i);
-void	exec_commands(t_ms *ms, int i);
+void	exec_commands(t_ms *ms);
 void	resolve_dups_outfile(t_ms *ms, int i);
 void	resolve_dups_infile(t_ms *ms, int i);
 void	format_table(t_ms *ms, int start, int end);
