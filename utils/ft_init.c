@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/09 21:43:44 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/09 23:12:23 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,6 @@ static void	ft_init_cmd(t_ms *ms)
 	ms->cmds.inf_fd = -1;
 	ms->cmds.exit_status = 0;
 	ms->cmds.aux_fd = -1;
+	ms->cmds.fd[1] = -1;
+	ms->cmds.fd[0] = -1;
 }
