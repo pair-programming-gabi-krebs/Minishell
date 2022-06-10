@@ -60,7 +60,8 @@ FILES = main.c \
 		strjoin_quotes.c \
 		strjoin_add_space.c \
 		strict_strcmp.c \
-		check_expand_var.c
+		check_expand_var.c \
+		here_doc.c
 
 
 
