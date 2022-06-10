@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/09 23:09:24 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/10 00:46:14 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+static void	reset_std_fds(t_ms *ms);
 
 void	pipex(t_ms *ms)
 {
@@ -37,7 +39,12 @@ void	pipex(t_ms *ms)
 		reset_cmd_table(ms);
 		i++;
 	}
+	reset_std_fds(ms);
+	end_pipeline(ms);
+}
+
+static void	reset_std_fds(t_ms *ms)
+{
 	dup42(ms->cmds.stin, STDIN_FILENO);
 	dup42(ms->cmds.stout, STDOUT_FILENO);
-	end_pipeline(ms);
 }

@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/10 00:38:05 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/10 00:47:23 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ static int	open_out_redirects(t_ms *ms)
 	{
 		if (ms->cmds.append_flag)
 			ms->cmds.out_fd = open(ms->cmds.out[i], \
-			 O_WRONLY | O_CREAT | O_APPEND, 0777);
+			O_WRONLY | O_CREAT | O_APPEND, 0777);
 		else
 			ms->cmds.out_fd = open(ms->cmds.out[i], \
-			 O_WRONLY | O_CREAT | O_TRUNC, 0777);
+			O_WRONLY | O_CREAT | O_TRUNC, 0777);
 		if (ms->cmds.out_fd == -1)
 		{
 			printf("out file does not exists :(\n");

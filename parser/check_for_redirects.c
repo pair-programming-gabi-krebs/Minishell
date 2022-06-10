@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:21:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/10 00:36:34 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/10 00:48:15 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int	check_for_redirects(t_ms *ms)
 	while (ms->cmds.command[i])
 	{
 		if (!strict_strcmp(ms->cmds.command[i], "<<")
-			&&  ms->cmds.command[i + 1])
+			&& ms->cmds.command[i + 1])
 		{
 			ms->cmds.limiter = ms->cmds.command[i + 1];
 			here_doc(ms);
 			hdoc_counter++;
 		}
 		else if (!strict_strcmp(ms->cmds.command[i], ">>")
-			&&  ms->cmds.command[i + 1])
+			&& ms->cmds.command[i + 1])
 		{
 			get_redirect_name(ms, ms->cmds.out, i, out_counter);
 			out_counter++;
