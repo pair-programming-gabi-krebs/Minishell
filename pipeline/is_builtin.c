@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 21:26:20 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/09 20:47:47 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/10 19:28:53 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_builtin(t_ms *ms)
 	if ((cmd && !strict_strcmp(cmd, "cd"))
 		|| (cmd && !strict_strcmp(cmd, "echo"))
 		|| (cmd && !strict_strcmp(cmd, "env"))
-		|| (cmd && !strict_strcmp(cmd, "sport"))
+		|| (cmd && !strict_strcmp(cmd, "export"))
 		|| (cmd && !strict_strcmp(cmd, "pwd"))
 		|| (cmd && !strict_strcmp(cmd, "unset")))
 		return (1);
