@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/08 19:06:48 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/09 22:34:48 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	pipex(t_ms *ms)
 		i++;
 	}
 	dup42(ms->cmds.stin, STDIN_FILENO);
-	// dup42(ms->cmds.stout, STDOUT_FILENO);
+	dup42(ms->cmds.stout, STDOUT_FILENO);
 	end_pipeline(ms);
 }
