@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 23:08:19 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/07 19:48:02 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/11 00:41:18 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static char	*join_strings(char **echo);
 static void	print_echo(t_ms *ms, int i);
-static void	handle_exit_code(t_ms *ms, int i);
 
 void	echo(t_ms *ms)
 {
@@ -28,11 +27,6 @@ void	echo(t_ms *ms)
 		printf("\n");
 		return ;
 	}
-	if (!ft_strncmp(ms->cmds.command[1], "$?", ft_strlen(ms->cmds.command[1])))
-		handle_exit_code(ms, 1);
-	else if (ms->cmds.command[2] && !ft_strncmp(ms->cmds.command[2], "$?", \
-		ft_strlen(ms->cmds.command[2])))
-		handle_exit_code(ms, 2);
 	if (!ft_strncmp(ms->cmds.command[1], "-n", ft_strlen(ms->cmds.command[1])))
 	{
 		has_nl = 0;
@@ -41,16 +35,6 @@ void	echo(t_ms *ms)
 	print_echo(ms, i);
 	if (has_nl)
 		printf("\n");
-}
-
-static void	handle_exit_code(t_ms *ms, int i)
-{
-	char	*aux;
-
-	free(ms->cmds.command[i]);
-	aux = ft_itoa(ms->cmds.exit_status);
-	ms->cmds.command[i] = ft_strdup(aux);
-	free(aux);
 }
 
 static void	print_echo(t_ms *ms, int i)
