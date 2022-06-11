@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_expand_var.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 22:27:19 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/10 00:49:56 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/11 00:43:16 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	expand_var(t_ms *ms, char **echo, int i);
 static char	*search_var_on_env(t_ms *ms, char *str);
+static void	handle_exit_code_variable_expansion(t_ms *ms);
+static void	handle_exit_code(t_ms *ms, int i);
 
 void	check_expand_var(t_ms *ms)
 {
@@ -30,6 +32,7 @@ void	check_expand_var(t_ms *ms)
 		i++;
 		free_matrix(token);
 	}
+	handle_exit_code_variable_expansion(ms);
 }
 
 static void	expand_var(t_ms *ms, char **echo, int i)
@@ -71,4 +74,28 @@ static char	*search_var_on_env(t_ms *ms, char *str)
 		}
 	}
 	return (NULL);
+}
+
+static void	handle_exit_code_variable_expansion(t_ms *ms)
+{
+	int	i;
+
+	i = 0;
+	while (i < ms->lexer.i_token)
+	{
+		if (!ft_strncmp(ms->lexer.tokens[i], "$?", \
+			ft_strlen(ms->lexer.tokens[i])))
+			handle_exit_code(ms, i);
+		i++;
+	}
+}
+
+static void	handle_exit_code(t_ms *ms, int i)
+{
+	char	*aux;
+
+	free(ms->lexer.tokens[i]);
+	aux = ft_itoa(ms->cmds.exit_status);
+	ms->lexer.tokens[i] = ft_strdup(aux);
+	free(aux);
 }
