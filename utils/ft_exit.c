@@ -6,13 +6,13 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:34:24 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/10 22:41:20 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:05:18 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ft_exit(t_ms *ms)
+void	ft_exit(t_ms *ms, int exit_code)
 {
 	printf("\n");
 	free_matrix(ms->lexer.tokens);
@@ -27,5 +27,5 @@ void	ft_exit(t_ms *ms)
 		free_matrix(ms->cmds.bin);
 	ft_lstclear(ms->list, free);
 	ft_free(ms);
-	exit(1);
+	exit(exit_code);
 }
