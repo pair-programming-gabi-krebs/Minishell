@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:39:38 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/07 23:56:22 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/10 00:48:26 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	clear(void)
 
 void	prompt(t_ms *ms)
 {
-	//clear();
+	clear();
 	while (1)
 	{
 		ms->prompt.line = readline(print_dir(ms));

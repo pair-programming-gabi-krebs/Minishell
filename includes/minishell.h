@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/10 21:08:18 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/10 21:31:20 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ typedef struct s_cmds
 	int		cmd_index;
 	int		stin;
 	int		stout;
+	int		append_flag;
 }	t_cmds;
 
 typedef struct s_minishell

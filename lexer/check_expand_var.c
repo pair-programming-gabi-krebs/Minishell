@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_expand_var.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 22:27:19 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/06 22:39:13 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/10 00:49:56 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ static char	*search_var_on_env(t_ms *ms, char *str);
 
 void	check_expand_var(t_ms *ms)
 {
-	int	i;
+	char	**token;
+	int		i;
 
 	i = 0;
 	while (ms->lexer.tokens[i])
 	{
-		char **token = ft_split(ms->lexer.tokens[i], ' ');
+		token = ft_split(ms->lexer.tokens[i], ' ');
 		if (ms->lexer.tokens[i][0] == '$' && (ms->lexer.flag_quote == '\"'
 			|| !ms->lexer.flag_quote))
 			expand_var(ms, ms->lexer.tokens, i);

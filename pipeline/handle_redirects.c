@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/03 19:41:07 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/10 20:01:44 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int	open_inf_redirects(t_ms *ms)
 		ms->cmds.inf_fd = open(ms->cmds.inf[i], O_RDONLY, 0777);
 		if (ms->cmds.inf_fd == -1)
 		{
-			printf("inf file does not exists :(\n");
 			return (0);
 		}
 		i++;
@@ -53,11 +52,14 @@ static int	open_out_redirects(t_ms *ms)
 	out_count = ft_mtxlen(ms->cmds.out);
 	while (i < out_count)
 	{
-		ms->cmds.out_fd = open(ms->cmds.out[i], O_WRONLY | O_CREAT | O_TRUNC, \
-			0777);
+		if (ms->cmds.append_flag)
+			ms->cmds.out_fd = open(ms->cmds.out[i], \
+			O_WRONLY | O_CREAT | O_APPEND, 0777);
+		else
+			ms->cmds.out_fd = open(ms->cmds.out[i], \
+			O_WRONLY | O_CREAT | O_TRUNC, 0777);
 		if (ms->cmds.out_fd == -1)
 		{
-			printf("out file does not exists :(\n");
 			return (0);
 		}
 		i++;

@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   create_process_and_exec_cmd.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:24:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/09 22:18:19 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/10 00:46:41 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/minishell.h"
 

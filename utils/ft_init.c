@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/10 21:26:56 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/10 21:32:00 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ static void	ft_init_cmd(t_ms *ms)
 	ms->cmds.hdoc_fd = -1;
 	ms->cmds.fd[1] = -1;
 	ms->cmds.fd[0] = -1;
+	ms->cmds.append_flag = 0;
 }
