@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:30:59 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/03 21:48:19 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/11 00:10:20 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	tokenizer(t_ms *ms)
 	int		c;
 
 	i = 0;
-	while (i < ft_strlen(ms->lexer.line))
+	while (ms->lexer.line[i] && i < ft_strlen(ms->lexer.line))
 	{
 		if (ms->lexer.line[i] == SINGLE_QUOTE)
 			i = special_case(ms, SINGLE_QUOTE, i);
@@ -36,6 +36,8 @@ void	tokenizer(t_ms *ms)
 			c = i;
 			i = tokenizer_common_case(ms, c, i);
 		}
+		if (!ms->lexer.line[i])
+			break ;
 		i++;
 	}
 	ms->lexer.tokens[ms->lexer.i_token] = NULL;
