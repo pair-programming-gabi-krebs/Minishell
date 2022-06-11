@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 21:13:41 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/05/25 20:33:50 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:13:49 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	change_dir(t_ms *ms, char *path);
 static void	update_pwd_and_oldpwd(t_ms *ms, char *current_pwd);
 static int	update_node_content(t_ms *ms, char *current_pwd, t_list *node);
 
-int	cd(t_ms *ms)
+void	cd(t_ms *ms)
 {
 	char	*aux1;
 	char	*aux2;
@@ -25,6 +25,9 @@ int	cd(t_ms *ms)
 	int		return_chdir;
 
 	path = NULL;
+	if (ms->cmds.command[1] && !ft_strncmp(ms->cmds.command[1], "", \
+		ft_strlen(ms->cmds.command[1])))
+		return ;
 	if (is_home(ms))
 		path = ft_strdup(getenv("HOME"));
 	else if (ms->cmds.command[1] && !ft_strncmp(ms->cmds.command[1], "~/", 2))
@@ -38,8 +41,9 @@ int	cd(t_ms *ms)
 	else if (ms->cmds.command[1])
 		path = ft_strdup(ms->cmds.command[1]);
 	return_chdir = change_dir(ms, path);
+	if (return_chdir == -1)
+		perror("");
 	free(path);
-	return (return_chdir);
 }
 
 static int	is_home(t_ms *ms)

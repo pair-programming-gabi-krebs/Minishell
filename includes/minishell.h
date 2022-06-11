@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/10 21:31:20 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/10 22:47:03 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ int		check_for_redirects(t_ms *ms);
 int		get_last_redirect_position(t_ms *ms, int i);
 
 /* Builtins */
-int		cd(t_ms *ms);
+void	cd(t_ms *ms);
 void	env(t_ms *ms);
 void	unset(t_ms *ms, char *var);
 void	export(t_ms *ms, char *var);
