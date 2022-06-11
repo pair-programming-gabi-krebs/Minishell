@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   command_finder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 22:57:05 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/06 20:54:29 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/10 21:58:52 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+static int	is_path_bin(char *command);
 
 char	*command_finder(t_ms *ms)
 {
@@ -19,6 +21,8 @@ char	*command_finder(t_ms *ms)
 	char	*path;
 	char	*cmd;
 
+	if (is_path_bin( ms->cmds.command[0]))
+		return ( ms->cmds.command[0]);
 	i = 0;
 	while (ms->init.envp[i] && ms->cmds.bin[i])
 	{
@@ -35,4 +39,14 @@ char	*command_finder(t_ms *ms)
 		i++;
 	}
 	return (NULL);
+}
+
+static int	is_path_bin(char *command)
+{
+	int	is_path;
+
+	is_path = 0;
+	if (!access(command, F_OK))
+		is_path = 1;
+	return (is_path);
 }
