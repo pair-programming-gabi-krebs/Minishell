@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_process_and_exec_cmd.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:24:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/10 00:46:41 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:07:42 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	create_process_and_exec_cmd(t_ms *ms, int i)
 	resolve_dups_outfile(ms, i);
 	ms->cmds.pid = fork();
 	if (ms->cmds.pid == -1)
-		ft_exit(ms);
+		ft_exit(ms, 1);
 	if (ms->cmds.pid == 0)
 		exec_commands(ms);
 	else

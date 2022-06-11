@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 01:56:57 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/04/07 21:24:53 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/10 22:42:26 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sigint_handler(int number)
 {
 	if (number == SIGQUIT)
 		return ;
-	write(2, "\n", 1);
+	write(2, "exit\n", 5);
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
