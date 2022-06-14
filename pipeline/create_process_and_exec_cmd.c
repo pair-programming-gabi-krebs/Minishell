@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:24:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 02:03:37 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/14 02:05:31 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	create_process_and_exec_cmd(t_ms *ms, int i)
 	}
 	else
 	{
+		// checkar por erro no waitpid **
 		waitpid(ms->cmds.pid, &ms->cmds.exit_status, 0);
 		if (WIFEXITED(ms->cmds.exit_status))
 			ms->cmds.exit_status = WEXITSTATUS(ms->cmds.exit_status);
