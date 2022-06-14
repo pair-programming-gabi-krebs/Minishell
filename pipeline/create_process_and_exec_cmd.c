@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_process_and_exec_cmd.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:24:14 by lkrebs-l          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/06/13 23:16:14 by gcosta-d         ###   ########.fr       */
-=======
-/*   Updated: 2022/06/13 22:09:34 by lkrebs-l         ###   ########.fr       */
->>>>>>> fe69493bd797e0e5077b04b396ca50fcadbf69c1
+/*   Updated: 2022/06/14 01:58:16 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-static int	is_cmd(t_ms *ms);
 
 void	create_process_and_exec_cmd(t_ms *ms, int i)
 {
@@ -35,7 +29,6 @@ void	create_process_and_exec_cmd(t_ms *ms, int i)
 	}
 	else
 	{
-		// checkar por erro no waitpid **
 		waitpid(ms->cmds.pid, &ms->cmds.exit_status, 0);
 		if (WIFEXITED(ms->cmds.exit_status))
 			ms->cmds.exit_status = WEXITSTATUS(ms->cmds.exit_status);
@@ -43,11 +36,4 @@ void	create_process_and_exec_cmd(t_ms *ms, int i)
 			ms->cmds.exit_status = WTERMSIG(ms->cmds.exit_status) + 128;
 		ms->cmds.aux_fd = ms->cmds.fd[0];
 	}
-}
-
-static int	is_cmd(t_ms *ms)
-{
-	if (!ms->cmds.command[0])
-		return (0);
-	return (1);
 }
