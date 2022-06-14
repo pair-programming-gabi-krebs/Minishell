@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/13 22:08:41 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/14 01:47:15 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,6 @@ typedef struct s_parser
 	char	*infile;
 	char	*outfile;
 	char	**cmd_table;
-	int		out_count;
-	int		inf_count;
-	int		hdoc_count;
 }	t_parser;
 
 typedef struct s_tk
@@ -114,6 +111,9 @@ typedef struct s_cmds
 	int		stin;
 	int		stout;
 	int		append_flag;
+	int		out_counter;
+	int		inf_counter;
+	int		hdoc_counter;
 }	t_cmds;
 
 typedef struct s_minishell
@@ -168,6 +168,8 @@ void	line_formater(t_ms *ms);
 int		strjoin_quotes(t_ms *ms, int i);
 void	strjoin_add_space(t_ms *ms, int i);
 void	check_expand_var(t_ms *ms);
+void	get_name_set_count_in(t_ms *ms, char **name, int i, int counter);
+void	get_name_set_count_out(t_ms *ms, char **name, int i, int counter);
 
 /* Parser */
 void	get_redirect_name(t_ms *ms, char **redirect, int i, int counter);

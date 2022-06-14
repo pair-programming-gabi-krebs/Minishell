@@ -61,7 +61,8 @@ FILES = main.c \
 		strjoin_add_space.c \
 		strict_strcmp.c \
 		check_expand_var.c \
-		here_doc.c
+		here_doc.c \
+		get_name_set_count.c
 
 
 
