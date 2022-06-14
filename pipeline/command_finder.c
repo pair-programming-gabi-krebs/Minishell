@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_finder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 22:57:05 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/10 23:33:56 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/13 23:03:40 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ char	*command_finder(t_ms *ms)
 	char	*cmd;
 
 	if (!ms->cmds.command[0])
+	{
 		return (NULL);
+	}
 	if (is_path_bin(ms->cmds.command[0]))
 		return (ms->cmds.command[0]);
 	i = 0;
+	if (!ms->cmds.bin)
+		return (NULL);
 	while (ms->init.envp[i] && ms->cmds.bin[i])
 	{
 		path = ft_strjoin(ms->cmds.bin[i], "/");
