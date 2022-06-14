@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 01:59:59 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/14 02:01:49 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ void	strjoin_add_space(t_ms *ms, int i);
 void	check_expand_var(t_ms *ms);
 void	get_name_set_count_in(t_ms *ms, char **name, int i, int counter);
 void	get_name_set_count_out(t_ms *ms, char **name, int i, int counter);
+int		syntatic_analysis(t_ms *ms);
 
 /* Parser */
 void	get_redirect_name(t_ms *ms, char **redirect, int i, int counter);
