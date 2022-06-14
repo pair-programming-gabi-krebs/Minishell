@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 23:08:19 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/11 00:41:18 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/13 22:11:00 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static char	*join_strings(char **echo);
 static void	print_echo(t_ms *ms, int i);
+static int	non_existent_var(t_ms *ms);
 
 void	echo(t_ms *ms)
 {
@@ -22,12 +23,12 @@ void	echo(t_ms *ms)
 
 	has_nl = 1;
 	i = 1;
-	if (!ms->cmds.command[1])
+	if (!ms->cmds.command[1] || non_existent_var(ms))
 	{
 		printf("\n");
 		return ;
 	}
-	if (!ft_strncmp(ms->cmds.command[1], "-n", ft_strlen(ms->cmds.command[1])))
+	if (!strict_strcmp(ms->cmds.command[1], "-n"))
 	{
 		has_nl = 0;
 		i = 2;
@@ -79,4 +80,20 @@ static char	*join_strings(char **echo)
 		free(aux);
 	}
 	return (str);
+}
+
+static int	non_existent_var(t_ms *ms)
+{
+	int	i;
+	int	mtx_len;
+
+	i = 1;
+	if (ms->cmds.command[1] && !strict_strcmp(ms->cmds.command[1], "-n"))
+		i = 2;
+	while (ms->cmds.command[i] && ft_strlen(ms->cmds.command[i]) == 0)
+		i++;
+	mtx_len = ft_mtxlen(ms->cmds.command);
+	if (i == mtx_len)
+		return (1);
+	return (0);
 }

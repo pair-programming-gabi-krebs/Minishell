@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_expand_var.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 22:27:19 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/11 00:43:16 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/13 21:46:25 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ static void	expand_var(t_ms *ms, char **echo, int i)
 		free(echo[i]);
 		echo[i] = search_var_on_env(ms, (str + 1));
 	}
+	else
+	{
+		free(echo[i]);
+		echo[i] = ft_strdup("");
+	}
 	free(aux);
 	free(str);
 }
@@ -83,8 +88,7 @@ static void	handle_exit_code_variable_expansion(t_ms *ms)
 	i = 0;
 	while (i < ms->lexer.i_token)
 	{
-		if (!ft_strncmp(ms->lexer.tokens[i], "$?", \
-			ft_strlen(ms->lexer.tokens[i])))
+		if (!strict_strcmp(ms->lexer.tokens[i], "$?"))
 			handle_exit_code(ms, i);
 		i++;
 	}
