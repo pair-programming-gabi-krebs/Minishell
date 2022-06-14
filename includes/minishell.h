@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/13 22:08:41 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/14 01:35:09 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ void	handle_child_sig_quit(int sig);
 void	handle_child_sig_int(int sig);
 
 /* Lexer */
-void	lexer(t_ms *ms);
+int		lexer(t_ms *ms);
 void	tokenizer(t_ms *ms);
 int		special_case(t_ms *ms, char quote, int index);
 void	pre_token(t_ms *ms);
