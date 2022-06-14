@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/10 23:24:34 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/13 22:08:41 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void	valid_input(t_ms *ms);
 
 /* Utils */
 void	copy_envp(t_ms *ms);
-void	ft_signal(t_ms *ms);
+void	ft_init_sigaction(t_ms *ms, void (*handler)(int), int sig);
 void	ft_free(t_ms *ms);
 void	ft_init(t_ms *ms, int argc, char *argv[], char *envp[]);
 void	ft_exit(t_ms *ms, int exit_code);
@@ -147,6 +147,10 @@ void	dup42(int fd, int std);
 void	del(void *content);
 void	copy_mtx(char **mtx_dest, char **mtx_src, int start, int len);
 int		strict_strcmp(const char *s1, const char *s2);
+void	handle_sig_quit(t_ms *ms, int sig);
+void	handle_sig_int(int sig);
+void	handle_child_sig_quit(int sig);
+void	handle_child_sig_int(int sig);
 
 /* Lexer */
 void	lexer(t_ms *ms);

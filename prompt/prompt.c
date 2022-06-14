@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:39:38 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/10 23:16:44 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/13 22:36:46 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	prompt(t_ms *ms)
 	clear();
 	while (1)
 	{
+		ft_init_sigaction(ms, &handle_sig_int, SIGINT);
+		ft_init_sigaction(ms, SIG_IGN, SIGQUIT);
 		ms->prompt.line = readline(print_dir(ms));
 		if (!ms->prompt.line || !ft_strncmp(ms->prompt.line, "exit", 5))
 		{

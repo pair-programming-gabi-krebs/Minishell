@@ -6,28 +6,38 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 01:56:57 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/10 22:42:26 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/13 22:52:13 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	sigint_handler(int number)
+void	handle_sig_int(int sig)
 {
-	if (number == SIGQUIT)
-		return ;
-	write(2, "exit\n", 5);
+	(void)sig;
+	write(1, "\n", 1);
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
 }
 
-void	ft_signal(t_ms *ms)
+void	ft_init_sigaction(t_ms *ms, void (*handler)(int), int sig)
 {
-	ms->signal.sig.sa_handler = &sigint_handler;
+	ms->signal.sig.sa_handler = handler;
 	ms->signal.sig.sa_flags = SA_RESTART;
 	sigemptyset(&ms->signal.sig.sa_mask);
-	sigaddset(&ms->signal.sig.sa_mask, SIGQUIT);
-	sigaction(SIGINT, &ms->signal.sig, NULL);
-	sigaction(SIGQUIT, &ms->signal.sig, NULL);
+	sigaction(sig, &ms->signal.sig, NULL);
+}
+
+void	handle_child_sig_quit(int sig)
+{
+	(void)sig;
+	ft_putstr_fd("exit\n", 1);
+	exit(0);
+}
+
+void	handle_child_sig_int(int sig)
+{
+	(void)sig;
+	exit(0);
 }
