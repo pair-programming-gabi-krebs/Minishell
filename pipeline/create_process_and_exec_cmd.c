@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:24:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 02:05:31 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/14 03:08:06 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ static int	is_cmd(t_ms *ms);
 
 void	create_process_and_exec_cmd(t_ms *ms, int i)
 {
-	if (!is_cmd(ms))
-		return ;
 	resolve_dups_infile(ms, i);
 	resolve_dups_outfile(ms, i);
+	if (!is_cmd(ms))
+	{
+		ms->cmds.aux_fd = ms->cmds.fd[0];
+		return ;
+	}
 	ms->cmds.pid = fork();
 	if (ms->cmds.pid == -1)
 		ft_exit(ms, 1);
