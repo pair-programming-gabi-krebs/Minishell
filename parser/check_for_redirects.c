@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:21:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/10 21:31:53 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/13 23:55:09 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ static void	check_for_redirects_and_here_doc(t_ms *ms, int i)
 		ms->cmds.limiter = ms->cmds.command[i + 1];
 		here_doc(ms);
 		ms->parser.hdoc_count++;
+	}
+	else if (!strict_strcmp(ms->cmds.command[i], ">>")
+		&& ms->cmds.command[i + 1])
+	{
+		get_redirect_name(ms, ms->cmds.out, i, ms->parser.out_count);
+		ms->parser.out_count++;
+		ms->cmds.append_flag = 1;
 	}
 	else if (ms->cmds.command[i][0] == '<')
 	{
