@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_redirects.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/15 01:02:20 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/15 20:28:31 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	open_out_redirects(t_ms *ms);
 int	handle_redirects(t_ms *ms)
 {
 	if (!open_out_redirects(ms))
-		return (1);
+		return (0);
 	if (!open_inf_redirects(ms))
 		return (0);
 	return (1);
