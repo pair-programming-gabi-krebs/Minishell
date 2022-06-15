@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 22:27:19 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 23:05:11 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/15 01:25:50 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ static void	handle_exit_code_variable_expansion(t_ms *ms)
 	i = 0;
 	while (i < ms->lexer.i_token)
 	{
-		if (!ft_strncmp("$?", ms->lexer.tokens[i], ft_strlen(ms->lexer.tokens[i])))
+		if (!ft_strncmp("$?", ms->lexer.tokens[i], \
+			ft_strlen(ms->lexer.tokens[i])))
 			handle_exit_code(ms, i);
 		i++;
 	}
