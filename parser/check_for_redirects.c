@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_for_redirects.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:21:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 21:21:57 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/14 21:51:26 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	check_for_redirects(t_ms *ms)
 		{
 			ms->cmds.limiter = ft_strdup(ms->cmds.command[i + 1]);
 			get_name_set_count_in(ms, ms->cmds.inf, i, ms->cmds.inf_counter);
-			//here_doc(ms);
 			ms->cmds.hdoc_counter = 1;
 		}
 		else if (has_redirect(ms, ms->cmds.command[i], ">>", i))
