@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/14 02:14:19 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/14 21:49:25 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ void	pipex(t_ms *ms)
 	{
 		build_cmd_table(ms);
 		handle_redirects(ms);
-		// if (!handle_redirects(ms))
-		// {
-		// 	reset_cmd_table(ms);
-		// 	end_pipeline(ms);
-		// 	return ;
-		// }
 		if (pipe(ms->cmds.fd) == -1)
 			ft_exit(ms, 1);
 		if (is_builtin(ms))
