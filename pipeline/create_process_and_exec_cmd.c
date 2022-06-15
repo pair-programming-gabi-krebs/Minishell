@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_process_and_exec_cmd.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:24:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 20:54:52 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/15 02:24:32 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	create_process_and_exec_cmd(t_ms *ms, int i)
 		ms->cmds.aux_fd = ms->cmds.fd[0];
 		return ;
 	}
+	ft_init_sigaction(ms, SIG_IGN, SIGINT);
 	ms->cmds.pid = fork();
 	if (ms->cmds.pid == -1)
 		ft_exit(ms, 1);
