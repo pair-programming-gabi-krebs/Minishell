@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:36:45 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/14 01:31:26 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/14 21:22:30 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	ft_reset(t_ms *ms)
 	ms->cmds.aux_fd = -1;
 	ms->parser.pipes_qtn = 0;
 	ms->cmds.append_flag = 0;
+	ms->cmds.limiter = NULL;
 }

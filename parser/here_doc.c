@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:57:08 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/10 00:24:22 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/14 21:05:56 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	here_doc(t_ms *ms)
 		{
 			free(line);
 			close(temp_hdoc);
-			ms->cmds.hdoc_fd = open("hdoc_file", O_RDONLY);
+			ms->cmds.inf_fd = open("hdoc_file", O_RDONLY);
 			break ;
 		}
 		write(temp_hdoc, line, ft_strlen(line));

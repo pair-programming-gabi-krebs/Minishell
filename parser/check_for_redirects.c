@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:21:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 03:22:17 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/14 21:21:57 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_for_redirects(t_ms *ms)
 	{
 		if (has_redirect(ms, ms->cmds.command[i], "<<", i))
 		{
-			ms->cmds.limiter = ms->cmds.command[i + 1];
+			ms->cmds.limiter = ft_strdup(ms->cmds.command[i + 1]);
 			get_name_set_count_in(ms, ms->cmds.inf, i, ms->cmds.inf_counter);
 			//here_doc(ms);
 			ms->cmds.hdoc_counter = 1;
@@ -52,6 +52,7 @@ static void	init(t_ms *ms)
 	ms->cmds.inf_counter = 0;
 	ms->cmds.hdoc_counter = 0;
 	ms->cmds.append_flag = 0;
+	free(ms->cmds.limiter);
 }
 
 static int	has_redirect(t_ms *ms, char *str1, char *str2, int i)
