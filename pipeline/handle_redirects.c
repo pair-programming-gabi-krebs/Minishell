@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/13 22:46:28 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/14 03:23:32 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ static int	open_inf_redirects(t_ms *ms)
 	inf_count = ft_mtxlen(ms->cmds.inf);
 	while (i < inf_count)
 	{
-		ms->cmds.inf_fd = open(ms->cmds.inf[i], O_RDONLY, 0777);
+		if (ms->cmds.hdoc_counter)
+			here_doc(ms);
+		else
+			ms->cmds.inf_fd = open(ms->cmds.inf[i], O_RDONLY, 0777);
 		if (ms->cmds.inf_fd == -1)
 		{
 			perror("");
