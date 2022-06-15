@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:13:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/03 19:25:30 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/15 19:45:41 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	format_table(t_ms *ms, int start, int end)
 		i++;
 		start++;
 	}
+	printf("ms->cmds.command[0]: %s\n", ms->cmds.command[0]);
 	if (check_for_redirects(ms))
 	{
 		remove_redirect_from_start_of_str(ms);
