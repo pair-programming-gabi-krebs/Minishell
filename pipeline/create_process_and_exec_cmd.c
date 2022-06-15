@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_process_and_exec_cmd.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:24:14 by lkrebs-l          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/06/14 17:38:16 by lkrebs-l         ###   ########.fr       */
-=======
-/*   Updated: 2022/06/14 20:54:52 by gcosta-d         ###   ########.fr       */
->>>>>>> 1f9fcb64a0416cdedad14a1f30d9ec1eaf3489a6
+/*   Updated: 2022/06/15 02:24:32 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +18,11 @@ void	create_process_and_exec_cmd(t_ms *ms, int i)
 {
 	resolve_dups_infile(ms, i);
 	resolve_dups_outfile(ms, i);
+	if (!is_cmd(ms))
+	{
+		ms->cmds.aux_fd = ms->cmds.fd[0];
+		return ;
+	}
 	ft_init_sigaction(ms, SIG_IGN, SIGINT);
 	ms->cmds.pid = fork();
 	if (ms->cmds.pid == -1)
