@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 21:26:20 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/15 17:50:47 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/15 20:16:20 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_builtin(t_ms *ms)
 		|| (cmd && !strict_strcmp(cmd, "pwd"))
 		|| (cmd && !strict_strcmp(cmd, "unset")))
 		return (1);
-	if (!ft_strncmp(ms->cmds.command[0], "exit", 6) && \
+	if (ms->cmds.command[0] && !ft_strncmp(ms->cmds.command[0], "exit", 6) && \
 		ms->cmds.command[1])
 	{
 		write(1, "exit", 5);
