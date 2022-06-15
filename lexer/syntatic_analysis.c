@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 01:59:26 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 02:28:34 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/14 21:47:42 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	check_next_token(t_ms *ms, int i)
 	int	j;
 
 	j = 0;
-	while (ms->lexer.tokens[i][j])
+	while (ms->lexer.tokens[i] && ms->lexer.tokens[i][j])
 	{
 		if (!ft_isalnum(ms->lexer.tokens[i][j]) && \
 			ms->lexer.tokens[i][j] != '$')
