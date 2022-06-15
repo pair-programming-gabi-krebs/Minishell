@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:53:46 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 02:40:10 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/14 21:18:40 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	remove_quotes(t_ms *ms)
 	int	i;
 
 	i = 0;
-	if (ms->lexer.i_token == 1)
-		return ;
 	while (i < ms->lexer.i_token)
 	{
 		if (ft_strchr(ms->lexer.tokens[i], SINGLE_QUOTE))
