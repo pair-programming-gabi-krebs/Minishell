@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/14 03:23:32 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/15 01:02:20 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	open_out_redirects(t_ms *ms);
 int	handle_redirects(t_ms *ms)
 {
 	if (!open_out_redirects(ms))
-		return (0);
+		return (1);
 	if (!open_inf_redirects(ms))
 		return (0);
 	return (1);

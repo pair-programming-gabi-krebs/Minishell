@@ -24,7 +24,7 @@ FILES = main.c \
 		pre_token.c \
 		check_special_tokens.c \
 		valid_input.c \
-		pre_token_utils.c \
+		is_special.c \
 		cd.c \
 		env.c \
 		unset.c \
