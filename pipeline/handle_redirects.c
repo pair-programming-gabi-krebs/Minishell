@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/15 20:28:31 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/15 20:39:59 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static int	open_inf_redirects(t_ms *ms)
 			ms->cmds.inf_fd = open(ms->cmds.inf[i], O_RDONLY, 0777);
 		if (ms->cmds.inf_fd == -1)
 		{
-			perror("");
+			printf("Minishell: %s: Permission denied", ms->cmds.inf[i]);
+			ms->cmds.exit_status = 1;
 			return (0);
 		}
 		i++;
@@ -64,7 +65,8 @@ static int	open_out_redirects(t_ms *ms)
 			O_WRONLY | O_CREAT | O_TRUNC, 0777);
 		if (ms->cmds.out_fd == -1)
 		{
-			perror("");
+			printf("Minishell: %s: Permission denied\n", ms->cmds.out[i]);
+			ms->cmds.exit_status = 1;
 			return (0);
 		}
 		i++;
