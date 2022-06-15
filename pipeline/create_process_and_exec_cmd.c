@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:24:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 02:29:36 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:38:16 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	create_process_and_exec_cmd(t_ms *ms, int i)
 		return ;
 	resolve_dups_infile(ms, i);
 	resolve_dups_outfile(ms, i);
+	ft_init_sigaction(ms, SIG_IGN, SIGINT);
 	ms->cmds.pid = fork();
 	if (ms->cmds.pid == -1)
 		ft_exit(ms, 1);
