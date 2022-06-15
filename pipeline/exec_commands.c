@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:14:31 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/10 23:15:49 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/14 21:50:35 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	exec_commands(t_ms *ms)
 {
+	ft_init_sigaction(ms, handle_child_sig_int, SIGINT);
+	ft_init_sigaction(ms, handle_child_sig_quit, SIGQUIT);
 	ms->cmds.file_path = command_finder(ms);
 	if (!ms->cmds.file_path)
 	{
