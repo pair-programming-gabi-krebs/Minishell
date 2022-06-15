@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntatic_analysis.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 01:59:26 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 21:47:42 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/15 00:11:45 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	check_next_token(t_ms *ms, int i)
 	j = 0;
 	while (ms->lexer.tokens[i] && ms->lexer.tokens[i][j])
 	{
-		if (!ft_isalnum(ms->lexer.tokens[i][j]) && \
+		if (is_special(ms, ms->lexer.tokens[i][j]) && \
 			ms->lexer.tokens[i][j] != '$')
 			return (0);
 		j++;
