@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:30:59 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/13 21:45:55 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/15 20:06:04 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	tokenizer(t_ms *ms)
 
 static int	tokenizer_common_case(t_ms *ms, int c, int i)
 {
-	while (ms->lexer.line[i] != FT_SPACE && ms->lexer.line[i])
+	while (ms->lexer.line[i] && ms->lexer.line[i] != FT_SPACE)
 		i++;
 	ms->lexer.tokens[ms->lexer.i_token] = ft_substr(ms->lexer.line, c, i - c);
 	ms->lexer.i_token++;
