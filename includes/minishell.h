@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/15 22:09:56 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:23:15 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct s_cmds
 	int		out_counter;
 	int		inf_counter;
 	int		hdoc_counter;
+	int		hdoc_flag;
 }	t_cmds;
 
 typedef struct s_minishell
@@ -122,6 +123,8 @@ typedef struct s_minishell
 	t_list		**list;
 	t_cmds		cmds;
 }	t_ms;
+
+t_ms *msl;
 
 /* Prompt */
 char	*print_dir(t_ms *ms);
@@ -145,6 +148,7 @@ void	handle_sig_quit(t_ms *ms, int sig);
 void	handle_sig_int(int sig);
 void	handle_child_sig_quit(int sig);
 void	handle_child_sig_int(int sig);
+void	handle_child_sig_int_here_doc(int sig);
 
 /* Lexer */
 int		lexer(t_ms *ms);

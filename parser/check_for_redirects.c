@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_for_redirects.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:21:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 21:51:26 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/16 18:06:33 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static void	init(t_ms *ms)
 	ms->cmds.inf_counter = 0;
 	ms->cmds.hdoc_counter = 0;
 	ms->cmds.append_flag = 0;
-	free(ms->cmds.limiter);
 }
 
 static int	has_redirect(t_ms *ms, char *str1, char *str2, int i)

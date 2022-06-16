@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:57:08 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/14 21:05:56 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:24:15 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@ void	here_doc(t_ms *ms)
 	char	*line;
 	int		temp_hdoc;
 
+	ft_init_sigaction(ms, handle_child_sig_int_here_doc, SIGINT);
+	ft_init_sigaction(ms, SIG_IGN, SIGQUIT);
 	temp_hdoc = open("hdoc_file", O_WRONLY | O_CREAT | O_APPEND, 0744);
-	line = get_next_line(STDIN_FILENO);
+	line = readline("> ");
 	while (1)
 	{
 		if (!line)
 		{
 			print_error_here_doc(ms, temp_hdoc);
-			break ;
+			free(ms->cmds.limiter);
+			ft_exit(ms, 0);
 		}
 		if (!ft_strncmp(line, ms->cmds.limiter, ft_strlen(ms->cmds.limiter))
 			&& ft_strlen(ms->cmds.limiter) == ft_strlen(line) - 1)
@@ -34,11 +37,12 @@ void	here_doc(t_ms *ms)
 			free(line);
 			close(temp_hdoc);
 			ms->cmds.inf_fd = open("hdoc_file", O_RDONLY);
-			break ;
+			free(ms->cmds.limiter);
+			ft_exit(ms, 0);
 		}
 		write(temp_hdoc, line, ft_strlen(line));
 		free(line);
-		line = get_next_line(STDIN_FILENO);
+		line = readline("> ");
 	}
 }
 
