@@ -63,7 +63,8 @@ FILES = main.c \
 		check_expand_var.c \
 		here_doc.c \
 		get_name_set_count.c \
-		syntatic_analysis.c
+		syntatic_analysis.c \
+		ft_waitpid.c
 
 
 
