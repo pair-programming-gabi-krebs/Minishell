@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 01:56:57 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/16 19:42:52 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/16 20:40:10 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ void	handle_child_sig_int_here_doc(int sig)
 {
 	(void)sig;
 	ft_putstr_fd("\n", 1);
-	ft_exit(g_msl, 130);
+	exit(130);
 }

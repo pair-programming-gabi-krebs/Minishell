@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_waitpid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 19:37:09 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/16 19:38:30 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/16 20:16:04 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h";
+#include "../includes/minishell.h"
 
 void	ft_waitpid(t_ms *ms, int pid)
 {
