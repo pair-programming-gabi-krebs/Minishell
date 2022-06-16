@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 02:01:49 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:09:56 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_lexer
 	char	*line;
 	char	*infile;
 	char	*outfile;
-	char	flag_quote;
+	char	*flag_quote;
 	int		start_quote;
 	int		end_quote;
 	int		i_token;
@@ -85,11 +85,6 @@ typedef struct s_tk
 	int		k;
 	int		len;
 }	t_tk;
-
-typedef struct s_echo
-{
-	char	*line;
-}	t_echo;
 
 typedef struct s_cmds
 {
@@ -124,7 +119,6 @@ typedef struct s_minishell
 	t_signal	signal;
 	t_parser	parser;
 	t_tk		tk;
-	t_echo		echo;
 	t_list		**list;
 	t_cmds		cmds;
 }	t_ms;
