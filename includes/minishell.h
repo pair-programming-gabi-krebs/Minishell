@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/16 19:23:15 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:40:18 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,5 +202,6 @@ void	end_pipeline(t_ms *ms);
 void	reset_cmd_table(t_ms *ms);
 int		handle_redirects(t_ms *ms);
 void	here_doc(t_ms *ms);
+void	ft_waitpid(t_ms *ms, int pid);
 
 #endif

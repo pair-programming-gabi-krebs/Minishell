@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/16 17:59:14 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:42:34 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	open_inf_redirects(t_ms *ms);
 static int	open_out_redirects(t_ms *ms);
+static void	init_child_here_doc(t_ms *ms, int pid);
 
 int	handle_redirects(t_ms *ms)
 {
@@ -35,21 +36,7 @@ static int	open_inf_redirects(t_ms *ms)
 	while (i < inf_count)
 	{
 		if (ms->cmds.hdoc_counter)
-		{
-			ms->cmds.hdoc_flag = 1;
-			ft_init_sigaction(ms, SIG_IGN, SIGINT);
-			pid = fork();
-			if (pid == 0)
-				here_doc(ms);
-			else
-			{
-				waitpid(pid, &ms->cmds.exit_status, 0);
-				if (WIFEXITED(ms->cmds.exit_status))
-					ms->cmds.exit_status = WEXITSTATUS(ms->cmds.exit_status);
-				else if (WIFSIGNALED(ms->cmds.exit_status))
-					ms->cmds.exit_status = WTERMSIG(ms->cmds.exit_status) + 128;
-			}
-		}
+			init_child_here_doc(ms, pid);
 		else
 			ms->cmds.inf_fd = open(ms->cmds.inf[i], O_RDONLY, 0777);
 		if (ms->cmds.inf_fd == -1 && ms->cmds.hdoc_flag == 0)
@@ -59,12 +46,21 @@ static int	open_inf_redirects(t_ms *ms)
 			return (0);
 		}
 		else if (ms->cmds.hdoc_flag == 1)
-		{
 			return (0);
-		}
 		i++;
 	}
 	return (1);
+}
+
+static void	init_child_here_doc(t_ms *ms, int pid)
+{
+	ms->cmds.hdoc_flag = 1;
+	ft_init_sigaction(ms, SIG_IGN, SIGINT);
+	pid = fork();
+	if (pid == 0)
+		here_doc(ms);
+	else
+		ft_waitpid(ms, pid);
 }
 
 static int	open_out_redirects(t_ms *ms)
