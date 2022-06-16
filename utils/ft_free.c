@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:20:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/16 19:26:50 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:36:11 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_free(t_ms *ms)
 		free(ms->tk.line);
 	free(ms->prompt.line);
 	free(ms->prompt.cwd);
-	free(msl->cmds.limiter);
+	free(g_msl->cmds.limiter);
 }
 
 void	free_matrix(char **matrix)
