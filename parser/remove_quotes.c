@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 21:53:46 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 21:18:40 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:28:57 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,25 @@ void	remove_quotes(t_ms *ms)
 	int	i;
 
 	i = 0;
+	ms->lexer.flag_quote = malloc ((ms->lexer.i_token + 1) * sizeof(char));
 	while (i < ms->lexer.i_token)
 	{
+		if (!ft_strchr(ms->lexer.tokens[i], DOUBLE_QUOTE) && \
+			!ft_strchr(ms->lexer.tokens[i], SINGLE_QUOTE))
+			ms->lexer.flag_quote[i] = '.';
 		if (ft_strchr(ms->lexer.tokens[i], SINGLE_QUOTE))
 		{
-			ms->lexer.flag_quote = SINGLE_QUOTE;
+			ms->lexer.flag_quote[i] = SINGLE_QUOTE;
 			remove_quotes_from_str(ms, i, "\'");
 		}
 		if (ft_strchr(ms->lexer.tokens[i], DOUBLE_QUOTE))
 		{
-			ms->lexer.flag_quote = DOUBLE_QUOTE;
+			ms->lexer.flag_quote[i] = DOUBLE_QUOTE;
 			remove_quotes_from_str(ms, i, "\"");
-		}
+		}	
 		i++;
 	}
+	ms->lexer.flag_quote[i] = '\0';
 }
 
 static void	remove_quotes_from_str(t_ms *ms, int i, char *c)

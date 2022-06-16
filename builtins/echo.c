@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 23:08:19 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/13 22:11:00 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/15 21:29:12 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,17 @@ static void	print_echo(t_ms *ms, int i)
 {
 	char	**echo;
 	char	*str;
+	int		flag;
 
+	flag = 0;
 	while (ms->cmds.command[i])
 	{
+		if (flag == 0)
+		{
+			while (!strict_strcmp(ms->cmds.command[i], "-n"))
+				i++;
+			flag = 1;
+		}
 		echo = ft_split(ms->cmds.command[i], ' ');
 		str = join_strings(echo);
 		printf("%s", str);

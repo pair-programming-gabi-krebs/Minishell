@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 22:27:19 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/15 20:00:53 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:32:41 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@ void	check_expand_var(t_ms *ms)
 			free_matrix(token);
 			continue ;
 		}
-		else if (ms->lexer.tokens[i][0] == '$' && (ms->lexer.flag_quote == '\"'
-			|| !ms->lexer.flag_quote))
+		else if (ms->lexer.tokens[i][0] == '$' && \
+			(ms->lexer.flag_quote[i] == '\"' || ms->lexer.flag_quote[i] == '.'))
 			expand_var(ms, ms->lexer.tokens, i);
 		i++;
 		free_matrix(token);
 	}
+	free(ms->lexer.flag_quote);
 }
 
 static void	expand_var(t_ms *ms, char **echo, int i)
