@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/14 21:22:22 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:12:50 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	ft_init_prompt(t_ms *ms)
 
 static void	ft_init_lexer(t_ms *ms)
 {
-	ms->lexer.flag_quote = 0;
 	ms->lexer.i_token = 0;
 	ms->lexer.tokens = malloc(2048 * sizeof(char **));
 	ms->lexer.tokens[0] = NULL;
