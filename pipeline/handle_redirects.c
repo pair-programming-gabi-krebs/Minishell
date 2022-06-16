@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/16 19:42:34 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:55:46 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int	open_inf_redirects(t_ms *ms)
 
 	i = 0;
 	inf_count = ft_mtxlen(ms->cmds.inf);
+	pid = -1;
 	while (i < inf_count)
 	{
 		if (ms->cmds.hdoc_counter)

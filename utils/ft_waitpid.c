@@ -6,11 +6,11 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 19:37:09 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/16 19:38:30 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:56:26 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h";
+#include "../includes/minishell.h"
 
 void	ft_waitpid(t_ms *ms, int pid)
 {
