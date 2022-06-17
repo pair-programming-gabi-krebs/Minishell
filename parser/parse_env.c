@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:06:45 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/13 22:32:30 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/17 19:44:41 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	parse_env(t_ms *ms)
 	if (get_env_path)
 	{
 		ms->cmds.path = ft_strchr(get_env_path, '/');
-		ms->cmds.bin = ft_split(ms->cmds.path, ':');
+		if (ms->cmds.path)
+			ms->cmds.bin = ft_split(ms->cmds.path, ':');
 	}
 }
 
