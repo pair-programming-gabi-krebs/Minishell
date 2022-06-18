@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_redirect_from_end_of_str.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:07:59 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/03 19:08:39 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/18 10:20:45 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,22 @@ void	remove_redirect_from_end_of_str(t_ms *ms)
 	i = 0;
 	while (ms->cmds.command[i])
 	{
-		if (ms->cmds.command[i][0] == '<' && ms->cmds.command[i + 1])
+		if ((ms->cmds.command[i][0] == '<' && ms->cmds.command[i + 1])
+		|| (ms->cmds.command[i][0] == '>' && ms->cmds.command[i + 1]))
 		{
 			free(ms->cmds.command[i]);
 			free(ms->cmds.command[i + 1]);
 			ms->cmds.command[i] = NULL;
 			ms->cmds.command[i + 1] = NULL;
+			i++;
 		}
-		else if (ms->cmds.command[i][0] == '>' && ms->cmds.command[i + 1])
+		else if ((ms->cmds.command[i][0] == '<' && !ms->cmds.command[i + 1])
+		|| (ms->cmds.command[i][0] == '>' && !ms->cmds.command[i + 1]))
 		{
 			free(ms->cmds.command[i]);
-			free(ms->cmds.command[i + 1]);
 			ms->cmds.command[i] = NULL;
-			ms->cmds.command[i + 1] = NULL;
 		}
-		i++;
+		if (ms->cmds.command[i + 1])
+			i++;
 	}
 }

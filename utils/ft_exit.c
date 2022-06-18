@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:34:24 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/10 23:05:18 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/18 10:26:07 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_exit(t_ms *ms, int exit_code)
 {
+	rl_clear_history();
 	printf("\n");
 	free_matrix(ms->lexer.tokens);
 	if (ms->cmds.command)
