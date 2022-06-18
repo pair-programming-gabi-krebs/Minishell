@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 22:27:19 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/18 10:24:59 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/18 10:53:11 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	check_expand_var(t_ms *ms)
 		i++;
 		free_matrix(token);
 	}
-	free(ms->lexer.flag_quote);
 }
 
 static void	expand_var(t_ms *ms, char **echo, int i)
@@ -96,7 +95,7 @@ static void	handle_exit_code_variable_expansion(t_ms *ms)
 	while (i < ms->lexer.i_token)
 	{
 		if (!strict_strcmp("$?", ms->lexer.tokens[i])
-		&& ms->lexer.flag_quote[i] != '\'')
+			&& ms->lexer.flag_quote[i] != '\'')
 			handle_exit_code(ms, i);
 		i++;
 	}

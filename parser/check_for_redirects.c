@@ -6,13 +6,13 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:21:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/16 18:06:33 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/18 10:53:33 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int	redirect_validations(t_ms *ms, int inf_counter, int out_counter);
+static int	redirect_validation(t_ms *ms, int inf_counter, int out_counter);
 static int	has_redirect(t_ms *ms, char *str1, char *str2, int i);
 static void	init(t_ms *ms);
 
@@ -40,9 +40,9 @@ int	check_for_redirects(t_ms *ms)
 		else if (has_redirect(ms, ms->cmds.command[i], ">", i))
 			get_name_set_count_out(ms, ms->cmds.out, i, ms->cmds.out_counter);
 	}
-	if (redirect_validations(ms, ms->cmds.inf_counter, ms->cmds.out_counter))
-		return (1);
-	return (0);
+	free(ms->lexer.flag_quote);
+	return (redirect_validation(ms, ms->cmds.inf_counter, \
+		ms->cmds.out_counter));
 }
 
 static void	init(t_ms *ms)
@@ -55,12 +55,13 @@ static void	init(t_ms *ms)
 
 static int	has_redirect(t_ms *ms, char *str1, char *str2, int i)
 {
-	if (!strict_strcmp(str1, str2) && ms->cmds.command[i + 1])
+	if (!strict_strcmp(str1, str2) && ms->cmds.command[i + 1]
+		&& ms->lexer.flag_quote[i] == '.')
 		return (1);
 	return (0);
 }
 
-static int	redirect_validations(t_ms *ms, int inf_counter, int out_counter)
+static int	redirect_validation(t_ms *ms, int inf_counter, int out_counter)
 {
 	if (inf_counter == 0)
 	{
