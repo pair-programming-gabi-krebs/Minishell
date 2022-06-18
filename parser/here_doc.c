@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:57:08 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/16 21:39:11 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/17 20:14:52 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	here_doc(t_ms *ms)
 			&& ft_strlen(ms->cmds.limiter) == ft_strlen(line))
 			end_here_doc(ms, line, temp_hdoc);
 		write(temp_hdoc, line, ft_strlen(line));
+		write(temp_hdoc, "\n", 1);
 		free(line);
 		line = readline("");
 	}
@@ -54,6 +55,5 @@ static void	end_here_doc(t_ms *ms, char *line, int fd)
 {
 	free(line);
 	close(fd);
-	ms->cmds.inf_fd = open("hdoc_file", O_RDONLY);
 	ft_exit(ms, 0);
 }

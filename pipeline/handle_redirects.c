@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_redirects.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/16 20:42:46 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/17 20:15:46 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	open_inf_redirects(t_ms *ms)
 			return (0);
 		}
 		else if (ms->cmds.hdoc_flag == 1)
-			return (0);
+			return (1);
 		i++;
 	}
 	return (1);
@@ -62,7 +62,10 @@ static void	init_child_here_doc(t_ms *ms, int pid)
 	if (pid == 0)
 		here_doc(ms);
 	else
+	{
 		ft_waitpid(ms, pid);
+		ms->cmds.inf_fd = open("hdoc_file", O_RDONLY);
+	}
 }
 
 static int	open_out_redirects(t_ms *ms)
