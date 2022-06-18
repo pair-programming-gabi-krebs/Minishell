@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:34:24 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/18 10:26:07 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/18 10:28:55 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ void	ft_exit(t_ms *ms, int exit_code)
 		free_matrix(ms->cmds.bin);
 	ft_lstclear(ms->list, free);
 	ft_free(ms);
+	rl_clear_history();
 	exit(exit_code);
 }
