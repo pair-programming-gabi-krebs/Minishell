@@ -105,7 +105,3 @@ fclean: clean
 	@echo " 100% complete"
 
 re: fclean all
-
-valgrind: re
-	clear
-	valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp ./minishell
