@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/16 17:34:27 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/20 21:26:47 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	ft_init_lexer(t_ms *ms)
 	ms->lexer.tokens = malloc(2048 * sizeof(char **));
 	ms->lexer.tokens[0] = NULL;
 	ms->lexer.line = NULL;
+	ms->lexer.flag_quote = NULL;
 }
 
 static void	ft_init_cmd(t_ms *ms)

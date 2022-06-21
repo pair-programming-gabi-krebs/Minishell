@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:20:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/16 20:33:12 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/20 21:25:55 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_free(t_ms *ms)
 {
+	free(ms->lexer.flag_quote);
 	if (ms->lexer.line)
 		free(ms->lexer.line);
 	free(ms->prompt.prompt);
