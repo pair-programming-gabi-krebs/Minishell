@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_redirect_from_end_of_str.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:07:59 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/18 10:20:45 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/20 20:44:44 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	remove_redirect_from_end_of_str(t_ms *ms)
 			free(ms->cmds.command[i]);
 			ms->cmds.command[i] = NULL;
 		}
-		if (ms->cmds.command[i + 1])
-			i++;
+		i++;
 	}
 }
