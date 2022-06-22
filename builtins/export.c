@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 23:46:23 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/11 00:52:22 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/22 01:27:21 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,27 @@
 
 static void	update_var(t_list *node, char *var_name, char *var);
 static int	already_has_var(t_ms *ms, char *var);
-static char	*get_var_name(char *content);
+static int	right_var_syntax(char *var);
+static int	check_var_spell(char *var, int equals_index);
 
-void	export(t_ms *ms, char *var)
+void	export(t_ms *ms)
 {
 	t_list	*node;
+	int		i;
 
-	if (var)
+	i = 0;
+	while (ms->cmds.command[++i])
 	{
-		if (already_has_var(ms, var))
-			return ;
-		node = ft_lstnew(ft_strdup(var));
-		ft_lstadd_back(ms->list, node);
+		if (right_var_syntax(ms->cmds.command[i]))
+		{
+			if (already_has_var(ms, ms->cmds.command[i]))
+				continue ;
+			else
+			{
+				node = ft_lstnew(ft_strdup(ms->cmds.command[i]));
+				ft_lstadd_back(ms->list, node);
+			}
+		}
 	}
 }
 
@@ -64,10 +73,35 @@ static void	update_var(t_list *node, char *var_name, char *var)
 	free(var_name);
 }
 
-static char	*get_var_name(char *content)
+static int	right_var_syntax(char *var)
 {
-	int		equals_index;
+	int	equals_index;
 
-	equals_index = strichar(content, 0, '=');
-	return (ft_substr(content, 0, equals_index + 1));
+	equals_index = strichar(var, 0, '=');
+	if (equals_index == -1)
+		return (0);
+	if (!check_var_spell(var, equals_index))
+	{
+		ft_putstr_fd("export: `", 2);
+		ft_putstr_fd(var, 2);
+		ft_putstr_fd("': not a valid identifier\n", 2);
+		return (0);
+	}
+	return (1);
+}
+
+static int	check_var_spell(char *var, int equals_index)
+{
+	char	*var_cpy;
+
+	var_cpy = ft_strdup(var);
+	if (equals_index != 0)
+		var_cpy[equals_index] = '\0';
+	if ((ft_isalpha(var[0]) || var[0] == '_') && ft_isalnum_underscore(var_cpy))
+	{
+		free(var_cpy);
+		return (1);
+	}
+	free(var_cpy);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 21:25:44 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/15 20:20:39 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/22 01:28:13 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	exec_builtin(t_ms *ms, int i)
 	else if (!strict_strcmp(cmd, "env"))
 		env(ms);
 	else if (!strict_strcmp(cmd, "export"))
-		export(ms, ms->cmds.command[1]);
+		export(ms);
 	else if (!strict_strcmp(cmd, "pwd"))
 		pwd();
 	else if (!strict_strcmp(cmd, "unset"))
-		unset(ms, ms->cmds.command[1]);
+		unset(ms);
 	ms->cmds.aux_fd = ms->cmds.fd[0];
 	ms->cmds.exit_status = 0;
 }
