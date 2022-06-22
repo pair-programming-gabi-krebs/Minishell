@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/16 20:43:48 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/22 01:23:11 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,5 +201,6 @@ void	reset_cmd_table(t_ms *ms);
 int		handle_redirects(t_ms *ms);
 void	here_doc(t_ms *ms);
 void	ft_waitpid(t_ms *ms, int pid);
+void	handle_exit(t_ms *ms);
 
 #endif
