@@ -65,7 +65,8 @@ FILES = main.c \
 		get_name_set_count.c \
 		syntatic_analysis.c \
 		ft_waitpid.c \
-		get_var_name.c
+		get_var_name.c \
+		handle_exit.c
 
 
 
