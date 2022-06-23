@@ -68,7 +68,6 @@ FILES = main.c \
 		handle_exit.c \
 		cd_utils.c \
 		get_var_name.c \
-		handle_exit.c
 
 
 
