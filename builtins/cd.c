@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 21:13:41 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/23 16:45:21 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:57:06 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	cd(t_ms *ms)
 	return_chdir = change_dir(ms, path);
 	handle_dir_not_found(ms, return_chdir);
 	free(path);
+	ms->cmds.exit_status = 0;
 }
 
 static int	is_home(t_ms *ms)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 23:46:23 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/22 01:27:21 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:12:57 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	export(t_ms *ms)
 			}
 		}
 	}
+	ms->cmds.exit_status = 0;
 }
 
 static int	already_has_var(t_ms *ms, char *var)
