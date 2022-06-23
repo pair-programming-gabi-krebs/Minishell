@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 22:04:01 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/05/10 22:32:21 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/22 00:27:48 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,5 +291,6 @@ int		strichar(char *string, int pos, char c);
 int		ft_mtxlen(char **mtx);
 int		ft_count_char(char *string, char c);
 char	*get_next_line(int fd);
+int		ft_isalnum_underscore(char *s);
 
 #endif

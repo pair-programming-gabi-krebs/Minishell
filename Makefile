@@ -66,7 +66,9 @@ FILES = main.c \
 		syntatic_analysis.c \
 		ft_waitpid.c \
 		handle_exit.c \
-		cd_utils.c
+		cd_utils.c \
+		get_var_name.c \
+		handle_exit.c
 
 
 
@@ -107,3 +109,4 @@ fclean: clean
 	@echo " 100% complete"
 
 re: fclean all
+#make && valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp ./minishell

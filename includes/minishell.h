@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/23 16:45:14 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/23 16:50:33 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void	handle_sig_int(int sig);
 void	handle_child_sig_quit(int sig);
 void	handle_child_sig_int(int sig);
 void	handle_child_sig_int_here_doc(int sig);
+char	*get_var_name(char *content);
 
 /* Lexer */
 int		lexer(t_ms *ms);
@@ -178,8 +179,8 @@ int		get_last_redirect_position(t_ms *ms, int i);
 /* Builtins */
 void	cd(t_ms *ms);
 void	env(t_ms *ms);
-void	unset(t_ms *ms, char *var);
-void	export(t_ms *ms, char *var);
+void	unset(t_ms *ms);
+void	export(t_ms *ms);
 void	echo(t_ms *ms);
 void	pwd(void);
 int		check_args(t_ms *ms);
