@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_redirects.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:31 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/17 20:15:46 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/24 00:00:40 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static void	init_child_here_doc(t_ms *ms, int pid)
 		here_doc(ms);
 	else
 	{
+		free(ms->cmds.limiter);
 		ft_waitpid(ms, pid);
 		ms->cmds.inf_fd = open("hdoc_file", O_RDONLY);
 	}

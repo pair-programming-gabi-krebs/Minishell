@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 18:34:24 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/18 10:28:55 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/23 22:42:54 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void	ft_exit(t_ms *ms, int exit_code)
 	ft_lstclear(ms->list, free);
 	ft_free(ms);
 	rl_clear_history();
+	free(ms->cmds.limiter);
 	exit(exit_code);
 }
