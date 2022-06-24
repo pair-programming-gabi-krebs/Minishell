@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 23:08:19 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/23 21:15:17 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/23 22:30:25 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static char	*join_strings(char **echo);
 static void	print_echo(t_ms *ms, int i);
 static int	non_existent_var(t_ms *ms);
 
@@ -36,12 +35,11 @@ void	echo(t_ms *ms)
 	print_echo(ms, i);
 	if (has_nl)
 		printf("\n");
+	printf("\n\r\b");
 }
 
 static void	print_echo(t_ms *ms, int i)
 {
-	char	**echo;
-	char	*str;
 	int		flag;
 
 	flag = 0;
@@ -53,42 +51,11 @@ static void	print_echo(t_ms *ms, int i)
 				i++;
 			flag = 1;
 		}
-		echo = ft_split(ms->cmds.command[i], ' ');
-		str = join_strings(echo);
-		ft_putstr_fd(str, 1);
-		ft_putstr_fd("\b", 1);
-		free(str);
-		free_matrix(echo);
+		printf("%s", ms->cmds.command[i]);
+		printf(" ");
 		i++;
 	}
-}
-
-static char	*join_strings(char **echo)
-{
-	char	*aux;
-	char	*str;
-	int		i;
-
-	i = -1;
-	while (echo[++i])
-	{
-		str = ft_strdup(echo[i]);
-		free(echo[i]);
-		aux = ft_strjoin(str, " ");
-		echo[i] = ft_strdup(aux);
-		free(aux);
-		free(str);
-	}
-	i = -1;
-	str = ft_strdup("");
-	while (echo[++i])
-	{
-		aux = ft_strjoin(str, echo[i]);
-		free(str);
-		str = ft_strdup(aux);
-		free(aux);
-	}
-	return (str);
+	ft_putstr_fd("\b", 1);
 }
 
 static int	non_existent_var(t_ms *ms)
