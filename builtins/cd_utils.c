@@ -6,17 +6,21 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:29:26 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/23 16:47:45 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/23 20:44:58 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	handle_dir_not_found(t_ms *ms, int return_chdir)
+int	handle_dir_not_found(t_ms *ms, int return_chdir)
 {
 	if (return_chdir == -1)
+	{
 		perror("");
-	ms->cmds.exit_status = 1;
+		ms->cmds.exit_status = 1;
+		return (1);
+	}
+	return (0);
 }
 
 int	check_args(t_ms *ms)
