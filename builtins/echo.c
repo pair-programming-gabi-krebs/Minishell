@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 23:08:19 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/23 16:55:18 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/23 20:34:02 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static void	print_echo(t_ms *ms, int i)
 		}
 		echo = ft_split(ms->cmds.command[i], ' ');
 		str = join_strings(echo);
-		printf("%s", str);
+		ft_putstr_fd(str, 1);
+		ft_putstr_fd("\b", 1);
 		free(str);
 		free_matrix(echo);
 		i++;
