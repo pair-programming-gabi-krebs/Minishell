@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 22:57:05 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/23 20:56:11 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/24 06:06:56 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ char	*command_finder(t_ms *ms)
 
 	if (is_path_bin(ms->cmds.command[0]))
 		return (ms->cmds.command[0]);
-	if (!ms->cmds.command[0] || !ms->cmds.bin)
+	if (!ms->cmds.command[0] || !ms->cmds.bin || \
+		!ft_strlen(ms->cmds.command[0]))
 		return (NULL);
-	i = 0;
-	while (ms->init.envp[i] && ms->cmds.bin[i])
+	i = -1;
+	while (ms->init.envp[++i] && ms->cmds.bin[i])
 	{
 		path = ft_strjoin(ms->cmds.bin[i], "/");
 		cmd = ft_strjoin(path, ms->cmds.command[0]);
@@ -38,7 +39,6 @@ char	*command_finder(t_ms *ms)
 		}
 		free(path);
 		free(cmd);
-		i++;
 	}
 	return (NULL);
 }
