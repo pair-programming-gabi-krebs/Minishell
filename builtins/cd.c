@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 21:13:41 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/23 20:44:35 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/23 21:20:57 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	cd(t_ms *ms)
 	path = NULL;
 	if (check_args(ms))
 	{
-		handle_too_many_arguments(ms);
+		write(1, "cd: too many arguments\n", 23);
 		return ;
 	}
 	if (ms->cmds.command[1] && !ft_strncmp(ms->cmds.command[1], "", \
@@ -38,8 +38,8 @@ void	cd(t_ms *ms)
 	else if (ms->cmds.command[1])
 		path = ft_strdup(ms->cmds.command[1]);
 	return_chdir = change_dir(ms, path);
-	if (!handle_dir_not_found(ms, return_chdir))
-		ms->cmds.exit_status = 0;
+	if (return_chdir == -1)
+		perror("");
 	free(path);
 }
 

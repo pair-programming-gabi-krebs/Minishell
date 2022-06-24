@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 22:43:45 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/23 16:55:12 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/23 21:15:13 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ void	env(t_ms *ms)
 		node = node->next;
 	}
 	printf("%s\n", (char *)node->content);
-	ms->cmds.exit_status = 0;
 }

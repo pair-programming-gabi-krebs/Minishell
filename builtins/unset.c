@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 21:46:53 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/23 20:42:26 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/23 21:14:56 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ void	unset(t_ms *ms)
 	while (ms->cmds.command[++i])
 	{
 		if (!check_var_spell(ms->cmds.command[i]))
-		{
 			handle_invalid_identifier(ms, i);
-			return ;
-		}
 		else
 		{
 			var = ft_strjoin(ms->cmds.command[i], "=");
@@ -42,7 +39,6 @@ void	unset(t_ms *ms)
 			free(var);
 		}
 	}
-	ms->cmds.exit_status = 0;
 }
 
 static void	handle_invalid_identifier(t_ms *ms, int i)
@@ -50,7 +46,6 @@ static void	handle_invalid_identifier(t_ms *ms, int i)
 	ft_putstr_fd("unset: `", 2);
 	ft_putstr_fd(ms->cmds.command[i], 2);
 	ft_putstr_fd("': not a valid identifier\n", 2);
-	ms->cmds.exit_status = 1;
 }
 
 static void	remove_var_from_env(t_list *node, t_ms *ms)
