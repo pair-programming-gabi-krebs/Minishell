@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/23 16:55:40 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/23 20:44:52 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,9 +184,8 @@ void	export(t_ms *ms);
 void	echo(t_ms *ms);
 void	pwd(t_ms *ms);
 int		check_args(t_ms *ms);
-void	handle_dir_not_found(t_ms *ms, int return_chdir);
 void	handle_too_many_arguments(t_ms *ms);
-void	handle_dir_not_found(t_ms *ms, int return_chdir);
+int		handle_dir_not_found(t_ms *ms, int return_chdir);
 char	*handle_home_dir(t_ms *ms, char *path);
 
 /* Pipeline */
