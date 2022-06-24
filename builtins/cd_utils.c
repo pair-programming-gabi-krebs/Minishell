@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 22:54:33 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/23 21:20:18 by lkrebs-l         ###   ########.fr       */
+/*   Created: 2022/06/23 16:29:26 by lkrebs-l          #+#    #+#             */
+/*   Updated: 2022/06/23 21:19:42 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	pwd(void)
+int	check_args(t_ms *ms)
 {
-	char	*current_pwd;
+	int	i;
 
-	current_pwd = ft_calloc(256, sizeof(char));
-	current_pwd = getcwd(current_pwd, 256);
-	printf("%s\n", current_pwd);
-	free(current_pwd);
+	i = 1;
+	while (ms->cmds.command[i])
+		i++;
+	if (i > 2)
+		return (1);
+	return (0);
+}
+
+char	*handle_home_dir(t_ms *ms, char *path)
+{
+	char	*aux1;
+	char	*aux2;
+
+	aux1 = ft_strdup(ms->cmds.command[1]);
+	aux2 = ft_strtrim(aux1, "~");
+	path = ft_strjoin(getenv("HOME"), aux2);
+	free(aux1);
+	free(aux2);
+	return (path);
 }

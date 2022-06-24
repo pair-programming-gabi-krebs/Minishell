@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/22 01:51:41 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/23 21:22:34 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,9 @@ void	unset(t_ms *ms);
 void	export(t_ms *ms);
 void	echo(t_ms *ms);
 void	pwd(void);
+int		check_args(t_ms *ms);
+int		handle_dir_not_found(t_ms *ms, int return_chdir);
+char	*handle_home_dir(t_ms *ms, char *path);
 
 /* Pipeline */
 void	pipeline(t_ms *ms);

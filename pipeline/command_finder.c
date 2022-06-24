@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 22:57:05 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/14 21:48:46 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/23 20:56:11 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ char	*command_finder(t_ms *ms)
 	char	*path;
 	char	*cmd;
 
-	if (!ms->cmds.command[0] || !ms->cmds.bin)
-		return (NULL);
 	if (is_path_bin(ms->cmds.command[0]))
 		return (ms->cmds.command[0]);
+	if (!ms->cmds.command[0] || !ms->cmds.bin)
+		return (NULL);
 	i = 0;
 	while (ms->init.envp[i] && ms->cmds.bin[i])
 	{

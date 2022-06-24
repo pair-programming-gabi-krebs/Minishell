@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 23:08:19 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/23 00:13:52 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/23 22:30:25 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	print_echo(t_ms *ms, int i)
 		printf(" ");
 		i++;
 	}
+	ft_putstr_fd("\b", 1);
 }
 
 static int	non_existent_var(t_ms *ms)

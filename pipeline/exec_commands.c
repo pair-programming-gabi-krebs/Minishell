@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:14:31 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/18 10:40:37 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/23 20:56:39 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ void	exec_commands(t_ms *ms)
 		ft_exit(ms, 127);
 	}
 	if (execve(ms->cmds.file_path, ms->cmds.command, ms->init.envp) == -1)
+	{
+		perror("");
 		ft_exit(ms, 1);
+	}
 }
