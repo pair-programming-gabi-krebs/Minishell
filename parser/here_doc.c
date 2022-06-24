@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:57:08 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/17 20:14:52 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/23 22:31:03 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	here_doc(t_ms *ms)
 		if (!ft_strncmp(line, ms->cmds.limiter, ft_strlen(ms->cmds.limiter))
 			&& ft_strlen(ms->cmds.limiter) == ft_strlen(line))
 			end_here_doc(ms, line, temp_hdoc);
+		if (ft_strlen(line) == 0)
+			write(1, "\n", 1);
 		write(temp_hdoc, line, ft_strlen(line));
 		write(temp_hdoc, "\n", 1);
 		free(line);
