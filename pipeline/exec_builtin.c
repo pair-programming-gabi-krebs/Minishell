@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 21:25:44 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/23 16:58:18 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/23 21:21:01 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ void	exec_builtin(t_ms *ms, int i)
 	else if (!strict_strcmp(cmd, "export"))
 		export(ms);
 	else if (!strict_strcmp(cmd, "pwd"))
-		pwd(ms);
+		pwd();
 	else if (!strict_strcmp(cmd, "unset"))
 		unset(ms);
 	ms->cmds.aux_fd = ms->cmds.fd[0];
+	ms->cmds.exit_status = 0;
 }
