@@ -6,14 +6,13 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 21:51:03 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/15 01:22:18 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/26 06:07:57 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 static void	init(t_ms *ms);
-static void	reset_std_fds(t_ms *ms);
 static void	exit_pipeline(t_ms *ms);
 
 void	pipex(t_ms *ms)
@@ -54,10 +53,4 @@ static void	exit_pipeline(t_ms *ms)
 {
 	reset_std_fds(ms);
 	end_pipeline(ms);
-}
-
-static void	reset_std_fds(t_ms *ms)
-{
-	dup42(ms->cmds.stin, STDIN_FILENO);
-	dup42(ms->cmds.stout, STDOUT_FILENO);
 }
