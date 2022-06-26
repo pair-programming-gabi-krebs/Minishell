@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 23:08:19 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/25 21:06:10 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/26 23:07:28 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ static int	non_existent_var(t_ms *ms);
 
 void	echo(t_ms *ms)
 {
-	int		has_nl;
-	int		i;
+	int	has_nl;
+	int	i;
 
 	has_nl = 1;
 	i = 1;
 	if (!ms->cmds.command[1] || non_existent_var(ms))
 	{
+		if (ms->cmds.command[1] && !strict_strcmp(ms->cmds.command[1], "-n"))
+			return ;
 		printf("\n");
 		return ;
 	}
@@ -35,12 +37,11 @@ void	echo(t_ms *ms)
 	print_echo(ms, i);
 	if (has_nl)
 		printf("\n");
-	ft_putstr_fd("\b", 1);
 }
 
 static void	print_echo(t_ms *ms, int i)
 {
-	int		flag;
+	int	flag;
 
 	flag = 0;
 	while (ms->cmds.command[i])
@@ -52,7 +53,8 @@ static void	print_echo(t_ms *ms, int i)
 			flag = 1;
 		}
 		ft_putstr_fd(ms->cmds.command[i], 1);
-		ft_putstr_fd(" ", 1);
+		if (ms->cmds.command[i + 1])
+			ft_putstr_fd(" ", 1);
 		i++;
 	}
 }
