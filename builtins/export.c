@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 23:46:23 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/23 21:15:04 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/26 22:37:10 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static int	right_var_syntax(char *var)
 	int	equals_index;
 
 	equals_index = strichar(var, 0, '=');
-	if (equals_index == -1)
+	if (equals_index == -1 && (ft_isalpha(var[0]) || var[0] == '_'))
 		return (0);
 	if (!check_var_spell(var, equals_index))
 	{
@@ -95,7 +95,7 @@ static int	check_var_spell(char *var, int equals_index)
 	char	*var_cpy;
 
 	var_cpy = ft_strdup(var);
-	if (equals_index != 0)
+	if (equals_index > 0)
 		var_cpy[equals_index] = '\0';
 	if ((ft_isalpha(var[0]) || var[0] == '_') && ft_isalnum_underscore(var_cpy))
 	{
