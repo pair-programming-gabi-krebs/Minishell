@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   end_pipeline.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:32:52 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/26 19:10:47 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/27 00:54:14 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ static void	fd_collector(void)
 	int	fd;
 
 	fd = 3;
-	while(fd < 512)
+	while (fd < 512)
 		close(fd++);
 }
