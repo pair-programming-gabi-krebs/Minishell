@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:14:31 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/23 20:56:39 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/26 19:37:38 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	exec_commands(t_ms *ms)
 		ms->cmds.file_path = command_finder(ms);
 	if (!ms->cmds.file_path)
 	{
-		printf("%s: command not found", ms->cmds.command[0]);
+		ft_putstr_fd(ms->cmds.command[0], 2);
+		ft_putstr_fd(": command not found\n", 2);
 		ft_exit(ms, 127);
 	}
 	if (execve(ms->cmds.file_path, ms->cmds.command, ms->init.envp) == -1)
