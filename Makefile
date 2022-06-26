@@ -68,7 +68,7 @@ FILES = main.c \
 		handle_exit.c \
 		cd_utils.c \
 		get_var_name.c \
-
+		reset_std_fds.c
 
 
 OBJ_PATH = ./objs/

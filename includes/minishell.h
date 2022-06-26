@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/23 21:22:34 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/26 06:06:40 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ void	handle_child_sig_quit(int sig);
 void	handle_child_sig_int(int sig);
 void	handle_child_sig_int_here_doc(int sig);
 char	*get_var_name(char *content);
+void	reset_std_fds(t_ms *ms);
 
 /* Lexer */
 int		lexer(t_ms *ms);
