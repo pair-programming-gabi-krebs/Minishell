@@ -6,7 +6,7 @@
 /*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 23:08:19 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/23 22:50:36 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/25 21:06:10 by lkrebs-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	echo(t_ms *ms)
 	print_echo(ms, i);
 	if (has_nl)
 		printf("\n");
-	printf("\b");
+	ft_putstr_fd("\b", 1);
 }
 
 static void	print_echo(t_ms *ms, int i)
@@ -51,8 +51,8 @@ static void	print_echo(t_ms *ms, int i)
 				i++;
 			flag = 1;
 		}
-		printf("%s", ms->cmds.command[i]);
-		printf(" ");
+		ft_putstr_fd(ms->cmds.command[i], 1);
+		ft_putstr_fd(" ", 1);
 		i++;
 	}
 }
