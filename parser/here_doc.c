@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:57:08 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/23 22:31:03 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/26 06:02:06 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	here_doc(t_ms *ms)
 
 	ft_init_sigaction(ms, handle_child_sig_int_here_doc, SIGINT);
 	ft_init_sigaction(ms, SIG_IGN, SIGQUIT);
+	dup42(ms->cmds.stout, STDOUT_FILENO);
+	dup42(ms->cmds.stin, STDIN_FILENO);
 	temp_hdoc = open("hdoc_file", O_WRONLY | O_CREAT | O_APPEND, 0744);
 	line = readline("");
 	while (1)
