@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   remove_redirect_from_end_of_str.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:07:59 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/20 20:44:44 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/26 04:44:49 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+static void	remove_str_from_matrix(t_ms *ms, int i);
 
 void	remove_redirect_from_end_of_str(t_ms *ms)
 {
@@ -22,11 +24,9 @@ void	remove_redirect_from_end_of_str(t_ms *ms)
 		if ((ms->cmds.command[i][0] == '<' && ms->cmds.command[i + 1])
 		|| (ms->cmds.command[i][0] == '>' && ms->cmds.command[i + 1]))
 		{
-			free(ms->cmds.command[i]);
-			free(ms->cmds.command[i + 1]);
-			ms->cmds.command[i] = NULL;
-			ms->cmds.command[i + 1] = NULL;
-			i++;
+			remove_str_from_matrix(ms, i);
+			remove_str_from_matrix(ms, i);
+			continue ;
 		}
 		else if ((ms->cmds.command[i][0] == '<' && !ms->cmds.command[i + 1])
 		|| (ms->cmds.command[i][0] == '>' && !ms->cmds.command[i + 1]))
@@ -34,6 +34,19 @@ void	remove_redirect_from_end_of_str(t_ms *ms)
 			free(ms->cmds.command[i]);
 			ms->cmds.command[i] = NULL;
 		}
+		i++;
+	}
+}
+
+static void	remove_str_from_matrix(t_ms *ms, int i)
+{
+	while (ms->cmds.command[i] && i < ft_mtxlen(ms->cmds.command))
+	{
+		free(ms->cmds.command[i]);
+		if (ms->cmds.command[i + 1])
+			ms->cmds.command[i] = ft_strdup(ms->cmds.command[i + 1]);
+		else
+			ms->cmds.command[i] = NULL;
 		i++;
 	}
 }
