@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_redirect_from_start_of_str.c                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:11:00 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/03 19:20:40 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/27 02:41:43 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

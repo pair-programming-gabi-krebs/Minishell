@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 22:32:14 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/20 21:26:47 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/27 02:07:36 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,5 @@ static void	ft_init_cmd(t_ms *ms)
 	ms->cmds.append_flag = 0;
 	ms->cmds.limiter = NULL;
 	ms->cmds.hdoc_flag = 0;
+	ms->cmds.flag_quote = NULL;
 }

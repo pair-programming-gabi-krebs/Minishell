@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 01:59:26 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/15 00:11:45 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/27 02:47:05 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	syntatic_analysis(t_ms *ms)
 	i = 0;
 	while (i < ms->lexer.i_token)
 	{
-		if (!check_token_for_redirects(ms, i))
+		if (ms->lexer.flag_quote[i] == '.' && !check_token_for_redirects(ms, i))
 			return (0);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:07:59 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/26 04:44:49 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/27 02:49:36 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,17 @@ void	remove_redirect_from_end_of_str(t_ms *ms)
 	i = 0;
 	while (ms->cmds.command[i])
 	{
-		if ((ms->cmds.command[i][0] == '<' && ms->cmds.command[i + 1])
-		|| (ms->cmds.command[i][0] == '>' && ms->cmds.command[i + 1]))
+		if (ms->cmds.flag_quote[i] == '.'
+			&& ((ms->cmds.command[i][0] == '<' && ms->cmds.command[i + 1])
+			|| (ms->cmds.command[i][0] == '>' && ms->cmds.command[i + 1])))
 		{
 			remove_str_from_matrix(ms, i);
 			remove_str_from_matrix(ms, i);
 			continue ;
 		}
-		else if ((ms->cmds.command[i][0] == '<' && !ms->cmds.command[i + 1])
-		|| (ms->cmds.command[i][0] == '>' && !ms->cmds.command[i + 1]))
+		else if (ms->cmds.flag_quote[i] == '.'
+			&& ((ms->cmds.command[i][0] == '<' && !ms->cmds.command[i + 1])
+			|| (ms->cmds.command[i][0] == '>' && !ms->cmds.command[i + 1])))
 		{
 			free(ms->cmds.command[i]);
 			ms->cmds.command[i] = NULL;

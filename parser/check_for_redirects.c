@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_for_redirects.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkrebs-l <lkrebs-l@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:21:44 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/20 21:19:11 by lkrebs-l         ###   ########.fr       */
+/*   Updated: 2022/06/27 02:50:09 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	init(t_ms *ms)
 static int	has_redirect(t_ms *ms, char *str1, char *str2, int i)
 {
 	if (!strict_strcmp(str1, str2) && ms->cmds.command[i + 1]
-		&& ms->lexer.flag_quote[i] == '.')
+		&& ms->cmds.flag_quote[i] == '.')
 		return (1);
 	return (0);
 }

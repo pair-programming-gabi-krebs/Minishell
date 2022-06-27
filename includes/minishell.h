@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:16:43 by lkrebs-l          #+#    #+#             */
-/*   Updated: 2022/06/26 06:06:40 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/27 02:06:20 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_cmds
 	int		inf_counter;
 	int		hdoc_counter;
 	int		hdoc_flag;
+	char	*flag_quote;
 }	t_cmds;
 
 typedef struct s_minishell
