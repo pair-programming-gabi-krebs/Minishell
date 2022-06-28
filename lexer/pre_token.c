@@ -6,7 +6,7 @@
 /*   By: gcosta-d <gcosta-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:09:18 by gcosta-d          #+#    #+#             */
-/*   Updated: 2022/06/03 22:12:30 by gcosta-d         ###   ########.fr       */
+/*   Updated: 2022/06/28 02:08:44 by gcosta-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	pre_token(t_ms *ms)
 		}
 		pre_tokenization(ms, i);
 	}
-	ms->tk.mtx[ms->tk.j] = '\0';
+	ms->tk.mtx[ms->tk.j] = NULL;
 	line_formater(ms);
 	free_matrix(ms->tk.mtx);
 }
