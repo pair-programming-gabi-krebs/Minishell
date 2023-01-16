@@ -26,3 +26,8 @@
 		</a>
 	</div>
 </div>
+
+# Minishell
+
+This project consists of a smaller version of the <a href="https://en.wikipedia.org/wiki/Unix_shell">Linux Shell</a>.
+
